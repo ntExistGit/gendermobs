@@ -1,0 +1,28 @@
+modLoader = "javafml"
+loaderVersion = "[47,)"
+issueTrackerURL = "https://github.com/ntExistGit/gendermobs/issues"
+license = "LGPL-3.0"
+
+[[mods]]
+    modId = "gendermobs"
+    version = "${version}"
+    displayName = "Gender Mobs"
+    authors = "ntExist"
+    description = '''
+    This mod personalizes every creature by giving them a gender and a random name. No more anonymous mobs – now they all have their own identity.
+    '''
+    logoFile = "logo.png"
+
+[[dependencies.gendermobs]]
+    modId = "forge"
+    mandatory = true
+    versionRange = "[47,)"
+    ordering = "NONE"
+    side = "BOTH"
+
+[[dependencies.gendermobs]]
+    modId = "minecraft"
+    mandatory = true
+    versionRange = "[1.20.1,)"
+    ordering = "NONE"
+    side = "BOTH"

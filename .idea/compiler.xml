@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <bytecodeTargetLevel target="17" />
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_STRING" value="-AoutRefMapFile=D:\Games\Minecraft\gendermobs\build\classes\java\main\gendermobs-refmap.json -AdefaultObfuscationEnv=named:intermediary -Aquiet=true -AoutMapFileNamedIntermediary=D:\Games\Minecraft\gendermobs\build\loom-cache\mixin-map-loom.mappings.1_20_1.layered+hash.40359-v2-forge-1.20.1-47.4.10.main.tiny -AinMapFileNamedIntermediary=C:\Users\hopes\.gradle\caches\fabric-loom\1.20.1\loom.mappings.1_20_1.layered+hash.40359-v2-forge-1.20.1-47.4.10\mappings-mixin-srg.tiny" />
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="gendermobs.test" options="-AoutRefMapFile=D:\Games\Minecraft\gendermobs\build\classes\java\test\test-gendermobs-refmap.json -AdefaultObfuscationEnv=named:intermediary -Aquiet=true -AoutMapFileNamedIntermediary=D:\Games\Minecraft\gendermobs\build\loom-cache\mixin-map-loom.mappings.1_20_1.layered+hash.40359-v2-forge-1.20.1-47.4.10.test.tiny -AinMapFileNamedIntermediary=C:\Users\hopes\.gradle\caches\fabric-loom\1.20.1\loom.mappings.1_20_1.layered+hash.40359-v2-forge-1.20.1-47.4.10\mappings-mixin-srg.tiny" />
+    </option>
+  </component>
+</project>
