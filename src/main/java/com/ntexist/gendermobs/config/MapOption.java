@@ -97,6 +97,7 @@ public class MapOption extends OptionEntry<Map<String, EntryData>> {
     @Override
     protected void onReset() {
         setter.accept(new HashMap<>(defaultValue));
+        rebuild.run();
     }
 
     @Override

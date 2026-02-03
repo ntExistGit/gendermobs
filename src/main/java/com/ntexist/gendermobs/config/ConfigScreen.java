@@ -88,6 +88,15 @@ public class ConfigScreen extends Screen {
                         () -> ConfigManager.WORKING_COPY.general.jadeIcons,
                         v -> ConfigManager.WORKING_COPY.general.jadeIcons = v,
                         false));
+
+                options.add(new SliderOption(
+                        "gendermobs.config.slider",
+                        "gendermobs.config.tooltip.slider",
+                        -10.0f, 10.0f, 0.1f,
+                        () -> ConfigManager.WORKING_COPY.general.offsetY,
+                        v -> ConfigManager.WORKING_COPY.general.offsetY = v,
+                        -3.0f
+                ));
             }
 
             options.add(new ColorOption(

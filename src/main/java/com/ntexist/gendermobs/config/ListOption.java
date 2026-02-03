@@ -97,6 +97,7 @@ public class ListOption extends OptionEntry<Set<String>> {
     @Override
     protected void onReset() {
         setter.accept(new HashSet<>(defaultValue));
+        rebuild.run();
     }
 
     @Override

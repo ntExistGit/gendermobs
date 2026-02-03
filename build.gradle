@@ -36,8 +36,9 @@ dependencies {
 
     modImplementation("maven.modrinth:jade:${project.jade_version}")
 
-    compileOnly(files("libs/alexsmobs-1.22.9.jar"))
-    compileOnly(files("libs/naturalist-5.0pre2+forge-1.20.1.jar"))
+    modCompileOnly("curse.maven:geckolib-388172:7553267")
+    modCompileOnly("curse.maven:alexs-mobs-426558:5698791")
+    modCompileOnly("curse.maven:naturalist-627986:6322818")
 }
 
 processResources {

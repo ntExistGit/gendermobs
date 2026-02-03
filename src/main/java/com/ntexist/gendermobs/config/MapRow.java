@@ -33,6 +33,7 @@ public class MapRow {
                 Component.empty()
         );
         id.setValue(key);
+        id.setMaxLength(32767);
 
         Runnable validateAndUpdate = () -> {
             String newKey = id.getValue().trim();
@@ -77,7 +78,7 @@ public class MapRow {
                 if (entityType != null) {
                     tooltipText = String.format(
                             Component.translatable("gendermobs.tooltip.entity_found").getString(),
-                            entityType.getDescription().getString()  // Изменено с getName() на getDescription()
+                            entityType.getDescription().getString()
                     );
                 } else {
                     tooltipText = String.format(

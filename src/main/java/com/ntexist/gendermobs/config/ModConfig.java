@@ -22,13 +22,14 @@ public class ModConfig {
     public static ModConfig defaultConfig() {
         ModConfig cfg = new ModConfig();
 
-        cfg.general.showNames = true;
-        cfg.general.showColors = false;
+        cfg.general.showNames       = true;
+        cfg.general.showColors      = false;
 
-        cfg.general.jadeIcons = true;
+        cfg.general.jadeIcons       = true;
+        cfg.general.offsetY         = -3.0f;
 
-        cfg.colors.male = "#5555FF";
-        cfg.colors.female = "#FF55FF";
+        cfg.colors.male             = "#5555FF";
+        cfg.colors.female           = "#FF55FF";
 
         cfg.general.useDefaultNames = true;
 
@@ -269,14 +270,15 @@ public class ModConfig {
     }
 
     public static class General {
-        public boolean showNames = true;
-        public boolean showColors = false;
-        public boolean jadeIcons = true;
-        public boolean useDefaultNames = true;
+        public boolean  showNames       = true;
+        public boolean  showColors      = false;
+        public boolean  jadeIcons       = true;
+        public float    offsetY         = -3.0f;
+        public boolean  useDefaultNames = true;
     }
 
     public static class Colors {
-        public String male = "#5555FF";
-        public String female = "#FF55FF";
+        public String   male            = "#5555FF";
+        public String   female          = "#FF55FF";
     }
 }

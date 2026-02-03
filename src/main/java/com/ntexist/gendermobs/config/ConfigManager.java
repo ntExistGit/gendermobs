@@ -127,22 +127,23 @@ public class ConfigManager {
     public static void resetAllConfig() {
         ModConfig defaultConfig = ModConfig.defaultConfig();
 
-        ConfigManager.WORKING_COPY.general.showNames = defaultConfig.general.showNames;
-        ConfigManager.WORKING_COPY.general.showColors = defaultConfig.general.showColors;
+        ConfigManager.WORKING_COPY.general.showNames        = defaultConfig.general.showNames;
+        ConfigManager.WORKING_COPY.general.showColors       = defaultConfig.general.showColors;
 
-        ConfigManager.WORKING_COPY.general.jadeIcons = defaultConfig.general.jadeIcons;
+        ConfigManager.WORKING_COPY.general.jadeIcons        = defaultConfig.general.jadeIcons;
+        ConfigManager.WORKING_COPY.general.offsetY          = defaultConfig.general.offsetY;
 
-        ConfigManager.WORKING_COPY.colors.male = defaultConfig.colors.male;
-        ConfigManager.WORKING_COPY.colors.female = defaultConfig.colors.female;
+        ConfigManager.WORKING_COPY.colors.male              = defaultConfig.colors.male;
+        ConfigManager.WORKING_COPY.colors.female            = defaultConfig.colors.female;
 
-        ConfigManager.WORKING_COPY.general.useDefaultNames = defaultConfig.general.useDefaultNames;
+        ConfigManager.WORKING_COPY.general.useDefaultNames  = defaultConfig.general.useDefaultNames;
 
-        ConfigManager.WORKING_COPY.vanillaHumanoid = new HashMap<>(defaultConfig.vanillaHumanoid);
-        ConfigManager.WORKING_COPY.customHumanoid = new HashMap<>(defaultConfig.customHumanoid);
-        ConfigManager.WORKING_COPY.vanillaNonHumanoid = new HashMap<>(defaultConfig.vanillaNonHumanoid);
-        ConfigManager.WORKING_COPY.customNonHumanoid = new HashMap<>(defaultConfig.customNonHumanoid);
+        ConfigManager.WORKING_COPY.vanillaHumanoid          = new HashMap<>(defaultConfig.vanillaHumanoid);
+        ConfigManager.WORKING_COPY.customHumanoid           = new HashMap<>(defaultConfig.customHumanoid);
+        ConfigManager.WORKING_COPY.vanillaNonHumanoid       = new HashMap<>(defaultConfig.vanillaNonHumanoid);
+        ConfigManager.WORKING_COPY.customNonHumanoid        = new HashMap<>(defaultConfig.customNonHumanoid);
 
-        ConfigManager.WORKING_COPY.zombies = new HashSet<>(defaultConfig.zombies);
-        ConfigManager.WORKING_COPY.canBeInfected = new HashSet<>(defaultConfig.canBeInfected);
+        ConfigManager.WORKING_COPY.zombies                  = new HashSet<>(defaultConfig.zombies);
+        ConfigManager.WORKING_COPY.canBeInfected            = new HashSet<>(defaultConfig.canBeInfected);
     }
 }

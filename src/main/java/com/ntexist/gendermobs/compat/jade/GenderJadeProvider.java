@@ -29,7 +29,7 @@ public enum GenderJadeProvider implements IEntityComponentProvider {
 
             if (gender == null || gender.isEmpty()) {
                 pathBase = "unknown";
-                colorInt = 0xFFAAAAAA; // серый
+                colorInt = 0xFFAAAAAA;
             } else if ("Male".equals(gender)) {
                 pathBase = "male";
                 colorInt = parseHex(ConfigManager.CONFIG.colors.male);
@@ -93,7 +93,7 @@ public enum GenderJadeProvider implements IEntityComponentProvider {
 
         @Override
         public void render(GuiGraphics context, float x, float y, float width, float height) {
-            float finalY = y - 3.0F;
+            float finalY = y + ConfigManager.CONFIG.general.offsetY;
 
             float r = (color >> 16 & 255) / 255.0F;
             float g = (color >> 8 & 255) / 255.0F;
