@@ -12,12 +12,13 @@ public class ModConfig {
     public General general = new General();
     public Colors colors = new Colors();
 
-    public Map<String, EntryData> vanillaHumanoid = new HashMap<>();
-    public Map<String, EntryData> customHumanoid = new HashMap<>();
-    public Map<String, EntryData> vanillaNonHumanoid = new HashMap<>();
-    public Map<String, EntryData> customNonHumanoid = new HashMap<>();
+    public Map<String, EntryData> vanillaHumanoid       = new HashMap<>();
+    public Map<String, EntryData> customHumanoid        = new HashMap<>();
+    public Map<String, EntryData> vanillaNonHumanoid    = new HashMap<>();
+    public Map<String, EntryData> customNonHumanoid     = new HashMap<>();
+    public Map<String, String> canBeInfected            = new HashMap<>();
+
     public Set<String> zombies = new HashSet<>();
-    public Set<String> canBeInfected = new HashSet<>();
 
     public static ModConfig defaultConfig() {
         ModConfig cfg = new ModConfig();
@@ -26,7 +27,7 @@ public class ModConfig {
         cfg.general.showColors      = false;
 
         cfg.general.jadeIcons       = true;
-        cfg.general.offsetY         = -3.0f;
+        cfg.general.offsetY         = -3.5f;
 
         cfg.colors.male             = "#5555FF";
         cfg.colors.female           = "#FF55FF";
@@ -105,14 +106,14 @@ public class ModConfig {
         cfg.zombies.add("minecraft:zombified_piglin");
 
         // Can Be Infected
-        cfg.canBeInfected.add("minecraft:villager");
-        cfg.canBeInfected.add("minecraft:wandering_trader");
-        cfg.canBeInfected.add("minecraft:pillager");
+        cfg.canBeInfected.put("minecraft:villager", "minecraft:zombie_villager");
+        cfg.canBeInfected.put("minecraft:wandering_trader", "minecraft:zombie_villager");
+        cfg.canBeInfected.put("minecraft:pillager", "minecraft:zombified_piglin");
 
         // Guard Villagers
         if (ModList.get().isLoaded("guardvillagers")) {
             cfg.customHumanoid.put("guardvillagers:guard", new EntryData(0.2f, true));
-            cfg.canBeInfected.add("guardvillagers:guard");
+            cfg.canBeInfected.put("guardvillagers:guard", "minecraft:zombie_villager");
         }
 
         // Alex's Mobs
@@ -273,7 +274,7 @@ public class ModConfig {
         public boolean  showNames       = true;
         public boolean  showColors      = false;
         public boolean  jadeIcons       = true;
-        public float    offsetY         = -3.0f;
+        public float    offsetY         = -3.5f;
         public boolean  useDefaultNames = true;
     }
 

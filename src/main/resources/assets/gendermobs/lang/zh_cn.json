@@ -6,6 +6,8 @@
   "gendermobs.config.tooltip.colored_names": "根据性别着色实体名称（蓝色-雄性，粉色-雌性）",
   "gendermobs.config.jade_icons": "在Jade中显示图标",
   "gendermobs.config.tooltip.jade_icons": "在Jade/WTHIT提示中显示性别图标",
+  "gendermobs.config.iconOffsetY": "图标垂直偏移",
+  "gendermobs.config.tooltip.iconOffsetY": "Jade性别图标的垂直位置调整（-10 到 10，默认：-3.5）\n负值向上移动，正值向下移动",
   "gendermobs.config.male_color": "雄性名称颜色",
   "gendermobs.config.tooltip.male_color": "雄性名称的十六进制颜色代码（例如，#5555FF）",
   "gendermobs.config.female_color": "雌性名称颜色",

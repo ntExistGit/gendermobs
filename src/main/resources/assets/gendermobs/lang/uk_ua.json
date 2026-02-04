@@ -6,6 +6,8 @@
   "gendermobs.config.tooltip.colored_names": "Забарвлювати імена сутностей за статтю (синій - чоловічий, рожевий - жіночий)",
   "gendermobs.config.jade_icons": "Показувати іконки в Jade",
   "gendermobs.config.tooltip.jade_icons": "Показувати іконки статі в тултіпах Jade/WTHIT",
+  "gendermobs.config.iconOffsetY": "Вертикальне зміщення іконки",
+  "gendermobs.config.tooltip.iconOffsetY": "Налаштування вертикальної позиції іконок статі в Jade (-10 до 10, за замовчуванням: -3.5)\nНегативні значення - вгору, позитивні - вниз",
   "gendermobs.config.male_color": "Колір чоловічих імен",
   "gendermobs.config.tooltip.male_color": "HEX-код кольору для чоловічих імен (наприклад, #5555FF)",
   "gendermobs.config.female_color": "Колір жіночих імен",

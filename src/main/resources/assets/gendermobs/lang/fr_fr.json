@@ -6,6 +6,8 @@
   "gendermobs.config.tooltip.colored_names": "Colorer les noms d'entités selon le genre (bleu - masculin, rose - féminin)",
   "gendermobs.config.jade_icons": "Afficher les icônes dans Jade",
   "gendermobs.config.tooltip.jade_icons": "Afficher les icônes de genre dans les infobulles Jade/WTHIT",
+  "gendermobs.config.iconOffsetY": "Décalage vertical d'icône",
+  "gendermobs.config.tooltip.iconOffsetY": "Ajustement position verticale pour icônes de genre dans Jade (-10 à 10, défaut: -3.5)\nValeurs négatives déplacent vers le haut, positives vers le bas",
   "gendermobs.config.male_color": "Couleur noms masculins",
   "gendermobs.config.tooltip.male_color": "Code couleur HEX pour noms masculins (ex., #5555FF)",
   "gendermobs.config.female_color": "Couleur noms féminins",

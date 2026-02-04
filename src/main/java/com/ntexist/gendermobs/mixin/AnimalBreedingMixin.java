@@ -8,11 +8,15 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Animal.class)
-public abstract class BreedingMixin {
+public abstract class AnimalBreedingMixin {
 
     @Inject(method = "canMate", at = @At("HEAD"), cancellable = true)
-    private void checkGenderBreeding(Animal other, CallbackInfoReturnable<Boolean> cir) {
+    private void gm$checkGenderBreeding(Animal other, CallbackInfoReturnable<Boolean> cir) {
         Animal self = (Animal) (Object) this;
+
+        if (self == other) {
+            return;
+        }
 
         LivingEntityAccessor selfAccessor = (LivingEntityAccessor) self;
         LivingEntityAccessor otherAccessor = (LivingEntityAccessor) other;
@@ -20,9 +24,13 @@ public abstract class BreedingMixin {
         String selfGender = selfAccessor.getGender();
         String otherGender = otherAccessor.getGender();
 
-        if (!selfGender.isEmpty() && !otherGender.isEmpty()) {
+        boolean selfHasGender = selfGender != null && !selfGender.isEmpty();
+        boolean otherHasGender = otherGender != null && !otherGender.isEmpty();
+
+        if (selfHasGender && otherHasGender) {
             if (selfGender.equals(otherGender)) {
                 cir.setReturnValue(false);
+                cir.cancel();
             }
         }
     }

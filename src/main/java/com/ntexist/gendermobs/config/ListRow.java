@@ -31,8 +31,8 @@ public class ListRow {
                 x, y, width - 22, 20,
                 Component.empty()
         );
-        idField.setValue(entityId);
         idField.setMaxLength(32767);
+        idField.setValue(entityId);
 
         Runnable validateAndUpdate = () -> {
             String newId = idField.getValue().trim();

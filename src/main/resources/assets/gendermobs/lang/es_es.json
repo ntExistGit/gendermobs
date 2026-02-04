@@ -6,6 +6,8 @@
   "gendermobs.config.tooltip.colored_names": "Colorear nombres de entidades según género (azul - masculino, rosa - femenino)",
   "gendermobs.config.jade_icons": "Mostrar iconos en Jade",
   "gendermobs.config.tooltip.jade_icons": "Mostrar iconos de género en tooltips de Jade/WTHIT",
+  "gendermobs.config.iconOffsetY": "Desplazamiento vertical de icono",
+  "gendermobs.config.tooltip.iconOffsetY": "Ajuste de posición vertical para iconos de género en Jade (-10 a 10, predeterminado: -3.5)\nValores negativos mueven arriba, positivos abajo",
   "gendermobs.config.male_color": "Color nombres masculinos",
   "gendermobs.config.tooltip.male_color": "Código HEX para nombres masculinos (ej., #5555FF)",
   "gendermobs.config.female_color": "Color nombres femeninos",

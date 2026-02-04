@@ -8,7 +8,7 @@
   "mixins": [
     "LivingEntityMixin",
     "VillagerBreedingMixin",
-    "BreedingMixin",
+    "AnimalBreedingMixin",
     "EntityTransformMixin",
     "ZombieConversionMixin",
     "compat.naturalist.LionGenderCompatMixin",

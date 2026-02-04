@@ -16,14 +16,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(Lion.class)
-public abstract class LionGenderCompatMixin extends AgeableMob {
+public abstract class LionGenderCompatMixin {
 
     @Shadow public abstract boolean hasMane();
     @Shadow public abstract void setHasMane(boolean hasMane);
-
-    protected LionGenderCompatMixin(EntityType<? extends AgeableMob> type, Level level) {
-        super(type, level);
-    }
 
     @Inject(method = "finalizeSpawn", at = @At("RETURN"))
     private void onFinalizeSpawn(
@@ -34,13 +30,13 @@ public abstract class LionGenderCompatMixin extends AgeableMob {
             CompoundTag tag,
             CallbackInfoReturnable<SpawnGroupData> cir
     ) {
-        if (this.level().isClientSide) return;
+        LivingEntity self = (LivingEntity)(Object)this;
+        if (self.level().isClientSide) return;
 
-        LivingEntityAccessor accessor = (LivingEntityAccessor) this;
+        LivingEntityAccessor accessor = (LivingEntityAccessor) self;
+        GenderAssigner.updateEntityVisual(self);
 
-        GenderAssigner.updateEntityVisual((LivingEntity) (Object) this);
-
-        if (!this.isBaby()) {
+        if (!self.isBaby()) {
             String gender = accessor.getGender();
             if ("Male".equals(gender)) {
                 this.setHasMane(true);
@@ -52,29 +48,25 @@ public abstract class LionGenderCompatMixin extends AgeableMob {
 
     @Inject(method = "ageBoundaryReached", at = @At("TAIL"))
     private void onAgeBoundaryReached(CallbackInfo ci) {
-        if (this.level().isClientSide) return;
+        LivingEntity self = (LivingEntity)(Object)this;
+        if (self.level().isClientSide) return;
 
-        LivingEntityAccessor accessor = (LivingEntityAccessor) this;
+        LivingEntityAccessor accessor = (LivingEntityAccessor) self;
         String gender = accessor.getGender();
 
-        // Когда лев вырос, проверяем его пол из твоего аксессора
-        if ("Male".equals(gender)) {
-            this.setHasMane(true);
-        } else if ("Female".equals(gender)) {
-            this.setHasMane(false);
-        }
+        this.setHasMane("Male".equals(gender));
     }
 
     @Inject(method = "aiStep", at = @At("HEAD"))
     private void onAiStep(CallbackInfo ci) {
-        if (!this.level().isClientSide && !this.isBaby()) {
-            LivingEntityAccessor accessor = (LivingEntityAccessor) this;
-            String gender = accessor.getGender();
+        LivingEntity self = (LivingEntity)(Object)this;
+        if (self.level().isClientSide || self.isBaby()) return;
 
-            boolean needsMane = "Male".equals(gender);
-            if (this.hasMane() != needsMane) {
-                this.setHasMane(needsMane);
-            }
+        LivingEntityAccessor accessor = (LivingEntityAccessor) self;
+        boolean needsMane = "Male".equals(accessor.getGender());
+
+        if (this.hasMane() != needsMane) {
+            this.setHasMane(needsMane);
         }
     }
 }

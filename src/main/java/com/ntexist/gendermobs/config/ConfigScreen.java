@@ -90,12 +90,12 @@ public class ConfigScreen extends Screen {
                         false));
 
                 options.add(new SliderOption(
-                        "gendermobs.config.slider",
-                        "gendermobs.config.tooltip.slider",
+                        "gendermobs.config.iconOffsetY",
+                        "gendermobs.config.tooltip.iconOffsetY",
                         -10.0f, 10.0f, 0.1f,
                         () -> ConfigManager.WORKING_COPY.general.offsetY,
                         v -> ConfigManager.WORKING_COPY.general.offsetY = v,
-                        -3.0f
+                        -3.5f
                 ));
             }
 
@@ -260,11 +260,11 @@ public class ConfigScreen extends Screen {
             options.clear();
             options.add(new SpacerOption(12));
 
-            ListOption canBeInfectedOption = new ListOption(
+            EntityMappingOption canBeInfectedOption = new EntityMappingOption(
                     "gendermobs.config.can_be_infected",
                     () -> ConfigManager.WORKING_COPY.canBeInfected,
                     v -> ConfigManager.WORKING_COPY.canBeInfected = v,
-                    new HashSet<>());
+                    new HashMap<>());
             canBeInfectedOption.setExpanded(canBeInfectedOptionExpanded);
             canBeInfectedOption.attachRebuild(() -> {
                 canBeInfectedOptionExpanded = canBeInfectedOption.isExpanded();

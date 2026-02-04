@@ -144,6 +144,6 @@ public class ConfigManager {
         ConfigManager.WORKING_COPY.customNonHumanoid        = new HashMap<>(defaultConfig.customNonHumanoid);
 
         ConfigManager.WORKING_COPY.zombies                  = new HashSet<>(defaultConfig.zombies);
-        ConfigManager.WORKING_COPY.canBeInfected            = new HashSet<>(defaultConfig.canBeInfected);
+        ConfigManager.WORKING_COPY.canBeInfected            = new HashMap<>(defaultConfig.canBeInfected);
     }
 }

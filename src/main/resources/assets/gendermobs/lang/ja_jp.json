@@ -6,6 +6,8 @@
   "gendermobs.config.tooltip.colored_names": "性別に基づいてエンティティ名を着色（青 - 男性、ピンク - 女性）",
   "gendermobs.config.jade_icons": "Jadeでアイコンを表示",
   "gendermobs.config.tooltip.jade_icons": "Jade/WTHITツールチップに性別アイコンを表示",
+  "gendermobs.config.iconOffsetY": "アイコン垂直オフセット",
+  "gendermobs.config.tooltip.iconOffsetY": "Jade性別アイコンの垂直位置調整（-10 から 10、デフォルト：-3.5）\n負の値は上に移動、正の値は下に移動",
   "gendermobs.config.male_color": "男性名の色",
   "gendermobs.config.tooltip.male_color": "男性名のHEXカラーコード（例：#5555FF）",
   "gendermobs.config.female_color": "女性名の色",

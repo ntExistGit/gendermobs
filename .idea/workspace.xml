@@ -4,23 +4,39 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b09462e5-d882-42ea-a0c2-58cd8da6e490" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/SliderOption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server.xml" afterDir="false" />
+    <list default="true" id="b09462e5-d882-42ea-a0c2-58cd8da6e490" name="Changes" comment="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;">
+      <change afterPath="$PROJECT_DIR$/.idea/AICommit.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/EntityMappingOption.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/EntityMappingRow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/alexsmobs-1.22.9.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/libs/naturalist-5.0pre2+forge-1.20.1.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/GenderAssigner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/GenderAssigner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/accessor/LivingEntityAccessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/accessor/LivingEntityAccessor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/compat/jade/GenderJadeProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/compat/jade/GenderJadeProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/compat/jade/GenderJadeServerProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/compat/jade/GenderJadeServerProvider.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ConfigManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ConfigScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ConfigScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ListOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ListOption.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ListRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ListRow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/MapOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/MapOption.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/MapRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/MapRow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ModConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ModConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/BreedingMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/AnimalBreedingMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/EntityTransformMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/EntityTransformMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/LivingEntityMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/LivingEntityMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/VillagerBreedingMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/VillagerBreedingMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/ZombieConversionMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/ZombieConversionMixin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/compat/naturalist/DeerGenderCompatMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/compat/naturalist/DeerGenderCompatMixin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/compat/naturalist/LionGenderCompatMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/compat/naturalist/LionGenderCompatMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/de_de.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/de_de.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/en_us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/es_es.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/es_es.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/fr_fr.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/fr_fr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/it_it.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/it_it.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/ja_jp.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/ja_jp.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/ko_kr.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/ko_kr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/pt_br.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/pt_br.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/ru_ru.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/uk_ua.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/uk_ua.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/zh_cn.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/zh_cn.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gendermobs.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gendermobs.mixins.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,6 +123,7 @@
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "master",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
@@ -237,8 +254,17 @@
       <updated>1770056780420</updated>
       <workItem from="1770056795030" duration="7933000" />
       <workItem from="1770068641374" duration="3071000" />
-      <workItem from="1770116324859" duration="18426000" />
+      <workItem from="1770116324859" duration="32788000" />
     </task>
+    <task id="LOCAL-00001" summary="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;">
+      <option name="closed" value="true" />
+      <created>1770147313835</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1770147313835</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -254,5 +280,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;" />
   </component>
 </project>

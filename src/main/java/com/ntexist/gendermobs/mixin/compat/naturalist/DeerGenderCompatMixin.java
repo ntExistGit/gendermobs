@@ -9,10 +9,9 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import software.bernie.geckolib.cache.object.GeoBone;
 import software.bernie.geckolib.core.animation.AnimationState;
-import software.bernie.geckolib.model.GeoModel;
 
 @Mixin(DeerModel.class)
-public abstract class DeerGenderCompatMixin extends GeoModel<Deer> {
+public abstract class DeerGenderCompatMixin {
 
     @Inject(
             method = "setCustomAnimations(Lcom/starfish_studios/naturalist/common/entity/Deer;JLsoftware/bernie/geckolib/core/animation/AnimationState;)V",
@@ -23,7 +22,6 @@ public abstract class DeerGenderCompatMixin extends GeoModel<Deer> {
         if (animationState == null) return;
 
         GeoBone antlers = (GeoBone) ((DeerModel)(Object)this).getAnimationProcessor().getBone("antlers");
-
         if (antlers != null && entity instanceof LivingEntityAccessor accessor) {
             String gender = accessor.getGender();
             if (gender != null) {

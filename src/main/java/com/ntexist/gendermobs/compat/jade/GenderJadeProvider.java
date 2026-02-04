@@ -18,11 +18,15 @@ import snownee.jade.api.ui.IElementHelper;
 public enum GenderJadeProvider implements IEntityComponentProvider {
     INSTANCE;
 
+    // Новые теги из нашей системы
+    private static final String NBT_GENDER = "GM_Gender";
+    private static final String NBT_NAME = "GM_Name";
+
     @Override
     public void appendTooltip(ITooltip tooltip, EntityAccessor accessor, IPluginConfig config) {
         if (accessor.getEntity() instanceof LivingEntity living) {
-
-            String gender = accessor.getServerData().getString("MobGender");
+            String gender = accessor.getServerData().getString(NBT_GENDER);
+            String customName = accessor.getServerData().getString(NBT_NAME);
 
             String pathBase;
             int colorInt;
@@ -40,6 +44,11 @@ public enum GenderJadeProvider implements IEntityComponentProvider {
 
             IElementHelper helper = tooltip.getElementHelper();
             MutableComponent nameText = living.getDisplayName().copy();
+
+            if (customName != null && !customName.isEmpty() &&
+                    ConfigManager.CONFIG.general.showNames) {
+                nameText = Component.literal(customName);
+            }
 
             if (ConfigManager.CONFIG.general.jadeIcons) {
                 tooltip.add(0, new GenderIconElement(pathBase, colorInt));
@@ -122,7 +131,11 @@ public enum GenderJadeProvider implements IEntityComponentProvider {
     private int parseHex(String hex) {
         try {
             if (hex.startsWith("#")) hex = hex.substring(1);
-            return (int) Long.parseLong("FF" + hex, 16);
+            // ARGB формат для Minecraft
+            if (hex.length() <= 6) {
+                hex = "FF" + hex;
+            }
+            return (int) Long.parseLong(hex, 16);
         } catch (Exception e) {
             return 0xFFFFFFFF;
         }

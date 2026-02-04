@@ -6,6 +6,8 @@
   "gendermobs.config.tooltip.colored_names": "Окрашивать имена сущностей по полу (синий - мужской, розовый - женский)",
   "gendermobs.config.jade_icons": "Показывать иконки в Jade",
   "gendermobs.config.tooltip.jade_icons": "Показывать иконки пола в тултипах Jade/WTHIT",
+  "gendermobs.config.iconOffsetY": "Вертикальное смещение иконки",
+  "gendermobs.config.tooltip.iconOffsetY": "Настройка вертикальной позиции иконок пола в Jade (-10 до 10, по умолчанию: -3.5)\nОтрицательные значения - вверх, положительные - вниз",
   "gendermobs.config.male_color": "Цвет мужских имён",
   "gendermobs.config.tooltip.male_color": "HEX-код цвета для мужских имён (например, #5555FF)",
   "gendermobs.config.female_color": "Цвет женских имён",

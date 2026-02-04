@@ -32,8 +32,8 @@ public class MapRow {
                 x, y, width / 2 - 2, 20,
                 Component.empty()
         );
-        id.setValue(key);
         id.setMaxLength(32767);
+        id.setValue(key);
 
         Runnable validateAndUpdate = () -> {
             String newKey = id.getValue().trim();
