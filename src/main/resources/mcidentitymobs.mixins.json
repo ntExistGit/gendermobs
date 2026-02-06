@@ -9,10 +9,7 @@
     "LivingEntityAccessorMixin",
     "LivingEntityLoadMixin",
     "LivingEntitySpawnMixin",
-    "NameTagMixin",
-    "ZombieInfectMixin",
-    "ZombieVillagerAccessorMixin",
-    "ZombieVillagerCureMixin"
+    "NameTagMixin"
   ],
   "injectors": {
     "defaultRequire": 1

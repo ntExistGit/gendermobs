@@ -1,12 +1,7 @@
 package com.ntexist.mcidentitymobs;
 
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.entity.LivingEntity;
 
-/**
- * Публичный API для других модов и будущих систем.
- * Единственная точка входа во всю биологию.
- */
 public class MobIdentityAPI {
 
     // -------- Spawn --------
@@ -48,17 +43,7 @@ public class MobIdentityAPI {
     }
 
     // -------- Zombie --------
-    public static void onInfected(LivingEntity original, LivingEntity zombie) {
-        InfectionPipeline.onInfected(original, zombie);
-    }
 
-    public static String onCured(LivingEntity zombie, MobEffect activeEffect, String usedItem) {
-        return InfectionPipeline.onCured(zombie, activeEffect, usedItem);
-    }
-
-    public static void afterCured(LivingEntity zombie, LivingEntity cured) {
-        InfectionPipeline.afterCured(zombie, cured);
-    }
 
     // -------- Identity --------
     public static boolean isPlayerNamed(LivingEntity entity) {
@@ -74,15 +59,5 @@ public class MobIdentityAPI {
     }
 
     // -------- Infection Rules --------
-    public static boolean isCurable(LivingEntity zombie) {
-        return InfectionRulesService.isCurable(zombie);
-    }
 
-    public static boolean canBeCuredNow(LivingEntity zombie, MobEffect activeEffect, String usedItem) {
-        return InfectionRulesService.canBeCuredNow(zombie, activeEffect, usedItem);
-    }
-
-    public static int getCureTime(LivingEntity zombie) {
-        return InfectionRulesService.getCureTime(zombie);
-    }
 }

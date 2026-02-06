@@ -5,7 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b09462e5-d882-42ea-a0c2-58cd8da6e490" name="Changes" comment="Update workspace.xml to reflect changes related to status code 413.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/InfectionPipeline.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/InfectionRulesService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/MobIdentityAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/MobIdentityAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/ZombieCureHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/ZombieService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/ZombieVillagerAccessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/ZombieInfectMixin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/ZombieVillagerAccessorMixin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/ZombieVillagerCureMixin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mcidentitymobs.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mcidentitymobs.mixins.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -269,7 +278,7 @@
       <workItem from="1770313757822" duration="945000" />
       <workItem from="1770314888302" duration="5066000" />
       <workItem from="1770324588421" duration="6303000" />
-      <workItem from="1770333272928" duration="10489000" />
+      <workItem from="1770333272928" duration="11010000" />
     </task>
     <task id="LOCAL-00001" summary="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;">
       <option name="closed" value="true" />
@@ -311,7 +320,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770411714980</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Update workspace.xml to reflect changes related to status code 413.">
+      <option name="closed" value="true" />
+      <created>1770412303279</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1770412303279</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -331,9 +348,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;" />
     <MESSAGE value="Update" />
-    <MESSAGE value="Update workspace" />
-    <MESSAGE value="Update workspace.xml" />
     <MESSAGE value="Update workspace.xml to reflect" />
+    <MESSAGE value="Update workspace" />
+    <MESSAGE value="Update workspace.xml to" />
+    <MESSAGE value="Update workspace.xml" />
     <MESSAGE value="Update workspace.xml to reflect changes" />
     <MESSAGE value="Update workspace.xml to reflect changes related" />
     <MESSAGE value="Update workspace.xml to reflect changes related to" />
