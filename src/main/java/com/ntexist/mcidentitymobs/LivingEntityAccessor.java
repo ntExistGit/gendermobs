@@ -23,11 +23,11 @@ public interface LivingEntityAccessor {
     void mcidentitymobs$setZombieSavedName(String name);
     String mcidentitymobs$getZombieSavedName();
 
-    // Для тряски / конверсии
+    // shaking / conversion
     void mcidentitymobs$setInConversion(boolean inConversion);
     boolean mcidentitymobs$isInConversion();
 
-    // Для ускорения (опционально, но полезно)
+    // boost
     void mcidentitymobs$setConversionTime(int time);
     int mcidentitymobs$getConversionTime();
 
