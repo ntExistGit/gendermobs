@@ -5,38 +5,79 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b09462e5-d882-42ea-a0c2-58cd8da6e490" name="Changes" comment="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;">
-      <change afterPath="$PROJECT_DIR$/.idea/AICommit.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/EntityMappingOption.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/EntityMappingRow.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/.name" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/dictionaries/project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/mcidentitymobs.main.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/mcidentitymobs.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/ZombieCureHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/ZombieVillagerAccessor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/LivingEntityAccessorMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/ZombieVillagerAccessorMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/gendermobs.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/gendermobs.main.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/gendermobs.test.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/GenderAssigner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/GenderAssigner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/accessor/LivingEntityAccessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/accessor/LivingEntityAccessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/compat/jade/GenderJadeProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/compat/jade/GenderJadeProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/compat/jade/GenderJadeServerProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/compat/jade/GenderJadeServerProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ConfigManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ConfigScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ConfigScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ListRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ListRow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/MapRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/MapRow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ModConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ModConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/BreedingMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/AnimalBreedingMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/EntityTransformMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/EntityTransformMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/LivingEntityMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/LivingEntityMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/VillagerBreedingMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/VillagerBreedingMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/ZombieConversionMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/ZombieConversionMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/compat/naturalist/DeerGenderCompatMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/compat/naturalist/DeerGenderCompatMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/compat/naturalist/LionGenderCompatMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/compat/naturalist/LionGenderCompatMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/de_de.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/de_de.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/en_us.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/es_es.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/es_es.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/fr_fr.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/fr_fr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/it_it.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/it_it.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/ja_jp.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/ja_jp.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/ko_kr.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/ko_kr.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/pt_br.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/pt_br.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/ru_ru.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/uk_ua.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/uk_ua.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/zh_cn.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/zh_cn.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/gendermobs.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/gendermobs.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/GenderAssigner.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/GenderMobs.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/accessor/LivingEntityAccessor.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/compat/jade/GenderJadePlugin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/compat/jade/GenderJadeProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/compat/jade/GenderJadeServerProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/BoolOption.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ButtonOption.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ChanceSlider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ColorOption.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ConfigManager.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ConfigScreen.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/EntityMappingOption.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/EntityMappingRow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/EntryData.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/IPresetRenderable.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/IconButton.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ListOption.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ListRow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/MapOption.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/MapRow.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/ModConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/NameLoader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/OptionEntry.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/SliderOption.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/config/SpacerOption.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/AnimalBreedingMixin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/EntityTransformMixin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/LivingEntityMixin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/VillagerBreedingMixin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/ZombieConversionMixin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/compat/naturalist/DeerGenderCompatMixin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/gendermobs/mixin/compat/naturalist/LionGenderCompatMixin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/mods.toml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/mods.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/de_de.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/en_us.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/es_es.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/fr_fr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/it_it.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/ja_jp.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/ko_kr.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/pt_br.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/ru_ru.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/uk_ua.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/lang/zh_cn.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/names/default_names.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/textures/gui/sprites/icon/female.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/textures/gui/sprites/icon/female_bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/textures/gui/sprites/icon/male.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/textures/gui/sprites/icon/male_bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/textures/gui/sprites/icon/reset.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/textures/gui/sprites/icon/unknown.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/gendermobs/textures/gui/sprites/icon/unknown_bg.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/gendermobs.mixins.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/pack.mcmeta" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/pack.mcmeta" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,18 +100,24 @@
             <expand>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="gendermobs" type="f1a62948:ProjectNode" />
+                <item name="mcidentitymobs" type="f1a62948:ProjectNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="gendermobs" type="f1a62948:ProjectNode" />
+                <item name="mcidentitymobs" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
               </path>
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="gendermobs" type="f1a62948:ProjectNode" />
+                <item name="mcidentitymobs" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="mcidentitymobs" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="verification" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -82,6 +129,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Enum" />
         <option value="Class" />
       </list>
     </option>
@@ -89,18 +137,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "ntExistGit"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;ntExistGit&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/ntExistGit/gendermobs.git",
-    "accountId": "45bc2f97-c3d7-4288-be7c-2ea5a2206a11"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/ntExistGit/gendermobs.git&quot;,
+    &quot;accountId&quot;: &quot;45bc2f97-c3d7-4288-be7c-2ea5a2206a11&quot;
   }
-}]]></component>
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
@@ -113,32 +161,40 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Download Sources.executor": "Run",
-    "Gradle.gendermobs [buildDependents].executor": "Run",
-    "Gradle.gendermobs [build].executor": "Run",
-    "Gradle.gendermobs [clean].executor": "Run",
-    "Gradle.gendermobs [testClasses].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.37643677",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.gendermobs [buildDependents].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.gendermobs [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.gendermobs [check].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.gendermobs [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.gendermobs [testClasses].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Games/Minecraft/gendermobs/src/main/resources/assets/gendermobs&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.37643677&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settingsdialog.project.gradle&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Games\Minecraft\gendermobs\src\main\resources\assets\gendermobs" />
+    </key>
+  </component>
   <component name="RunManager" selected="Gradle.gendermobs [build]">
     <configuration name="gendermobs [buildDependents]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
@@ -174,6 +230,28 @@
         <option name="taskNames">
           <list>
             <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="gendermobs [check]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="check" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -231,9 +309,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.gendermobs [build]" />
-        <item itemvalue="Gradle.gendermobs [testClasses]" />
         <item itemvalue="Gradle.gendermobs [buildDependents]" />
         <item itemvalue="Gradle.gendermobs [clean]" />
+        <item itemvalue="Gradle.gendermobs [check]" />
+        <item itemvalue="Gradle.gendermobs [testClasses]" />
       </list>
     </recent_temporary>
   </component>
@@ -254,7 +333,15 @@
       <updated>1770056780420</updated>
       <workItem from="1770056795030" duration="7933000" />
       <workItem from="1770068641374" duration="3071000" />
-      <workItem from="1770116324859" duration="32788000" />
+      <workItem from="1770116324859" duration="55063000" />
+      <workItem from="1770196585907" duration="1302000" />
+      <workItem from="1770217573859" duration="2911000" />
+      <workItem from="1770254113822" duration="6152000" />
+      <workItem from="1770267299071" duration="3392000" />
+      <workItem from="1770313757822" duration="945000" />
+      <workItem from="1770314888302" duration="5066000" />
+      <workItem from="1770324588421" duration="6303000" />
+      <workItem from="1770333272928" duration="9205000" />
     </task>
     <task id="LOCAL-00001" summary="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;">
       <option name="closed" value="true" />
@@ -264,7 +351,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770147313835</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;">
+      <option name="closed" value="true" />
+      <created>1770163394148</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1770163394148</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

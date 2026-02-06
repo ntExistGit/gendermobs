@@ -4,23 +4,28 @@ issueTrackerURL = "https://github.com/ntExistGit/gendermobs/issues"
 license = "LGPL-3.0"
 
 [[mods]]
-    modId = "gendermobs"
+    modId = "mcidentitymobs"
     version = "${version}"
-    displayName = "Gender Mobs"
+    displayName = "Mob Identity"
+    displayURL = "https://github.com/ntExistGit/gendermobs"
     authors = "ntExist"
     description = '''
-    This mod personalizes every creature by giving them a gender and a random name. No more anonymous mobs – now they all have their own identity.
-    '''
+        This mod personalizes every creature by giving them a gender and a random name. No more anonymous mobs – now they all have their own identity.
+        '''
     logoFile = "logo.png"
+    logoBlur = false
 
-[[dependencies.gendermobs]]
+[modproperties.mcidentitymobs]
+    catalogueImageIcon="logo.png"
+
+[[dependencies.mcidentitymobs]]
     modId = "forge"
     mandatory = true
     versionRange = "[47,)"
     ordering = "NONE"
     side = "BOTH"
 
-[[dependencies.gendermobs]]
+[[dependencies.mcidentitymobs]]
     modId = "minecraft"
     mandatory = true
     versionRange = "[1.20.1,)"
