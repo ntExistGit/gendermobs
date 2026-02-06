@@ -1,6 +1,6 @@
 package com.ntexist.mcidentitymobs.mixin;
 
-import com.ntexist.mcidentitymobs.IdentityStorage;
+import com.ntexist.mcidentitymobs.service.IdentityStorage;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.LivingEntity;

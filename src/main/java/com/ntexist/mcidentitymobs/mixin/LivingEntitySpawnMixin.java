@@ -1,6 +1,6 @@
 package com.ntexist.mcidentitymobs.mixin;
 
-import com.ntexist.mcidentitymobs.SpawnPipeline;
+import com.ntexist.mcidentitymobs.pipeline.SpawnPipeline;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.DifficultyInstance;
 import net.minecraft.world.entity.Mob;
@@ -28,6 +28,9 @@ public class LivingEntitySpawnMixin {
             CallbackInfoReturnable<SpawnGroupData> cir
     ) {
         Mob entity = (Mob) (Object)this;
-        SpawnPipeline.onSpawn(entity);
+
+        if (!entity.level().isClientSide) {
+            SpawnPipeline.onSpawn(entity);
+        }
     }
 }

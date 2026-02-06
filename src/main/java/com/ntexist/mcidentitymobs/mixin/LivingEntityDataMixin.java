@@ -10,7 +10,7 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(LivingEntity.class)
-public class LivingEntityAccessorMixin implements LivingEntityAccessor {
+public class LivingEntityDataMixin implements LivingEntityAccessor {
 
     @Unique private String mi_gender = "";
     @Unique private String mi_name = "";
@@ -67,5 +67,5 @@ public class LivingEntityAccessorMixin implements LivingEntityAccessor {
     private void mi_save(CompoundTag tag, CallbackInfo ci) { mcidentitymobs$saveToNBT(tag); }
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
-    private void mi_load(CompoundTag tag, CallbackInfo ci) { mcidentitymobs$loadFromNBT(tag); }
+    private void loadIdentityData(CompoundTag tag, CallbackInfo ci) { mcidentitymobs$loadFromNBT(tag); }
 }

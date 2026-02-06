@@ -6,8 +6,7 @@
   "client": [
   ],
   "mixins": [
-    "LivingEntityAccessorMixin",
-    "LivingEntityLoadMixin",
+    "LivingEntityDataMixin",
     "LivingEntitySpawnMixin",
     "NameTagMixin"
   ],

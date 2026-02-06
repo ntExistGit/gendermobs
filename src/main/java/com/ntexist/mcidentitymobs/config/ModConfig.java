@@ -127,7 +127,7 @@ public class ModConfig {
                 )
         );
 
-        cfg.canBeInfected.put("minecraft:pillager",
+        cfg.canBeInfected.put("minecraft:piglin",
                 new InfectionData(
                         "minecraft:zombified_piglin",
                         false,

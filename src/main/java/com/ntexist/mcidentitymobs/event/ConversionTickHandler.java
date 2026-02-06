@@ -1,0 +1,138 @@
+package com.ntexist.mcidentitymobs.event;
+
+import com.ntexist.mcidentitymobs.LivingEntityAccessor;
+import com.ntexist.mcidentitymobs.api.MobIdentityAPI;
+import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.monster.ZombieVillager;
+import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.item.trading.MerchantOffers;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraftforge.event.entity.living.LivingEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
+
+public class ConversionTickHandler {
+    @SubscribeEvent
+    public static void onLivingTick(LivingEvent.LivingTickEvent event) {
+        if (event.getEntity().level().isClientSide) return;
+
+        LivingEntity entity = event.getEntity();
+        if (!(entity instanceof LivingEntityAccessor acc)) return;
+
+        int time = acc.mcidentitymobs$getConversionTime();
+        if (time <= 0) return;
+
+        ServerLevel level = (ServerLevel) entity.level();
+
+        // Уменьшение времени + ускорение от кроватей и решёток
+        int decrement = 1;
+
+        BlockPos pos = entity.blockPosition();
+        for (int x = -4; x <= 4; x++) {
+            for (int y = -4; y <= 4; y++) {
+                for (int z = -4; z <= 4; z++) {
+                    BlockPos check = pos.offset(x, y, z);
+                    BlockState state = level.getBlockState(check);
+                    if (state.is(Blocks.BED) || state.is(Blocks.IRON_BARS)) {
+                        decrement++;
+                    }
+                }
+            }
+        }
+
+        acc.mcidentitymobs$setConversionTime(time - decrement);
+
+        // Тряска
+        if (acc.mcidentitymobs$isInConversion()) {
+            float shake = level.random.nextFloat() * 0.4f - 0.2f;
+            entity.setYBodyRot(entity.getYBodyRot() + shake * 10);
+            entity.setXRot(entity.getXRot() + shake * 5);
+        }
+
+        // Частицы (каждые 5–10 тиков)
+        if (level.random.nextInt(5) == 0) {
+            level.sendParticles(ParticleTypes.HAPPY_VILLAGER,
+                    entity.getX() + level.random.nextGaussian() * 0.5,
+                    entity.getY() + 1.0 + level.random.nextGaussian() * 0.5,
+                    entity.getZ() + level.random.nextGaussian() * 0.5,
+                    5, 0.3, 0.4, 0.3, 0.0);
+        }
+
+        // Звук
+        if (level.random.nextInt(40) == 0) {
+            level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
+                    SoundEvents.ZOMBIE_VILLAGER_CONVERTING, SoundSource.NEUTRAL, 0.8F, 1.0F);
+        }
+
+        // Завершение лечения
+        if (acc.mcidentitymobs$getConversionTime() <= 0) {
+            String origId = MobIdentityAPI.getOriginalId(entity);
+            if (origId == null || origId.isEmpty()) {
+                acc.mcidentitymobs$setInConversion(false);
+                return;
+            }
+
+            ResourceLocation loc = ResourceLocation.tryParse(origId);
+            if (loc == null) return;
+
+            EntityType<?> type = EntityType.byString(loc.toString()).orElse(null);
+            if (type == null) return;
+
+            LivingEntity original = (LivingEntity) type.create(level);
+            if (original == null) return;
+
+            original.moveTo(entity.getX(), entity.getY(), entity.getZ(), entity.getYRot(), entity.getXRot());
+
+            // Перенос имени
+            if (entity.hasCustomName()) {
+                original.setCustomName(entity.getCustomName());
+                original.setCustomNameVisible(entity.isCustomNameVisible());
+            }
+
+            // Перенос пола, имени, флага
+            if (original instanceof LivingEntityAccessor oAcc && entity instanceof LivingEntityAccessor eAcc) {
+                oAcc.mcidentitymobs$setGender(eAcc.mcidentitymobs$getGender());
+                oAcc.mcidentitymobs$setMobName(eAcc.mcidentitymobs$getMobName());
+                oAcc.mcidentitymobs$setPlayerNamed(eAcc.mcidentitymobs$isPlayerNamed());
+            }
+
+            // Специально для жителя
+            if (original instanceof Villager originalVillager && entity instanceof ZombieVillager zombieVillager) {
+                originalVillager.setVillagerData(zombieVillager.getVillagerData());
+                CompoundTag offersTag = zombieVillager.getTradeOffers();
+                if (offersTag != null) {
+                    originalVillager.setOffers(new MerchantOffers(offersTag));
+                }
+                originalVillager.setVillagerXp(zombieVillager.getVillagerXp());
+                Tag gossips = zombieVillager.getGossips();
+                if (gossips != null) {
+                    originalVillager.setGossips(gossips);
+                }
+            }
+
+            level.addFreshEntity(original);
+            entity.remove(Entity.RemovalReason.DISCARDED);
+
+            // Финальный эффект и звук
+            level.playSound(null, original.getX(), original.getY(), original.getZ(),
+                    SoundEvents.ZOMBIE_VILLAGER_CURED, SoundSource.NEUTRAL, 1.0F, 1.0F);
+            level.sendParticles(ParticleTypes.HAPPY_VILLAGER, original.getX(), original.getY() + 1.0, original.getZ(), 30, 0.5, 0.8, 0.5, 0.1);
+
+            // Очистка
+            if (original instanceof LivingEntityAccessor oAcc) {
+                oAcc.mcidentitymobs$setConversionTime(-1);
+                oAcc.mcidentitymobs$setInConversion(false);
+            }
+        }
+    }
+}

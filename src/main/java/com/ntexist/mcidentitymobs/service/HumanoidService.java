@@ -1,4 +1,4 @@
-package com.ntexist.mcidentitymobs;
+package com.ntexist.mcidentitymobs.service;
 
 import com.ntexist.mcidentitymobs.config.ConfigManager;
 import net.minecraft.resources.ResourceLocation;

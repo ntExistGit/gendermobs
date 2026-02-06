@@ -4,16 +4,59 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b09462e5-d882-42ea-a0c2-58cd8da6e490" name="Changes" comment="Update workspace.xml to reflect changes related to status code 413.">
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/InfectionPipeline.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/InfectionRulesService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/MobIdentityAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/MobIdentityAPI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/ZombieCureHandler.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/ZombieService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/ZombieVillagerAccessor.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/ZombieInfectMixin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/ZombieVillagerAccessorMixin.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/ZombieVillagerCureMixin.java" beforeDir="false" />
+    <list default="true" id="b09462e5-d882-42ea-a0c2-58cd8da6e490" name="Changes" comment="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/api/MobIdentityAPI.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/event/ConversionTickHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/event/CureHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/event/InfectionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/ColorService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/GenderAssigner.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/GenderAssigner.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/GenderService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/HumanoidService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/IdentityStorage.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/InfectionPipeline.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/InfectionRulesService$CureOption.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/InfectionRulesService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/LivingEntityAccessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/LivingEntityAccessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/MobIdentity.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/MobIdentity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/MobIdentityAPI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/NameService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/SpawnPipeline.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/ZombieCureHandler$CureData.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/ZombieCureHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/ZombieService$CureOption.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/ZombieService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/InfectionRule.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ModConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ModConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/LivingEntityAccessorMixin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/LivingEntityLoadMixin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/LivingEntitySpawnMixin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/LivingEntitySpawnMixin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/NameTagMixin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/NameTagMixin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/ZombieInfectMixin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/ZombieVillagerAccessor.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/ZombieVillagerAccessorMixin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/ZombieVillagerCureMixin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/mcidentitymobs-refmap.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/mcidentitymobs-refmap.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/devlibs/mcidentitymobs-1.0.0-dev.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/devlibs/mcidentitymobs-1.0.0-dev.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/devlibs/mcidentitymobs-1.0.0-sources.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/devlibs/mcidentitymobs-1.0.0-sources.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/mcidentitymobs-1.0.0-sources.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/mcidentitymobs-1.0.0-sources.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/mcidentitymobs-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/mcidentitymobs-1.0.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/mcidentitymobs.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/mcidentitymobs.mixins.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/ColorService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/service/ColorService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/GenderAssigner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/GenderAssigner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/GenderService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/service/GenderService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/HumanoidService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/service/HumanoidService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/IdentityStorage.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/service/IdentityStorage.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/MobIdentityAPI.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/NameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/service/NameService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/SpawnPipeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/pipeline/SpawnPipeline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ModConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ModConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/LivingEntityAccessorMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/LivingEntityDataMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/LivingEntityLoadMixin.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/LivingEntitySpawnMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/LivingEntitySpawnMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/NameTagMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/NameTagMixin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mcidentitymobs.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mcidentitymobs.mixins.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,6 +129,9 @@
     &quot;accountId&quot;: &quot;45bc2f97-c3d7-4288-be7c-2ea5a2206a11&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
@@ -98,35 +144,35 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Gradle.Download Sources.executor": "Run",
-    "Gradle.gendermobs [buildDependents].executor": "Run",
-    "Gradle.gendermobs [build].executor": "Run",
-    "Gradle.gendermobs [check].executor": "Run",
-    "Gradle.gendermobs [clean].executor": "Run",
-    "Gradle.gendermobs [testClasses].executor": "Run",
-    "ModuleVcsDetector.initialDetectionPerformed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "D:/Games/Minecraft/gendermobs/src/main/resources/assets/gendermobs",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.37643677",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.gendermobs [buildDependents].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.gendermobs [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.gendermobs [check].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.gendermobs [clean].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.gendermobs [testClasses].executor&quot;: &quot;Run&quot;,
+    &quot;ModuleVcsDetector.initialDetectionPerformed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Games/Minecraft/gendermobs/src/main/resources/assets/gendermobs&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.37643677&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Games\Minecraft\gendermobs\src\main\resources\assets\gendermobs" />
@@ -246,10 +292,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.gendermobs [build]" />
-        <item itemvalue="Gradle.gendermobs [buildDependents]" />
-        <item itemvalue="Gradle.gendermobs [clean]" />
-        <item itemvalue="Gradle.gendermobs [check]" />
         <item itemvalue="Gradle.gendermobs [testClasses]" />
+        <item itemvalue="Gradle.gendermobs [clean]" />
+        <item itemvalue="Gradle.gendermobs [buildDependents]" />
+        <item itemvalue="Gradle.gendermobs [check]" />
       </list>
     </recent_temporary>
   </component>
@@ -278,7 +324,8 @@
       <workItem from="1770313757822" duration="945000" />
       <workItem from="1770314888302" duration="5066000" />
       <workItem from="1770324588421" duration="6303000" />
-      <workItem from="1770333272928" duration="11010000" />
+      <workItem from="1770333272928" duration="13687000" />
+      <workItem from="1770416072550" duration="5202000" />
     </task>
     <task id="LOCAL-00001" summary="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;">
       <option name="closed" value="true" />
@@ -328,7 +375,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770412303279</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;">
+      <option name="closed" value="true" />
+      <created>1770412792937</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1770412792937</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -346,7 +401,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;" />
     <MESSAGE value="Update" />
     <MESSAGE value="Update workspace.xml to reflect" />
     <MESSAGE value="Update workspace" />
@@ -359,6 +413,7 @@
     <MESSAGE value="Update workspace.xml to reflect changes related to status code" />
     <MESSAGE value="Update workspace.xml to reflect changes related to status code 413" />
     <MESSAGE value="Update workspace.xml to reflect changes related to status code 413." />
-    <option name="LAST_COMMIT_MESSAGE" value="Update workspace.xml to reflect changes related to status code 413." />
+    <MESSAGE value="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;" />
   </component>
 </project>

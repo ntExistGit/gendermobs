@@ -6,13 +6,9 @@
   "client": [
   ],
   "mixins": [
-    "LivingEntityAccessorMixin",
-    "LivingEntityLoadMixin",
+    "LivingEntityDataMixin",
     "LivingEntitySpawnMixin",
-    "NameTagMixin",
-    "ZombieInfectMixin",
-    "ZombieVillagerAccessorMixin",
-    "ZombieVillagerCureMixin"
+    "NameTagMixin"
   ],
   "injectors": {
     "defaultRequire": 1
