@@ -5,20 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b09462e5-d882-42ea-a0c2-58cd8da6e490" name="Changes" comment="Refactor CureHandler and ConversionTickHandler for improved clarity.">
-      <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/compat/jade/GenderJadePlugin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/compat/jade/GenderJadePlugin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/compat/jade/GenderJadeProvider$GenderIconElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/compat/jade/GenderJadeProvider$GenderIconElement.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/compat/jade/GenderJadeProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/compat/jade/GenderJadeProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/compat/jade/GenderJadeServerProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/compat/jade/GenderJadeServerProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/devlibs/mcidentitymobs-1.0.0-dev.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/devlibs/mcidentitymobs-1.0.0-dev.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/devlibs/mcidentitymobs-1.0.0-sources.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/devlibs/mcidentitymobs-1.0.0-sources.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/mcidentitymobs-1.0.0-sources.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/mcidentitymobs-1.0.0-sources.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/mcidentitymobs-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/mcidentitymobs-1.0.0.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/compat/jade/GenderJadePlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/compat/jade/GenderJadePlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/compat/jade/GenderJadeProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/compat/jade/GenderJadeProvider.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/compat/jade/GenderJadeServerProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/compat/jade/GenderJadeServerProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ConfigManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ConfigScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ConfigScreen.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -287,7 +276,8 @@
       <workItem from="1770324588421" duration="6303000" />
       <workItem from="1770333272928" duration="13687000" />
       <workItem from="1770416072550" duration="11485000" />
-      <workItem from="1770430941364" duration="3811000" />
+      <workItem from="1770430941364" duration="4123000" />
+      <workItem from="1770490839202" duration="3101000" />
     </task>
     <task id="LOCAL-00001" summary="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;">
       <option name="closed" value="true" />
@@ -377,7 +367,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770426013689</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Refactor CureHandler and ConversionTickHandler for improved clarity.">
+      <option name="closed" value="true" />
+      <created>1770435941826</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1770435941826</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -409,11 +407,15 @@
     <MESSAGE value="Update workspace.xml to reflect changes related to status code 413." />
     <MESSAGE value="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;" />
     <MESSAGE value="Ref" />
+    <MESSAGE value="Refactor" />
     <MESSAGE value="Refactor Cure" />
-    <MESSAGE value="Refactor CureHandler and" />
     <MESSAGE value="Refactor CureHandler" />
+    <MESSAGE value="Refactor CureHandler and" />
+    <MESSAGE value="Refactor CureHandler and Conversion" />
     <MESSAGE value="Refactor CureHandler and ConversionTick" />
     <MESSAGE value="Refactor CureHandler and ConversionTickHandler" />
+    <MESSAGE value="Refactor CureHandler and ConversionTickHandler for" />
+    <MESSAGE value="Refactor CureHandler and ConversionTickHandler for improved" />
     <MESSAGE value="Refactor CureHandler and ConversionTickHandler for improved clarity" />
     <MESSAGE value="Refactor CureHandler and ConversionTickHandler for improved clarity." />
     <option name="LAST_COMMIT_MESSAGE" value="Refactor CureHandler and ConversionTickHandler for improved clarity." />

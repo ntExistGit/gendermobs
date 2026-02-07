@@ -2,6 +2,9 @@ package com.ntexist.mcidentitymobs.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.ntexist.mcidentitymobs.Gender;
+import com.ntexist.mcidentitymobs.service.ColorService;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.fml.loading.FMLPaths;
 
 import java.io.IOException;
