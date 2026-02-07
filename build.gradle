@@ -74,7 +74,6 @@ publishing {
 sourceSets {
     main {
         java {
-            exclude 'com/ntexist/mcidentitymobs/compat/jade/**'
             exclude 'com/ntexist/mcidentitymobs/mixin/compat/**'
         }
     }

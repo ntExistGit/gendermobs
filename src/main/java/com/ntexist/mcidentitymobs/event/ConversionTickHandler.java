@@ -83,7 +83,6 @@ public class ConversionTickHandler {
         }
 
         // Завершение лечения
-        // Завершение лечения
         if (acc.mcidentitymobs$getConversionTime() <= 0) {
             String origId = MobIdentityAPI.getOriginalId(entity);
             if (origId == null || origId.isEmpty()) {
@@ -115,32 +114,32 @@ public class ConversionTickHandler {
                 oAcc.mcidentitymobs$setPlayerNamed(eAcc.mcidentitymobs$isPlayerNamed());
             }
 
-            // Специально для жителя — обратный перенос как в ванили
+            // Специально для жителя — полный перенос как в ванили
             if (original instanceof Villager originalVillager && entity instanceof ZombieVillager zombieVillager) {
-                // Профессия, уровень, тип
                 originalVillager.setVillagerData(zombieVillager.getVillagerData());
+                originalVillager.setVillagerXp(zombieVillager.getVillagerXp());
 
-                // Торговые предложения — если есть tradeOffers
+                // Торговые предложения и Gossips — через рефлексию
                 try {
-                    Field offersField = ZombieVillager.class.getDeclaredField("tradeOffers");
-                    offersField.setAccessible(true);
-                    CompoundTag offersTag = (CompoundTag) offersField.get(zombieVillager);
+                    // tradeOffers (CompoundTag)
+                    java.lang.reflect.Field tradeField = ZombieVillager.class.getDeclaredField("tradeOffers");
+                    tradeField.setAccessible(true);
+                    CompoundTag offersTag = (CompoundTag) tradeField.get(zombieVillager);
                     if (offersTag != null) {
                         originalVillager.setOffers(new MerchantOffers(offersTag));
                     }
 
-                    Field gossipsField = ZombieVillager.class.getDeclaredField("gossips");
+                    // gossips (Tag)
+                    java.lang.reflect.Field gossipsField = ZombieVillager.class.getDeclaredField("gossips");
                     gossipsField.setAccessible(true);
                     Tag gossipsTag = (Tag) gossipsField.get(zombieVillager);
                     if (gossipsTag != null) {
                         originalVillager.setGossips(gossipsTag);
                     }
                 } catch (Exception e) {
-                    // Если рефлексия не сработала — пропускаем
+                    // Если рефлексия упала — пропускаем (можно добавить лог)
+                    // e.printStackTrace();
                 }
-
-                // Опыт
-                originalVillager.setVillagerXp(zombieVillager.getVillagerXp());
             }
 
             level.addFreshEntity(original);
