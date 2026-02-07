@@ -2,6 +2,8 @@ package com.ntexist.mcidentitymobs.event;
 
 import com.ntexist.mcidentitymobs.LivingEntityAccessor;
 import com.ntexist.mcidentitymobs.api.MobIdentityAPI;
+import com.ntexist.mcidentitymobs.config.ConfigManager;
+import com.ntexist.mcidentitymobs.config.InfectionData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -10,6 +12,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -20,8 +23,13 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
+import net.minecraftforge.fml.common.Mod;
 
+import java.lang.reflect.Field;
+
+@Mod.EventBusSubscriber(modid = "mcidentitymobs", bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ConversionTickHandler {
+
     @SubscribeEvent
     public static void onLivingTick(LivingEvent.LivingTickEvent event) {
         if (event.getEntity().level().isClientSide) return;
@@ -34,7 +42,7 @@ public class ConversionTickHandler {
 
         ServerLevel level = (ServerLevel) entity.level();
 
-        // Уменьшение времени + ускорение от кроватей и решёток
+        // Уменьшение времени + ускорение от кроватей и железных решёток
         int decrement = 1;
 
         BlockPos pos = entity.blockPosition();
@@ -43,7 +51,7 @@ public class ConversionTickHandler {
                 for (int z = -4; z <= 4; z++) {
                     BlockPos check = pos.offset(x, y, z);
                     BlockState state = level.getBlockState(check);
-                    if (state.is(Blocks.BED) || state.is(Blocks.IRON_BARS)) {
+                    if (state.is(BlockTags.BEDS) || state.is(Blocks.IRON_BARS)) {
                         decrement++;
                     }
                 }
@@ -52,10 +60,10 @@ public class ConversionTickHandler {
 
         acc.mcidentitymobs$setConversionTime(time - decrement);
 
-        // Тряска
+        // Тряска (простой способ — поворот тела)
         if (acc.mcidentitymobs$isInConversion()) {
             float shake = level.random.nextFloat() * 0.4f - 0.2f;
-            entity.setYBodyRot(entity.getYBodyRot() + shake * 10);
+            entity.yBodyRot += shake * 10;  // ← используем yBodyRot (публичное поле)
             entity.setXRot(entity.getXRot() + shake * 5);
         }
 
@@ -68,12 +76,13 @@ public class ConversionTickHandler {
                     5, 0.3, 0.4, 0.3, 0.0);
         }
 
-        // Звук
+        // Периодический звук превращения
         if (level.random.nextInt(40) == 0) {
             level.playSound(null, entity.getX(), entity.getY(), entity.getZ(),
-                    SoundEvents.ZOMBIE_VILLAGER_CONVERTING, SoundSource.NEUTRAL, 0.8F, 1.0F);
+                    SoundEvents.ZOMBIE_VILLAGER_AMBIENT, SoundSource.NEUTRAL, 0.8F, 1.0F);
         }
 
+        // Завершение лечения
         // Завершение лечения
         if (acc.mcidentitymobs$getConversionTime() <= 0) {
             String origId = MobIdentityAPI.getOriginalId(entity);
@@ -106,27 +115,42 @@ public class ConversionTickHandler {
                 oAcc.mcidentitymobs$setPlayerNamed(eAcc.mcidentitymobs$isPlayerNamed());
             }
 
-            // Специально для жителя
+            // Специально для жителя — обратный перенос как в ванили
             if (original instanceof Villager originalVillager && entity instanceof ZombieVillager zombieVillager) {
+                // Профессия, уровень, тип
                 originalVillager.setVillagerData(zombieVillager.getVillagerData());
-                CompoundTag offersTag = zombieVillager.getTradeOffers();
-                if (offersTag != null) {
-                    originalVillager.setOffers(new MerchantOffers(offersTag));
+
+                // Торговые предложения — если есть tradeOffers
+                try {
+                    Field offersField = ZombieVillager.class.getDeclaredField("tradeOffers");
+                    offersField.setAccessible(true);
+                    CompoundTag offersTag = (CompoundTag) offersField.get(zombieVillager);
+                    if (offersTag != null) {
+                        originalVillager.setOffers(new MerchantOffers(offersTag));
+                    }
+
+                    Field gossipsField = ZombieVillager.class.getDeclaredField("gossips");
+                    gossipsField.setAccessible(true);
+                    Tag gossipsTag = (Tag) gossipsField.get(zombieVillager);
+                    if (gossipsTag != null) {
+                        originalVillager.setGossips(gossipsTag);
+                    }
+                } catch (Exception e) {
+                    // Если рефлексия не сработала — пропускаем
                 }
+
+                // Опыт
                 originalVillager.setVillagerXp(zombieVillager.getVillagerXp());
-                Tag gossips = zombieVillager.getGossips();
-                if (gossips != null) {
-                    originalVillager.setGossips(gossips);
-                }
             }
 
             level.addFreshEntity(original);
             entity.remove(Entity.RemovalReason.DISCARDED);
 
-            // Финальный эффект и звук
+            // Финальный звук и частицы
             level.playSound(null, original.getX(), original.getY(), original.getZ(),
-                    SoundEvents.ZOMBIE_VILLAGER_CURED, SoundSource.NEUTRAL, 1.0F, 1.0F);
-            level.sendParticles(ParticleTypes.HAPPY_VILLAGER, original.getX(), original.getY() + 1.0, original.getZ(), 30, 0.5, 0.8, 0.5, 0.1);
+                    SoundEvents.ZOMBIE_VILLAGER_CONVERTED, SoundSource.NEUTRAL, 1.0F, 1.0F);
+            level.sendParticles(ParticleTypes.HAPPY_VILLAGER,
+                    original.getX(), original.getY() + 1.0, original.getZ(), 30, 0.5, 0.8, 0.5, 0.1);
 
             // Очистка
             if (original instanceof LivingEntityAccessor oAcc) {

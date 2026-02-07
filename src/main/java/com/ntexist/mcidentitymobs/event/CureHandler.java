@@ -13,7 +13,9 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.ZombieVillager;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -41,7 +43,12 @@ public class CureHandler {
                 // Проверяем предмет (если указан)
                 if (!d.item.isEmpty()) {
                     ResourceLocation reqItem = ResourceLocation.tryParse(d.item);
-                    if (reqItem == null || !heldItem.is(reqItem)) continue;
+                    if (reqItem == null) continue;
+
+                    Item requiredItem = BuiltInRegistries.ITEM.get(reqItem);
+                    if (requiredItem == null || requiredItem == Items.AIR) continue;
+
+                    if (!heldItem.is(requiredItem)) continue;
                 }
 
                 // Проверяем эффект (если указан)
