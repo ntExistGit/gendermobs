@@ -1,23 +1,24 @@
 package com.ntexist.mcidentitymobs.compat.jade;
 
+import com.ntexist.mcidentitymobs.LivingEntityAccessor;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import snownee.jade.api.EntityAccessor;
 import snownee.jade.api.IServerDataProvider;
 
-public class GenderJadeServerProvider implements IServerDataProvider<EntityAccessor> {
-
-    public static final GenderJadeServerProvider INSTANCE = new GenderJadeServerProvider();
-
-    private GenderJadeServerProvider() {}
+public enum GenderJadeServerProvider implements IServerDataProvider<EntityAccessor> {
+    INSTANCE;
 
     @Override
     public void appendServerData(CompoundTag tag, EntityAccessor accessor) {
-
+        if (accessor.getEntity() instanceof LivingEntityAccessor acc) {
+            tag.putString("MI_Gender", acc.mcidentitymobs$getGender());
+            tag.putInt("ConversionTime", acc.mcidentitymobs$getConversionTime());
+        }
     }
 
     @Override
     public ResourceLocation getUid() {
-        return ResourceLocation.tryBuild("mcidentitymobs", "gender_server_data");
+        return ResourceLocation.fromNamespaceAndPath("mcidentitymobs", "gender_server_info");
     }
 }

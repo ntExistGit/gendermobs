@@ -1,7 +1,5 @@
 package com.ntexist.mcidentitymobs.compat.jade;
 
-import com.ntexist.mcidentitymobs.LivingEntityAccessor;
-import com.ntexist.mcidentitymobs.api.MobIdentityAPI;
 import com.ntexist.mcidentitymobs.config.ConfigManager;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
@@ -9,7 +7,6 @@ import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.phys.Vec2;
-import org.jetbrains.annotations.Nullable;
 import snownee.jade.api.EntityAccessor;
 import snownee.jade.api.IEntityComponentProvider;
 import snownee.jade.api.ITooltip;
@@ -17,50 +14,36 @@ import snownee.jade.api.config.IPluginConfig;
 import snownee.jade.api.ui.IElement;
 import snownee.jade.api.ui.IElementHelper;
 
+import javax.annotation.Nullable;
+
 public enum GenderJadeProvider implements IEntityComponentProvider {
     INSTANCE;
 
-    private static final ResourceLocation
-            ICON_MALE_BG = ResourceLocation.fromNamespaceAndPath(
-                    "mcidentitymobs", "textures/gui/sprites/icon/male_bg.png"
-    );
-    private static final ResourceLocation
-            ICON_MALE_FG = ResourceLocation.fromNamespaceAndPath(
-                    "mcidentitymobs", "textures/gui/sprites/icon/male.png"
-    );
-    private static final ResourceLocation
-            ICON_FEMALE_BG = ResourceLocation.fromNamespaceAndPath(
-                    "mcidentitymobs", "textures/gui/sprites/icon/female_bg.png"
-    );
-    private static final ResourceLocation
-            ICON_FEMALE_FG = ResourceLocation.fromNamespaceAndPath(
-                    "mcidentitymobs", "textures/gui/sprites/icon/female.png"
-    );
-    private static final ResourceLocation
-            ICON_UNKNOWN_BG = ResourceLocation.fromNamespaceAndPath(
-                    "mcidentitymobs", "textures/gui/sprites/icon/unknown_bg.png"
-    );
-    private static final ResourceLocation
-            ICON_UNKNOWN_FG = ResourceLocation.fromNamespaceAndPath(
-                    "mcidentitymobs", "textures/gui/sprites/icon/unknown.png"
-    );
+    private static final ResourceLocation ICON_MALE_BG = ResourceLocation.fromNamespaceAndPath("mcidentitymobs", "textures/gui/sprites/icon/male_bg.png");
+    private static final ResourceLocation ICON_MALE_FG = ResourceLocation.fromNamespaceAndPath("mcidentitymobs", "textures/gui/sprites/icon/male.png");
+    private static final ResourceLocation ICON_FEMALE_BG = ResourceLocation.fromNamespaceAndPath("mcidentitymobs", "textures/gui/sprites/icon/female_bg.png");
+    private static final ResourceLocation ICON_FEMALE_FG = ResourceLocation.fromNamespaceAndPath("mcidentitymobs", "textures/gui/sprites/icon/female.png");
+    private static final ResourceLocation ICON_UNKNOWN_BG = ResourceLocation.fromNamespaceAndPath("mcidentitymobs", "textures/gui/sprites/icon/unknown_bg.png");
+    private static final ResourceLocation ICON_UNKNOWN_FG = ResourceLocation.fromNamespaceAndPath("mcidentitymobs", "textures/gui/sprites/icon/unknown.png");
 
     @Override
     public void appendTooltip(ITooltip tooltip, EntityAccessor accessor, IPluginConfig config) {
         if (!(accessor.getEntity() instanceof LivingEntity living)) return;
-        if (!(living instanceof LivingEntityAccessor acc)) return;
 
-        String gender = acc.mcidentitymobs$getGender();
-        String customName = acc.mcidentitymobs$getMobName();
+        String gender = accessor.getServerData().getString("MI_Gender");
+        int convTime = accessor.getServerData().getInt("ConversionTime");
+
+        System.out.println("Jade gender from API: " + gender);
 
         ResourceLocation bgIcon, fgIcon;
         int colorInt;
 
-        if (gender == null || gender.isEmpty()) {
+        String genderLower = gender.toLowerCase();
+        if (gender.isEmpty() || "unknown".equals(genderLower)) {
             bgIcon = ICON_UNKNOWN_BG;
             fgIcon = ICON_UNKNOWN_FG;
             colorInt = 0xFFAAAAAA;
-        } else if ("male".equalsIgnoreCase(gender)) {
+        } else if ("male".equals(genderLower)) {
             bgIcon = ICON_MALE_BG;
             fgIcon = ICON_MALE_FG;
             colorInt = parseHex(ConfigManager.CONFIG.colors.male);
@@ -71,13 +54,10 @@ public enum GenderJadeProvider implements IEntityComponentProvider {
         }
 
         IElementHelper helper = tooltip.getElementHelper();
+
         MutableComponent nameText = living.getDisplayName().copy();
 
-        if (customName != null && !customName.isEmpty() &&
-                ConfigManager.CONFIG.general.showNames) {
-            nameText = Component.literal(customName);
-        }
-
+        // Выводим иконку перед именем
         if (ConfigManager.CONFIG.general.jadeIcons) {
             tooltip.add(0, new GenderIconElement(bgIcon, fgIcon, colorInt));
             tooltip.append(0, helper.text(Component.literal("  ")));
@@ -93,10 +73,10 @@ public enum GenderJadeProvider implements IEntityComponentProvider {
             tooltip.add(0, helper.text(nameText));
         }
 
-        int convTime = acc.mcidentitymobs$getConversionTime();
+        // ConversionTime — новая строка
         if (convTime > 0) {
             int seconds = convTime / 20;
-            Component cureText = Component.translatable("jade.zombieConversion.time", seconds, convTime);
+            Component cureText = Component.translatable("jade.zombieConversion.time", seconds);
             tooltip.add(helper.text(cureText));
         }
 
