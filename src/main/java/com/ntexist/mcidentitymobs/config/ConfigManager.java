@@ -2,9 +2,6 @@ package com.ntexist.mcidentitymobs.config;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
-import com.ntexist.mcidentitymobs.Gender;
-import com.ntexist.mcidentitymobs.service.ColorService;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraftforge.fml.loading.FMLPaths;
 
 import java.io.IOException;
@@ -131,8 +128,9 @@ public class ConfigManager {
         ConfigManager.WORKING_COPY.general.showNames        = defaultConfig.general.showNames;
         ConfigManager.WORKING_COPY.general.showColors       = defaultConfig.general.showColors;
 
-        ConfigManager.WORKING_COPY.general.jadeIcons        = defaultConfig.general.jadeIcons;
-        ConfigManager.WORKING_COPY.general.offsetY          = defaultConfig.general.offsetY;
+        ConfigManager.WORKING_COPY.jade.jadeIcons        = defaultConfig.jade.jadeIcons;
+        ConfigManager.WORKING_COPY.jade.offsetY          = defaultConfig.jade.offsetY;
+        ConfigManager.WORKING_COPY.jade.conversionTime   = defaultConfig.jade.conversionTime;
 
         ConfigManager.WORKING_COPY.colors.male              = defaultConfig.colors.male;
         ConfigManager.WORKING_COPY.colors.female            = defaultConfig.colors.female;

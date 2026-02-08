@@ -1,6 +1,7 @@
 package com.ntexist.mcidentitymobs.api;
 
-import com.ntexist.mcidentitymobs.*;
+import com.ntexist.mcidentitymobs.accessor.LivingEntityAccessor;
+import com.ntexist.mcidentitymobs.enums.Gender;
 import com.ntexist.mcidentitymobs.pipeline.SpawnPipeline;
 import com.ntexist.mcidentitymobs.config.ConfigManager;
 import com.ntexist.mcidentitymobs.service.ColorService;

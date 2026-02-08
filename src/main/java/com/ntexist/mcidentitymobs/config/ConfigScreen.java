@@ -83,21 +83,32 @@ public class ConfigScreen extends Screen {
                     false));
 
             if (ModList.get().isLoaded("jade")) {
+                options.add(new SpacerOption(12));
+
                 options.add(new BoolOption(
                         "mcidentitymobs.config.jade_icons",
                         "mcidentitymobs.config.tooltip.jade_icons",
-                        () -> ConfigManager.WORKING_COPY.general.jadeIcons,
-                        v -> ConfigManager.WORKING_COPY.general.jadeIcons = v,
+                        () -> ConfigManager.WORKING_COPY.jade.jadeIcons,
+                        v -> ConfigManager.WORKING_COPY.jade.jadeIcons = v,
                         false));
 
                 options.add(new SliderOption(
                         "mcidentitymobs.config.iconOffsetY",
                         "mcidentitymobs.config.tooltip.iconOffsetY",
                         -10.0f, 10.0f, 0.1f,
-                        () -> ConfigManager.WORKING_COPY.general.offsetY,
-                        v -> ConfigManager.WORKING_COPY.general.offsetY = v,
+                        () -> ConfigManager.WORKING_COPY.jade.offsetY,
+                        v -> ConfigManager.WORKING_COPY.jade.offsetY = v,
                         -3.5f
                 ));
+
+                options.add(new BoolOption(
+                        "mcidentitymobs.config.jade.zombieConversion",
+                        "mcidentitymobs.config.tooltip.jade.zombieConversion",
+                        () -> ConfigManager.WORKING_COPY.jade.conversionTime,
+                        v -> ConfigManager.WORKING_COPY.jade.conversionTime = v,
+                        true));
+
+                options.add(new SpacerOption(12));
             }
 
             options.add(new ColorOption(
@@ -113,6 +124,8 @@ public class ConfigScreen extends Screen {
                     () -> ConfigManager.WORKING_COPY.colors.female,
                     v -> ConfigManager.WORKING_COPY.colors.female = v,
                     "#FF55FF"));
+
+            options.add(new SpacerOption(12));
 
             options.add(new BoolOption(
                     "mcidentitymobs.config.use_default_names",

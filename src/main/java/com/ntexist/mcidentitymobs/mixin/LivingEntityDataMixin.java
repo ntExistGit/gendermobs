@@ -1,6 +1,6 @@
 package com.ntexist.mcidentitymobs.mixin;
 
-import com.ntexist.mcidentitymobs.LivingEntityAccessor;
+import com.ntexist.mcidentitymobs.accessor.LivingEntityAccessor;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
@@ -48,8 +48,8 @@ public class LivingEntityDataMixin implements LivingEntityAccessor {
         if (!mi_originalId.isEmpty()) nbt.putString("MI_OriginalId", mi_originalId);
         if (mi_playerNamed) nbt.putBoolean("MI_PlayerNamed", true);
         if (!mi_zombieSavedName.isEmpty()) nbt.putString("MI_ZombieSavedName", mi_zombieSavedName);
-        if (mi_conversionTime > -1) nbt.putInt("ConversionTime", mi_conversionTime);
-        if (mi_inConversion) nbt.putBoolean("InConversion", true);
+        if (mi_conversionTime > -1) nbt.putInt("MI_ConversionTime", mi_conversionTime);
+        if (mi_inConversion) nbt.putBoolean("MI_InConversion", true);
     }
 
     @Override
@@ -59,8 +59,8 @@ public class LivingEntityDataMixin implements LivingEntityAccessor {
         if (nbt.contains("MI_OriginalId")) mi_originalId = nbt.getString("MI_OriginalId");
         if (nbt.contains("MI_PlayerNamed")) mi_playerNamed = nbt.getBoolean("MI_PlayerNamed");
         if (nbt.contains("MI_ZombieSavedName")) mi_zombieSavedName = nbt.getString("MI_ZombieSavedName");
-        if (nbt.contains("ConversionTime")) mi_conversionTime = nbt.getInt("ConversionTime");
-        mi_inConversion = nbt.getBoolean("InConversion");
+        if (nbt.contains("MI_ConversionTime")) mi_conversionTime = nbt.getInt("MI_ConversionTime");
+        mi_inConversion = nbt.getBoolean("MI_InConversion");
     }
 
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))

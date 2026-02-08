@@ -35,17 +35,28 @@ public class EntityMappingRow {
         final int GAP = 2;
         final int BUTTON_W = 55;
         final int REMOVE_W = 20;
+        final int ICON_W = 20;
         final int REMOVE_H = (ROW_HEIGHT * 2) + GAP;
 
-        int fieldW = (width - (BUTTON_W + REMOVE_W) - (GAP * 2)) / 2;
-        if (fieldW < 100) fieldW = 100;
+        int fieldW_row1 = (width - (BUTTON_W + REMOVE_W) - (GAP * 2)) / 2;
+        if (fieldW_row1 < 80) fieldW_row1 = 80;
+
+        int availableForRow2 = width - (2 * ICON_W) - (3 * GAP) - BUTTON_W - REMOVE_W;
+        int fieldW_row2 = availableForRow2 / 2;
+        if (fieldW_row2 < 80) fieldW_row2 = 80;
+
+        int effectIconX = x;
+        int effectFieldX = effectIconX + ICON_W + GAP;
+        int itemIconX = effectFieldX + fieldW_row2;
+        int itemFieldX = itemIconX + ICON_W + GAP;
+        int timeFieldX = itemFieldX + fieldW_row2 + GAP;
 
         int row1Y = y;
         int row2Y = y + ROW_HEIGHT + GAP;
 
         CustomEditBox infectedField = new CustomEditBox(
                 Minecraft.getInstance().font,
-                x, row1Y, fieldW, ROW_HEIGHT,
+                x, row1Y, fieldW_row1, ROW_HEIGHT,
                 Component.empty()
         );
         infectedField.setBordered(false);
@@ -54,7 +65,7 @@ public class EntityMappingRow {
 
         CustomEditBox zombieField = new CustomEditBox(
                 Minecraft.getInstance().font,
-                x + fieldW + GAP, row1Y, fieldW, ROW_HEIGHT,
+                x + fieldW_row1 + GAP, row1Y, fieldW_row1, ROW_HEIGHT,
                 Component.empty()
         );
         zombieField.setBordered(false);
@@ -67,30 +78,44 @@ public class EntityMappingRow {
                     data.curable = !data.curable;
                     b.setMessage(Component.translatable(data.curable ? "mcidentitymobs.boolean.true" : "mcidentitymobs.boolean.false"));
                 }
-        ).bounds(x + (fieldW * 2) + GAP * 2, row1Y, BUTTON_W, ROW_HEIGHT).build();
+        ).bounds(x + (fieldW_row1 * 2) + GAP * 2, row1Y, BUTTON_W, ROW_HEIGHT).build();
         curableButton.setTooltip(Tooltip.create(Component.translatable("mcidentitymobs.tooltip.curable")));
 
         CustomEditBox effectField = new CustomEditBox(
                 Minecraft.getInstance().font,
-                x, row2Y, fieldW, ROW_HEIGHT,
+                effectFieldX, row2Y, fieldW_row2 - GAP, ROW_HEIGHT,
                 Component.empty()
         );
         effectField.setBordered(false);
         effectField.setMaxLength(32767);
         effectField.setValue(data.effect);
 
+        IconButton effectIconButton = IconButton.forEffect(
+                effectIconX, row2Y, ICON_W, ROW_HEIGHT,
+                ResourceLocation.tryParse(effectField.getValue()),
+                button -> {
+                }
+        );
+
         CustomEditBox itemField = new CustomEditBox(
                 Minecraft.getInstance().font,
-                x + fieldW + GAP, row2Y, fieldW, ROW_HEIGHT,
+                itemFieldX, row2Y, fieldW_row2, ROW_HEIGHT,
                 Component.empty()
         );
         itemField.setBordered(false);
         itemField.setMaxLength(32767);
         itemField.setValue(data.item);
 
+        IconButton itemIconButton = IconButton.forItem(
+                itemIconX, row2Y, ICON_W, ROW_HEIGHT,
+                ResourceLocation.tryParse(itemField.getValue()),
+                button -> {
+                }
+        );
+
         CustomEditBox timeField = new CustomEditBox(
                 Minecraft.getInstance().font,
-                x + (fieldW * 2) + GAP * 2, row2Y, BUTTON_W, ROW_HEIGHT,
+                timeFieldX, row2Y, BUTTON_W, ROW_HEIGHT,
                 Component.empty()
         );
         timeField.setBordered(false);
@@ -167,7 +192,9 @@ public class EntityMappingRow {
         infectedField.setResponder(s -> validateAndUpdate.run());
         zombieField.setResponder(s -> validateAndUpdate.run());
         effectField.setResponder(s -> validateAndUpdate.run());
+        effectField.setResponder(s -> { effectIconButton.updateFromId(s.trim()); });
         itemField.setResponder(s -> validateAndUpdate.run());
+        itemField.setResponder(s -> { itemIconButton.updateFromId(s.trim()); });
         timeField.setResponder(s -> validateAndUpdate.run());
 
         validateAndUpdate.run();
@@ -175,7 +202,9 @@ public class EntityMappingRow {
         w.add(infectedField);
         w.add(zombieField);
         w.add(curableButton);
+        w.add(effectIconButton);
         w.add(effectField);
+        w.add(itemIconButton);
         w.add(itemField);
         w.add(timeField);
         w.add(remove);

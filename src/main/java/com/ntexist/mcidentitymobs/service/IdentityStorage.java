@@ -1,6 +1,6 @@
 package com.ntexist.mcidentitymobs.service;
 
-import com.ntexist.mcidentitymobs.LivingEntityAccessor;
+import com.ntexist.mcidentitymobs.accessor.LivingEntityAccessor;
 import net.minecraft.world.entity.LivingEntity;
 
 public class IdentityStorage {

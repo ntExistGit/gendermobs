@@ -1,6 +1,6 @@
 package com.ntexist.mcidentitymobs.service;
 
-import com.ntexist.mcidentitymobs.Gender;
+import com.ntexist.mcidentitymobs.enums.Gender;
 import com.ntexist.mcidentitymobs.config.ConfigManager;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;

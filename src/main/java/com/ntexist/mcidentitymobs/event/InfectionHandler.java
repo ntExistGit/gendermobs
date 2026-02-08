@@ -1,6 +1,6 @@
 package com.ntexist.mcidentitymobs.event;
 
-import com.ntexist.mcidentitymobs.LivingEntityAccessor;
+import com.ntexist.mcidentitymobs.accessor.LivingEntityAccessor;
 import com.ntexist.mcidentitymobs.config.ConfigManager;
 import com.ntexist.mcidentitymobs.config.InfectionData;
 import net.minecraft.nbt.CompoundTag;

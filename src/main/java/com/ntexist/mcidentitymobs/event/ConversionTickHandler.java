@@ -1,9 +1,7 @@
 package com.ntexist.mcidentitymobs.event;
 
-import com.ntexist.mcidentitymobs.LivingEntityAccessor;
+import com.ntexist.mcidentitymobs.accessor.LivingEntityAccessor;
 import com.ntexist.mcidentitymobs.api.MobIdentityAPI;
-import com.ntexist.mcidentitymobs.config.ConfigManager;
-import com.ntexist.mcidentitymobs.config.InfectionData;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
@@ -24,8 +22,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.event.entity.living.LivingEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-
-import java.lang.reflect.Field;
 
 @Mod.EventBusSubscriber(modid = "mcidentitymobs", bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class ConversionTickHandler {

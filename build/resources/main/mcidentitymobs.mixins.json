@@ -4,11 +4,13 @@
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [
+    "compat.naturalist.DeerGenderCompatMixin"
   ],
   "mixins": [
     "LivingEntityDataMixin",
     "LivingEntitySpawnMixin",
-    "NameTagMixin"
+    "NameTagMixin",
+    "compat.naturalist.LionGenderCompatMixin"
   ],
   "injectors": {
     "defaultRequire": 1

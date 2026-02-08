@@ -9,8 +9,9 @@ import java.util.Set;
 
 public class ModConfig {
 
-    public General general = new General();
-    public Colors colors = new Colors();
+    public General general  = new General();
+    public Jade jade        = new Jade();
+    public Colors colors    = new Colors();
 
     public Map<String, EntryData> vanillaHumanoid       = new HashMap<>();
     public Map<String, EntryData> customHumanoid        = new HashMap<>();
@@ -27,8 +28,9 @@ public class ModConfig {
         cfg.general.showNames       = true;
         cfg.general.showColors      = false;
 
-        cfg.general.jadeIcons       = true;
-        cfg.general.offsetY         = -3.5f;
+        cfg.jade.jadeIcons          = true;
+        cfg.jade.offsetY            = -3.5f;
+        cfg.jade.conversionTime     = true;
 
         cfg.colors.male             = "#5555FF";
         cfg.colors.female           = "#FF55FF";
@@ -308,9 +310,13 @@ public class ModConfig {
     public static class General {
         public boolean  showNames       = true;
         public boolean  showColors      = false;
+        public boolean  useDefaultNames = true;
+    }
+
+    public static class Jade {
         public boolean  jadeIcons       = true;
         public float    offsetY         = -3.5f;
-        public boolean  useDefaultNames = true;
+        public boolean  conversionTime  = true;
     }
 
     public static class Colors {

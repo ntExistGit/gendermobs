@@ -1,5 +1,6 @@
-package com.ntexist.mcidentitymobs;
+package com.ntexist.mcidentitymobs.core;
 
+import com.ntexist.mcidentitymobs.enums.Gender;
 import com.ntexist.mcidentitymobs.service.ColorService;
 import com.ntexist.mcidentitymobs.service.GenderService;
 import com.ntexist.mcidentitymobs.service.NameService;

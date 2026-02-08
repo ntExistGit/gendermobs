@@ -1,7 +1,7 @@
 package com.ntexist.mcidentitymobs.config;
 
 import com.google.gson.reflect.TypeToken;
-import com.ntexist.mcidentitymobs.Gender;
+import com.ntexist.mcidentitymobs.enums.Gender;
 import net.minecraft.util.RandomSource;
 
 import java.nio.file.Files;

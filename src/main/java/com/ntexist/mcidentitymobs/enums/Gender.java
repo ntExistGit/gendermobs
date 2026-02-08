@@ -1,4 +1,4 @@
-package com.ntexist.mcidentitymobs;
+package com.ntexist.mcidentitymobs.enums;
 
 public enum Gender {
     MALE,

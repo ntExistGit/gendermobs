@@ -31,9 +31,7 @@ public enum GenderJadeProvider implements IEntityComponentProvider {
         if (!(accessor.getEntity() instanceof LivingEntity living)) return;
 
         String gender = accessor.getServerData().getString("MI_Gender");
-        int convTime = accessor.getServerData().getInt("ConversionTime");
-
-        System.out.println("Jade gender from API: " + gender);
+        int convTime = accessor.getServerData().getInt("MI_ConversionTime");
 
         ResourceLocation bgIcon, fgIcon;
         int colorInt;
@@ -57,8 +55,7 @@ public enum GenderJadeProvider implements IEntityComponentProvider {
 
         MutableComponent nameText = living.getDisplayName().copy();
 
-        // Выводим иконку перед именем
-        if (ConfigManager.CONFIG.general.jadeIcons) {
+        if (ConfigManager.CONFIG.jade.jadeIcons) {
             tooltip.add(0, new GenderIconElement(bgIcon, fgIcon, colorInt));
             tooltip.append(0, helper.text(Component.literal("  ")));
         }
@@ -67,17 +64,18 @@ public enum GenderJadeProvider implements IEntityComponentProvider {
             nameText = nameText.withStyle(style -> style.withColor(colorInt));
         }
 
-        if (ConfigManager.CONFIG.general.jadeIcons) {
+        if (ConfigManager.CONFIG.jade.jadeIcons) {
             tooltip.append(0, helper.text(nameText));
         } else {
             tooltip.add(0, helper.text(nameText));
         }
 
-        // ConversionTime — новая строка
-        if (convTime > 0) {
-            int seconds = convTime / 20;
-            Component cureText = Component.translatable("jade.zombieConversion.time", seconds);
-            tooltip.add(helper.text(cureText));
+        if (ConfigManager.CONFIG.jade.conversionTime) {
+            if (convTime > 0) {
+                int seconds = convTime / 20;
+                Component cureText = Component.translatable("mcidentitymobs.config.jade.zombieConversion.time", seconds);
+                tooltip.add(helper.text(cureText));
+            }
         }
 
         tooltip.remove(ResourceLocation.fromNamespaceAndPath("jade", "object_name"));
@@ -110,7 +108,7 @@ public enum GenderJadeProvider implements IEntityComponentProvider {
 
         @Override
         public void render(GuiGraphics context, float x, float y, float width, float height) {
-            float finalY = y + ConfigManager.CONFIG.general.offsetY;
+            float finalY = y + ConfigManager.CONFIG.jade.offsetY;
 
             float r = (color >> 16 & 255) / 255.0F;
             float g = (color >> 8 & 255) / 255.0F;

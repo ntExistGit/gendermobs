@@ -71,10 +71,10 @@ publishing {
     }
 }
 
-sourceSets {
-    main {
-        java {
-            exclude 'com/ntexist/mcidentitymobs/mixin/compat/**'
-        }
-    }
-}
+//  sourceSets {
+//      main {
+//          java {
+//              exclude 'com/ntexist/mcidentitymobs/mixin/compat/**'
+//          }
+//      }
+//  }

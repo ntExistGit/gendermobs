@@ -1,4 +1,4 @@
-package com.ntexist.mcidentitymobs;
+package com.ntexist.mcidentitymobs.accessor;
 
 import net.minecraft.nbt.CompoundTag;
 
