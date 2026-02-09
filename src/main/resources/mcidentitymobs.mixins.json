@@ -1,14 +1,17 @@
 {
   "required": true,
   "package": "com.ntexist.mcidentitymobs.mixin",
+  "refmap": "mcidentitymobs.refmap.json",
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [
+    "compat.naturalist.DeerCompatMixin"
   ],
   "mixins": [
     "LivingEntityDataMixin",
     "LivingEntitySpawnMixin",
-    "NameTagMixin"
+    "NameTagMixin",
+    "compat.naturalist.LionCompatMixin"
   ],
   "injectors": {
     "defaultRequire": 1

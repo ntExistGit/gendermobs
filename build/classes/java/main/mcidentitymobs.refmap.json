@@ -8,9 +8,10 @@
     },
     "com/ntexist/mcidentitymobs/mixin/LivingEntityDataMixin": {
       "addAdditionalSaveData": "Lnet/minecraft/world/entity/LivingEntity;m_7380_(Lnet/minecraft/nbt/CompoundTag;)V",
+      "defineSynchedData": "Lnet/minecraft/world/entity/LivingEntity;m_8097_()V",
       "readAdditionalSaveData": "Lnet/minecraft/world/entity/LivingEntity;m_7378_(Lnet/minecraft/nbt/CompoundTag;)V"
     },
-    "com/ntexist/mcidentitymobs/mixin/compat/naturalist/LionGenderCompatMixin": {
+    "com/ntexist/mcidentitymobs/mixin/compat/naturalist/LionCompatMixin": {
       "finalizeSpawn": "Lcom/starfish_studios/naturalist/common/entity/Lion;m_6518_(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/world/entity/SpawnGroupData;Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/world/entity/SpawnGroupData;",
       "ageBoundaryReached": "Lcom/starfish_studios/naturalist/common/entity/Lion;m_30232_()V"
     }
@@ -25,9 +26,10 @@
       },
       "com/ntexist/mcidentitymobs/mixin/LivingEntityDataMixin": {
         "addAdditionalSaveData": "Lnet/minecraft/world/entity/LivingEntity;m_7380_(Lnet/minecraft/nbt/CompoundTag;)V",
+        "defineSynchedData": "Lnet/minecraft/world/entity/LivingEntity;m_8097_()V",
         "readAdditionalSaveData": "Lnet/minecraft/world/entity/LivingEntity;m_7378_(Lnet/minecraft/nbt/CompoundTag;)V"
       },
-      "com/ntexist/mcidentitymobs/mixin/compat/naturalist/LionGenderCompatMixin": {
+      "com/ntexist/mcidentitymobs/mixin/compat/naturalist/LionCompatMixin": {
         "finalizeSpawn": "Lcom/starfish_studios/naturalist/common/entity/Lion;m_6518_(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/world/entity/SpawnGroupData;Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/world/entity/SpawnGroupData;",
         "ageBoundaryReached": "Lcom/starfish_studios/naturalist/common/entity/Lion;m_30232_()V"
       }

@@ -2,6 +2,10 @@ package com.ntexist.mcidentitymobs.mixin;
 
 import com.ntexist.mcidentitymobs.accessor.LivingEntityAccessor;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.network.syncher.EntityDataAccessor;
+import net.minecraft.network.syncher.EntityDataSerializers;
+import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
@@ -9,63 +13,155 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-@Mixin(LivingEntity.class)
-public class LivingEntityDataMixin implements LivingEntityAccessor {
+@Mixin(value = LivingEntity.class)
+public abstract class LivingEntityDataMixin implements LivingEntityAccessor {
 
-    @Unique private String mi_gender = "";
-    @Unique private String mi_name = "";
-    @Unique private String mi_originalId = "";
-    @Unique private boolean mi_playerNamed = false;
-    @Unique private String mi_zombieSavedName = "";
-    @Unique private int mi_conversionTime = -1;
-    @Unique private boolean mi_inConversion = false;
+    @Unique
+    private static final EntityDataAccessor<String> DATA_GENDER =
+            SynchedEntityData.defineId(LivingEntity.class, EntityDataSerializers.STRING);
 
-    @Override public void mcidentitymobs$setGender(String gender) { this.mi_gender = gender; }
-    @Override public String mcidentitymobs$getGender() { return mi_gender; }
+    @Unique
+    private static final EntityDataAccessor<String> DATA_MOB_NAME =
+            SynchedEntityData.defineId(LivingEntity.class, EntityDataSerializers.STRING);
 
-    @Override public void mcidentitymobs$setMobName(String name) { this.mi_name = name; }
-    @Override public String mcidentitymobs$getMobName() { return mi_name; }
+    @Unique
+    private static final EntityDataAccessor<String> DATA_ORIGINAL_ID =
+            SynchedEntityData.defineId(LivingEntity.class, EntityDataSerializers.STRING);
 
-    @Override public void mcidentitymobs$setOriginalId(String id) { this.mi_originalId = id; }
-    @Override public String mcidentitymobs$getOriginalId() { return mi_originalId; }
+    @Unique
+    private static final EntityDataAccessor<Boolean> DATA_PLAYER_NAMED =
+            SynchedEntityData.defineId(LivingEntity.class, EntityDataSerializers.BOOLEAN);
 
-    @Override public void mcidentitymobs$setPlayerNamed(boolean val) { this.mi_playerNamed = val; }
-    @Override public boolean mcidentitymobs$isPlayerNamed() { return mi_playerNamed; }
+    @Unique
+    private static final EntityDataAccessor<String> DATA_ZOMBIE_SAVED =
+            SynchedEntityData.defineId(LivingEntity.class, EntityDataSerializers.STRING);
 
-    @Override public void mcidentitymobs$setZombieSavedName(String name) { this.mi_zombieSavedName = name; }
-    @Override public String mcidentitymobs$getZombieSavedName() { return mi_zombieSavedName; }
+    @Unique
+    private static final EntityDataAccessor<Integer> DATA_CONVERSION_TIME =
+            SynchedEntityData.defineId(LivingEntity.class, EntityDataSerializers.INT);
 
-    @Override public void mcidentitymobs$setConversionTime(int time) { this.mi_conversionTime = time; }
-    @Override public int mcidentitymobs$getConversionTime() { return mi_conversionTime; }
+    @Unique
+    private static final EntityDataAccessor<Boolean> DATA_IN_CONVERSION =
+            SynchedEntityData.defineId(LivingEntity.class, EntityDataSerializers.BOOLEAN);
 
-    @Override public void mcidentitymobs$setInConversion(boolean inConversion) { this.mi_inConversion = inConversion; }
-    @Override public boolean mcidentitymobs$isInConversion() { return mi_inConversion; }
+    @Unique
+    private SynchedEntityData getEntityData() {
+        return ((Entity) (Object) this).getEntityData();
+    }
 
-    @Override
-    public void mcidentitymobs$saveToNBT(CompoundTag nbt) {
-        if (!mi_gender.isEmpty()) nbt.putString("MI_Gender", mi_gender);
-        if (!mi_name.isEmpty()) nbt.putString("MI_Name", mi_name);
-        if (!mi_originalId.isEmpty()) nbt.putString("MI_OriginalId", mi_originalId);
-        if (mi_playerNamed) nbt.putBoolean("MI_PlayerNamed", true);
-        if (!mi_zombieSavedName.isEmpty()) nbt.putString("MI_ZombieSavedName", mi_zombieSavedName);
-        if (mi_conversionTime > -1) nbt.putInt("MI_ConversionTime", mi_conversionTime);
-        if (mi_inConversion) nbt.putBoolean("MI_InConversion", true);
+    @Inject(method = "defineSynchedData", at = @At("TAIL"))
+    private void defineAllData(CallbackInfo ci) {
+        this.getEntityData().define(DATA_GENDER, "");
+        this.getEntityData().define(DATA_MOB_NAME, "");
+        this.getEntityData().define(DATA_ORIGINAL_ID, "");
+        this.getEntityData().define(DATA_PLAYER_NAMED, false);
+        this.getEntityData().define(DATA_ZOMBIE_SAVED, "");
+        this.getEntityData().define(DATA_CONVERSION_TIME, -1);
+        this.getEntityData().define(DATA_IN_CONVERSION, false);
     }
 
     @Override
-    public void mcidentitymobs$loadFromNBT(CompoundTag nbt) {
-        if (nbt.contains("MI_Gender")) mi_gender = nbt.getString("MI_Gender");
-        if (nbt.contains("MI_Name")) mi_name = nbt.getString("MI_Name");
-        if (nbt.contains("MI_OriginalId")) mi_originalId = nbt.getString("MI_OriginalId");
-        if (nbt.contains("MI_PlayerNamed")) mi_playerNamed = nbt.getBoolean("MI_PlayerNamed");
-        if (nbt.contains("MI_ZombieSavedName")) mi_zombieSavedName = nbt.getString("MI_ZombieSavedName");
-        if (nbt.contains("MI_ConversionTime")) mi_conversionTime = nbt.getInt("MI_ConversionTime");
-        mi_inConversion = nbt.getBoolean("MI_InConversion");
+    public void mcidentitymobs$setGender(String gender) {
+        this.getEntityData().set(DATA_GENDER, gender != null ? gender : "");
+    }
+
+    @Override
+    public String mcidentitymobs$getGender() {
+        return this.getEntityData().get(DATA_GENDER);
+    }
+
+    @Override
+    public void mcidentitymobs$setMobName(String name) {
+        this.getEntityData().set(DATA_MOB_NAME, name != null ? name : "");
+    }
+
+    @Override
+    public String mcidentitymobs$getMobName() {
+        return this.getEntityData().get(DATA_MOB_NAME);
+    }
+
+    @Override
+    public void mcidentitymobs$setOriginalId(String id) {
+        this.getEntityData().set(DATA_ORIGINAL_ID, id != null ? id : "");
+    }
+
+    @Override
+    public String mcidentitymobs$getOriginalId() {
+        return this.getEntityData().get(DATA_ORIGINAL_ID);
+    }
+
+    @Override
+    public void mcidentitymobs$setPlayerNamed(boolean val) {
+        this.getEntityData().set(DATA_PLAYER_NAMED, val);
+    }
+
+    @Override
+    public boolean mcidentitymobs$isPlayerNamed() {
+        return this.getEntityData().get(DATA_PLAYER_NAMED);
+    }
+
+    @Override
+    public void mcidentitymobs$setZombieSavedName(String name) {
+        this.getEntityData().set(DATA_ZOMBIE_SAVED, name != null ? name : "");
+    }
+
+    @Override
+    public String mcidentitymobs$getZombieSavedName() {
+        return this.getEntityData().get(DATA_ZOMBIE_SAVED);
+    }
+
+    @Override
+    public void mcidentitymobs$setConversionTime(int time) {
+        this.getEntityData().set(DATA_CONVERSION_TIME, time);
+    }
+
+    @Override
+    public int mcidentitymobs$getConversionTime() {
+        return this.getEntityData().get(DATA_CONVERSION_TIME);
+    }
+
+    @Override
+    public void mcidentitymobs$setInConversion(boolean inConversion) {
+        this.getEntityData().set(DATA_IN_CONVERSION, inConversion);
+    }
+
+    @Override
+    public boolean mcidentitymobs$isInConversion() {
+        return this.getEntityData().get(DATA_IN_CONVERSION);
     }
 
     @Inject(method = "addAdditionalSaveData", at = @At("TAIL"))
-    private void mi_save(CompoundTag tag, CallbackInfo ci) { mcidentitymobs$saveToNBT(tag); }
+    private void saveAllToNBT(CompoundTag tag, CallbackInfo ci) {
+        String gender = this.getEntityData().get(DATA_GENDER);
+        if (!gender.isEmpty()) tag.putString("MI_Gender", gender);
+
+        String mobName = this.getEntityData().get(DATA_MOB_NAME);
+        if (!mobName.isEmpty()) tag.putString("MI_Name", mobName);
+
+        String origId = this.getEntityData().get(DATA_ORIGINAL_ID);
+        if (!origId.isEmpty()) tag.putString("MI_OriginalId", origId);
+
+        if (this.getEntityData().get(DATA_PLAYER_NAMED)) tag.putBoolean("MI_PlayerNamed", true);
+
+        String zombieName = this.getEntityData().get(DATA_ZOMBIE_SAVED);
+        if (!zombieName.isEmpty()) tag.putString("MI_ZombieSavedName", zombieName);
+
+        int convTime = this.getEntityData().get(DATA_CONVERSION_TIME);
+        if (convTime > -1) tag.putInt("MI_ConversionTime", convTime);
+
+        if (this.getEntityData().get(DATA_IN_CONVERSION)) tag.putBoolean("MI_InConversion", true);
+    }
 
     @Inject(method = "readAdditionalSaveData", at = @At("TAIL"))
-    private void loadIdentityData(CompoundTag tag, CallbackInfo ci) { mcidentitymobs$loadFromNBT(tag); }
+    private void loadAllFromNBT(CompoundTag tag, CallbackInfo ci) {
+        SynchedEntityData data = this.getEntityData();
+
+        if (tag.contains("MI_Gender"))          data.set(DATA_GENDER,          tag.getString("MI_Gender"));
+        if (tag.contains("MI_Name"))            data.set(DATA_MOB_NAME,        tag.getString("MI_Name"));
+        if (tag.contains("MI_OriginalId"))      data.set(DATA_ORIGINAL_ID,     tag.getString("MI_OriginalId"));
+        if (tag.contains("MI_PlayerNamed"))     data.set(DATA_PLAYER_NAMED,    tag.getBoolean("MI_PlayerNamed"));
+        if (tag.contains("MI_ZombieSavedName")) data.set(DATA_ZOMBIE_SAVED,    tag.getString("MI_ZombieSavedName"));
+        if (tag.contains("MI_ConversionTime"))  data.set(DATA_CONVERSION_TIME, tag.getInt("MI_ConversionTime"));
+        if (tag.contains("MI_InConversion"))    data.set(DATA_IN_CONVERSION,   tag.getBoolean("MI_InConversion"));
+    }
 }

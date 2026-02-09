@@ -13,6 +13,10 @@ base {
 loom {
     silentMojangMappingsLicense()
 
+    mixin {
+        defaultRefmapName.set("mcidentitymobs.refmap.json")
+    }
+
     forge {
         mixinConfig 'mcidentitymobs.mixins.json'
     }
@@ -36,6 +40,7 @@ dependencies {
 
     modImplementation("maven.modrinth:jade:${project.jade_version}")
 
+    modCompileOnly("curse.maven:citadel-331936:7476570")
     modCompileOnly("curse.maven:geckolib-388172:7553267")
     modCompileOnly("curse.maven:alexs-mobs-426558:5698791")
     modCompileOnly("curse.maven:naturalist-627986:6322818")
@@ -70,11 +75,3 @@ publishing {
     repositories {
     }
 }
-
-//  sourceSets {
-//      main {
-//          java {
-//              exclude 'com/ntexist/mcidentitymobs/mixin/compat/**'
-//          }
-//      }
-//  }
