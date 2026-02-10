@@ -1,18 +1,17 @@
 package com.ntexist.mcidentitymobs.config;
 
-import com.ntexist.mcidentitymobs.pipeline.SpawnPipeline;
-import com.ntexist.mcidentitymobs.service.ColorService;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.phys.AABB;
 import net.minecraftforge.fml.ModList;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
 
 public class ConfigScreen extends Screen {
 
@@ -480,10 +479,11 @@ public class ConfigScreen extends Screen {
             context.fill(scrollbarX, thumbY, scrollbarX + scrollbarWidth - 1, thumbY + 1, 0xFFC0C0C0);
             context.fill(scrollbarX, thumbY, scrollbarX + 1, thumbY + thumbHeight - 1, 0xFFC0C0C0);
         }
-        context.disableScissor();
 
         context.fillGradient(0, listTop, width, listTop + 4, 0xFF000000, 0x00000000);
         context.fillGradient(0, listBottom - 4, width, listBottom, 0x00000000, 0xFF000000);
+
+        context.disableScissor();
 
         for (var drawable : renderables) {
             if (!listWidgets.contains(drawable)) {

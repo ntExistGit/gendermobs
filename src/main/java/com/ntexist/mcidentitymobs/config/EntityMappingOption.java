@@ -64,6 +64,7 @@ public class EntityMappingOption extends OptionEntry<Map<String, InfectionData>>
         reset = new IconButton(
                 x + toggle.getWidth() + labelWidget.getWidth(), y, 20, 20,
                 ResourceLocation.tryBuild("mcidentitymobs", "textures/gui/sprites/icon/reset.png"),
+                false,
                 btn -> onReset()
         );
         reset.setTooltip(Tooltip.create(Component.translatable("mcidentitymobs.config.tooltip.reset")));

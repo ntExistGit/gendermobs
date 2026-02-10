@@ -11,6 +11,7 @@ import net.minecraft.world.entity.EntityType;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.Set;
 
 public class ListRow {
@@ -27,28 +28,36 @@ public class ListRow {
 
         CustomEditBox idField = new CustomEditBox(
                 Minecraft.getInstance().font,
-                x, y, width - 22, 20,
+                x + 22, y, width - 44, 20,
                 Component.empty()
         );
         idField.setMaxLength(32767);
         idField.setValue(entityId);
+
+        IconButton idFieldIconButton = IconButton.forEntity(
+                x, y, 20, 20,
+                ResourceLocation.tryParse(idField.getValue()),
+                true,
+                button -> {
+                }
+        );
 
         Runnable validateAndUpdate = () -> {
             String newId = idField.getValue().trim();
 
             boolean isValidEntity = false;
             ResourceLocation identifier = null;
+            EntityType<?> entityType = null;
 
             if (!newId.isBlank()) {
                 try {
                     identifier = ResourceLocation.tryParse(newId);
                     if (identifier != null) {
-                        EntityType<?> entityType = BuiltInRegistries.ENTITY_TYPE.get(identifier);
-                        if (entityType != null) {
-                            ResourceLocation registeredId = BuiltInRegistries.ENTITY_TYPE.getKey(entityType);
-                            if (registeredId != null && registeredId.equals(identifier)) {
-                                isValidEntity = true;
-                            }
+                        Optional<EntityType<?>> entityTypeOpt = BuiltInRegistries.ENTITY_TYPE.getOptional(identifier);
+
+                        if (entityTypeOpt.isPresent()) {
+                            entityType = entityTypeOpt.get();
+                            isValidEntity = true;
                         }
                     }
                 } catch (Exception ignored) {
@@ -72,7 +81,6 @@ public class ListRow {
                 }
             } else {
                 idField.setTextColor(0xFFFFFF);
-                EntityType<?> entityType = BuiltInRegistries.ENTITY_TYPE.get(identifier);
                 if (entityType != null) {
                     tooltipText = String.format(
                             Component.translatable("mcidentitymobs.tooltip.entity_found").getString(),
@@ -94,7 +102,8 @@ public class ListRow {
             }
         };
 
-        idField.setResponder(newId -> {
+        idField.setResponder(s -> {
+            idFieldIconButton.updateFromId(s.trim());
             validateAndUpdate.run();
         });
 
@@ -109,6 +118,7 @@ public class ListRow {
         ).bounds(x + width - 20, y, 20, 20).build();
         remove.setTooltip(Tooltip.create(Component.translatable("mcidentitymobs.tooltip.remove")));
 
+        w.add(idFieldIconButton);
         w.add(idField);
         w.add(remove);
         return w;

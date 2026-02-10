@@ -5,12 +5,15 @@
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [
-    "compat.naturalist.DeerCompatMixin"
+    "compat.alexsmobs.GazelleCompatMixin",
+    "compat.naturalist.DeerCompatMixin",
+    "compat.naturalist.ElephantCompatMixin"
   ],
   "mixins": [
     "LivingEntityDataMixin",
     "LivingEntitySpawnMixin",
     "NameTagMixin",
+    "compat.alexsmobs.ElephantCompatMixin",
     "compat.naturalist.LionCompatMixin"
   ],
   "injectors": {

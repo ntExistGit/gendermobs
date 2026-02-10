@@ -59,6 +59,7 @@ public class BoolOption extends OptionEntry<Boolean> {
         reset = new IconButton(
                 x + labelWidget.getWidth() + toggle.getWidth(), y, 20, 20,
                 ResourceLocation.tryBuild("mcidentitymobs", "textures/gui/sprites/icon/reset.png"),
+                false,
                 btn -> onReset()
         );
         reset.setTooltip(Tooltip.create(Component.translatable("mcidentitymobs.config.tooltip.reset")));

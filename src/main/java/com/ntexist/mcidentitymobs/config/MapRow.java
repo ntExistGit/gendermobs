@@ -12,6 +12,7 @@ import net.minecraft.world.entity.EntityType;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 
 public class MapRow {
 
@@ -40,30 +41,38 @@ public class MapRow {
             if (sliderW < 60) sliderW = 60;
         }
 
-        CustomEditBox id = new CustomEditBox(
+        CustomEditBox idField = new CustomEditBox(
                 Minecraft.getInstance().font,
-                x, y, idW, 20,
+                x + 22, y, idW - 22, 20,
                 Component.empty()
         );
-        id.setMaxLength(32767);
-        id.setValue(key);
+        idField.setMaxLength(32767);
+        idField.setValue(key);
+
+        IconButton idFieldIconButton = IconButton.forEntity(
+                x, y, 20, 20,
+                ResourceLocation.tryParse(idField.getValue()),
+                true,
+                button -> {
+                }
+        );
 
         Runnable validateAndUpdate = () -> {
-            String newKey = id.getValue().trim();
+            String newKey = idField.getValue().trim();
 
             boolean isValidEntity = false;
             ResourceLocation identifier = null;
+            EntityType<?> entityType = null;
 
             if (!newKey.isBlank()) {
                 try {
                     identifier = ResourceLocation.tryParse(newKey);
                     if (identifier != null) {
-                        EntityType<?> entityType = BuiltInRegistries.ENTITY_TYPE.get(identifier);
-                        if (entityType != null) {
-                            ResourceLocation registeredId = BuiltInRegistries.ENTITY_TYPE.getKey(entityType);
-                            if (registeredId != null && registeredId.equals(identifier)) {
-                                isValidEntity = true;
-                            }
+                        Optional<EntityType<?>> entityTypeOpt = BuiltInRegistries.ENTITY_TYPE.getOptional(identifier);
+
+                        if (entityTypeOpt.isPresent()) {
+                            entityType = entityTypeOpt.get();
+                            isValidEntity = true;
                         }
                     }
                 } catch (Exception ignored) {
@@ -73,10 +82,10 @@ public class MapRow {
 
             String tooltipText;
             if (newKey.isBlank()) {
-                id.setTextColor(0xAAAAAA);
+                idField.setTextColor(0xAAAAAA);
                 tooltipText = Component.translatable("mcidentitymobs.tooltip.entity_id_format").getString();
             } else if (!isValidEntity) {
-                id.setTextColor(0xFF5555);
+                idField.setTextColor(0xFF5555);
                 if (identifier == null) {
                     tooltipText = Component.translatable("mcidentitymobs.tooltip.entity_incorrect_format").getString();
                 } else {
@@ -86,8 +95,7 @@ public class MapRow {
                     );
                 }
             } else {
-                id.setTextColor(0xFFFFFF);
-                EntityType<?> entityType = BuiltInRegistries.ENTITY_TYPE.get(identifier);
+                idField.setTextColor(0xFFFFFF);
                 if (entityType != null) {
                     tooltipText = String.format(
                             Component.translatable("mcidentitymobs.tooltip.entity_found").getString(),
@@ -100,7 +108,7 @@ public class MapRow {
                     );
                 }
             }
-            id.setTooltip(Tooltip.create(Component.literal(tooltipText)));
+            idField.setTooltip(Tooltip.create(Component.literal(tooltipText)));
 
             if (isValidEntity && !newKey.equals(currentKey[0]) && !map.containsKey(newKey)) {
                 map.remove(currentKey[0]);
@@ -109,7 +117,8 @@ public class MapRow {
             }
         };
 
-        id.setResponder(newKey -> {
+        idField.setResponder(s -> {
+            idFieldIconButton.updateFromId(s.trim());
             validateAndUpdate.run();
         });
 
@@ -140,7 +149,8 @@ public class MapRow {
         ).bounds(x + width - REMOVE_W, y, REMOVE_W, 20).build();
         remove.setTooltip(Tooltip.create(Component.translatable("mcidentitymobs.tooltip.remove")));
 
-        w.add(id);
+        w.add(idFieldIconButton);
+        w.add(idField);
         w.add(slider);
         w.add(force);
         w.add(remove);

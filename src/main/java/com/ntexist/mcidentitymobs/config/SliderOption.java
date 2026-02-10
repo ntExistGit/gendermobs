@@ -62,6 +62,7 @@ public class SliderOption extends OptionEntry<Float> {
                 x + labelWidget.getWidth() + slider.getWidth(),
                 y, 20, 20,
                 ResourceLocation.tryBuild("mcidentitymobs", "textures/gui/sprites/icon/reset.png"),
+                false,
                 btn -> onReset()
         );
 

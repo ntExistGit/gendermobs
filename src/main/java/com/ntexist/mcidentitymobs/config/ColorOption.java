@@ -92,6 +92,7 @@ public class ColorOption extends OptionEntry<String> {
         reset = new IconButton(
                 x + labelWidget.getWidth() + 24 + box.getWidth(), y, 20, 20,
                 ResourceLocation.tryBuild("mcidentitymobs", "textures/gui/sprites/icon/reset.png"),
+                false,
                 btn -> {
                     currentBox.setValue(defaultValue);
                     currentBox.setTextColor(0xFFFFFF);
@@ -99,6 +100,7 @@ public class ColorOption extends OptionEntry<String> {
                     setter.accept(defaultValue);
                 }
         );
+        reset.setTooltip(Tooltip.create(Component.translatable("mcidentitymobs.config.tooltip.reset")));
 
         if (this.tooltip != null && !this.tooltip.isEmpty()) {
             labelWidget.setTooltip(Tooltip.create(Component.translatable(this.tooltip)));

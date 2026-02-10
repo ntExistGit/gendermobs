@@ -1,7 +1,9 @@
 package com.ntexist.mcidentitymobs.config;
 
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.components.*;
+import net.minecraft.client.gui.components.AbstractWidget;
+import net.minecraft.client.gui.components.Button;
+import net.minecraft.client.gui.components.Tooltip;
 import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
@@ -10,10 +12,7 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Consumer;
 
 public class EntityMappingRow {
@@ -38,39 +37,50 @@ public class EntityMappingRow {
         final int ICON_W = 20;
         final int REMOVE_H = (ROW_HEIGHT * 2) + GAP;
 
-        int fieldW_row1 = (width - (BUTTON_W + REMOVE_W) - (GAP * 2)) / 2;
-        if (fieldW_row1 < 80) fieldW_row1 = 80;
+        int availableForRow = width - (2 * ICON_W) - (3 * GAP) - BUTTON_W - REMOVE_W;
+        int fieldW_row = availableForRow / 2;
+        if (fieldW_row < 80) fieldW_row = 80;
 
-        int availableForRow2 = width - (2 * ICON_W) - (3 * GAP) - BUTTON_W - REMOVE_W;
-        int fieldW_row2 = availableForRow2 / 2;
-        if (fieldW_row2 < 80) fieldW_row2 = 80;
+        int firstFieldX = x + ICON_W + GAP;
+        int secondIconX = firstFieldX + fieldW_row;
+        int secondFieldX = secondIconX + ICON_W + GAP;
+        int timeFieldX = secondFieldX + fieldW_row + GAP;
 
-        int effectIconX = x;
-        int effectFieldX = effectIconX + ICON_W + GAP;
-        int itemIconX = effectFieldX + fieldW_row2;
-        int itemFieldX = itemIconX + ICON_W + GAP;
-        int timeFieldX = itemFieldX + fieldW_row2 + GAP;
-
-        int row1Y = y;
         int row2Y = y + ROW_HEIGHT + GAP;
 
         CustomEditBox infectedField = new CustomEditBox(
                 Minecraft.getInstance().font,
-                x, row1Y, fieldW_row1, ROW_HEIGHT,
+                firstFieldX, y, fieldW_row - GAP, ROW_HEIGHT,
                 Component.empty()
         );
         infectedField.setBordered(false);
         infectedField.setMaxLength(32767);
         infectedField.setValue(infectedEntityId);
 
+        IconButton infectedIconButton = IconButton.forEntity(
+                x, y, ICON_W, ROW_HEIGHT,
+                ResourceLocation.tryParse(infectedField.getValue()),
+                true,
+                button -> {
+                }
+        );
+
         CustomEditBox zombieField = new CustomEditBox(
                 Minecraft.getInstance().font,
-                x + fieldW_row1 + GAP, row1Y, fieldW_row1, ROW_HEIGHT,
+                secondFieldX + GAP, y, fieldW_row - GAP, ROW_HEIGHT,
                 Component.empty()
         );
         zombieField.setBordered(false);
         zombieField.setMaxLength(32767);
         zombieField.setValue(data.zombie);
+
+        IconButton zombieIconButton = IconButton.forEntity(
+                secondIconX, y, ICON_W, ROW_HEIGHT,
+                ResourceLocation.tryParse(zombieField.getValue()),
+                true,
+                button -> {
+                }
+        );
 
         Button curableButton = Button.builder(
                 Component.translatable(data.curable ? "mcidentitymobs.boolean.true" : "mcidentitymobs.boolean.false"),
@@ -78,12 +88,12 @@ public class EntityMappingRow {
                     data.curable = !data.curable;
                     b.setMessage(Component.translatable(data.curable ? "mcidentitymobs.boolean.true" : "mcidentitymobs.boolean.false"));
                 }
-        ).bounds(x + (fieldW_row1 * 2) + GAP * 2, row1Y, BUTTON_W, ROW_HEIGHT).build();
+        ).bounds(x + (fieldW_row * 2) + GAP * 2, y, BUTTON_W, ROW_HEIGHT).build();
         curableButton.setTooltip(Tooltip.create(Component.translatable("mcidentitymobs.tooltip.curable")));
 
         CustomEditBox effectField = new CustomEditBox(
                 Minecraft.getInstance().font,
-                effectFieldX, row2Y, fieldW_row2 - GAP, ROW_HEIGHT,
+                firstFieldX, row2Y, fieldW_row - GAP, ROW_HEIGHT,
                 Component.empty()
         );
         effectField.setBordered(false);
@@ -91,15 +101,16 @@ public class EntityMappingRow {
         effectField.setValue(data.effect);
 
         IconButton effectIconButton = IconButton.forEffect(
-                effectIconX, row2Y, ICON_W, ROW_HEIGHT,
+                x, row2Y, ICON_W, ROW_HEIGHT,
                 ResourceLocation.tryParse(effectField.getValue()),
+                true,
                 button -> {
                 }
         );
 
         CustomEditBox itemField = new CustomEditBox(
                 Minecraft.getInstance().font,
-                itemFieldX, row2Y, fieldW_row2, ROW_HEIGHT,
+                secondFieldX, row2Y, fieldW_row, ROW_HEIGHT,
                 Component.empty()
         );
         itemField.setBordered(false);
@@ -107,8 +118,9 @@ public class EntityMappingRow {
         itemField.setValue(data.item);
 
         IconButton itemIconButton = IconButton.forItem(
-                itemIconX, row2Y, ICON_W, ROW_HEIGHT,
+                secondIconX, row2Y, ICON_W, ROW_HEIGHT,
                 ResourceLocation.tryParse(itemField.getValue()),
+                true,
                 button -> {
                 }
         );
@@ -130,7 +142,7 @@ public class EntityMappingRow {
                     setter.accept(newMap);
                     if (rebuild != null) rebuild.run();
                 }
-        ).bounds(x + width - REMOVE_W, row1Y, REMOVE_W, REMOVE_H).build();
+        ).bounds(x + width - REMOVE_W, y, REMOVE_W, REMOVE_H).build();
         remove.setTooltip(Tooltip.create(Component.translatable("mcidentitymobs.tooltip.remove")));
 
         Runnable validateAndUpdate = () -> {
@@ -189,17 +201,33 @@ public class EntityMappingRow {
             }
         };
 
-        infectedField.setResponder(s -> validateAndUpdate.run());
-        zombieField.setResponder(s -> validateAndUpdate.run());
-        effectField.setResponder(s -> validateAndUpdate.run());
-        effectField.setResponder(s -> { effectIconButton.updateFromId(s.trim()); });
-        itemField.setResponder(s -> validateAndUpdate.run());
-        itemField.setResponder(s -> { itemIconButton.updateFromId(s.trim()); });
+        infectedField.setResponder(s -> {
+            infectedIconButton.updateFromId(s.trim());
+            validateAndUpdate.run();
+        });
+
+        zombieField.setResponder(s -> {
+            zombieIconButton.updateFromId(s.trim());
+            validateAndUpdate.run();
+        });
+
+        effectField.setResponder(s -> {
+            effectIconButton.updateFromId(s.trim());
+            validateAndUpdate.run();
+        });
+
+        itemField.setResponder(s -> {
+            itemIconButton.updateFromId(s.trim());
+            validateAndUpdate.run();
+        });
+
         timeField.setResponder(s -> validateAndUpdate.run());
 
         validateAndUpdate.run();
 
+        w.add(infectedIconButton);
         w.add(infectedField);
+        w.add(zombieIconButton);
         w.add(zombieField);
         w.add(curableButton);
         w.add(effectIconButton);
@@ -226,14 +254,16 @@ public class EntityMappingRow {
                 return;
             }
 
-            EntityType<?> entityType = BuiltInRegistries.ENTITY_TYPE.get(identifier);
-            if (entityType == null || entityType == EntityType.PIG) {
+            Optional<EntityType<?>> entityTypeOpt = BuiltInRegistries.ENTITY_TYPE.getOptional(identifier);
+            if (entityTypeOpt.isEmpty()) {
                 field.setTextColor(0xFF5555);
                 field.setTooltip(Tooltip.create(
                         Component.translatable("mcidentitymobs.tooltip.entity_not_found", value)
                 ));
                 return;
             }
+
+            EntityType<?> entityType = entityTypeOpt.get();
 
             field.setTextColor(0xFFFFFF);
             field.setTooltip(Tooltip.create(
@@ -321,8 +351,8 @@ public class EntityMappingRow {
         try {
             ResourceLocation identifier = ResourceLocation.tryParse(id);
             if (identifier == null) return false;
-            EntityType<?> entityType = BuiltInRegistries.ENTITY_TYPE.get(identifier);
-            return entityType != null;
+
+            return BuiltInRegistries.ENTITY_TYPE.containsKey(identifier);
         } catch (Exception e) {
             return false;
         }

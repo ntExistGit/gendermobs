@@ -5,29 +5,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b09462e5-d882-42ea-a0c2-58cd8da6e490" name="Changes" comment="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/compat/naturalist/DeerCompatMixin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/compat/naturalist/LionCompatMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/compat/alexsmobs/ElephantCompatMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/compat/alexsmobs/GazelleCompatMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/compat/naturalist/ElephantCompatMixin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/compat/jade/GenderJadeServerProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/compat/jade/GenderJadeServerProvider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ConfigManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ConfigManager.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/LivingEntityDataMixin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/LivingEntityDataMixin.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/compat/naturalist/DeerGenderCompatMixin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/compat/naturalist/LionGenderCompatMixin.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/mcidentitymobs-refmap.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/BoolOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/BoolOption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ColorOption$ColorPreviewWidget.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ColorOption$ColorPreviewWidget.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ColorOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ColorOption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/EntityMappingOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/EntityMappingOption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ListOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ListOption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ListRow.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ListRow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/MapOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/MapOption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/MapRow.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/MapRow.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/SliderOption$Slider.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/SliderOption$Slider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/SliderOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/SliderOption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/mcidentitymobs.refmap.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/mcidentitymobs.refmap.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/devlibs/mcidentitymobs-1.0.0-dev.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/devlibs/mcidentitymobs-1.0.0-dev.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/devlibs/mcidentitymobs-1.0.0-sources.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/devlibs/mcidentitymobs-1.0.0-sources.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/EntityElephant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/ModelElephant.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/libs/RenderElephant.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/mcidentitymobs-1.0.0-sources.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/mcidentitymobs-1.0.0-sources.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/mcidentitymobs-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/mcidentitymobs-1.0.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.curse.maven-citadel-331936-0cd3bb3a-7476570.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.curse.maven-citadel-331936-0cd3bb3a-7476570.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/mcidentitymobs.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/mcidentitymobs.mixins.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/MobIdentity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/MobIdentity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/core/GenderAssigner.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/LivingEntityDataMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/LivingEntityDataMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/pipeline/SpawnPipeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/pipeline/SpawnPipeline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/BoolOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/BoolOption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ColorOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ColorOption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ConfigScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ConfigScreen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/EntityMappingOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/EntityMappingOption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/EntityMappingRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/EntityMappingRow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/IconButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/IconButton.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ListOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ListOption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ListRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ListRow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/MapOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/MapOption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/MapRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/MapRow.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/SliderOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/SliderOption.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mcidentitymobs.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mcidentitymobs.mixins.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -304,7 +320,10 @@
       <workItem from="1770528963541" duration="2915000" />
       <workItem from="1770573875563" duration="6410000" />
       <workItem from="1770582725683" duration="2084000" />
-      <workItem from="1770630516566" duration="5340000" />
+      <workItem from="1770630516566" duration="13124000" />
+      <workItem from="1770687366273" duration="5282000" />
+      <workItem from="1770705787122" duration="4023000" />
+      <workItem from="1770734519692" duration="17403000" />
     </task>
     <task id="LOCAL-00001" summary="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;">
       <option name="closed" value="true" />
@@ -418,7 +437,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770514676726</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;">
+      <option name="closed" value="true" />
+      <created>1770676202940</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1770676202941</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
