@@ -1,6 +1,6 @@
 package com.ntexist.mcidentitymobs.event;
 
-import com.ntexist.mcidentitymobs.accessor.LivingEntityAccessor;
+import com.ntexist.mcidentitymobs.api.MobIdentityAPI;
 import com.ntexist.mcidentitymobs.config.ConfigManager;
 import com.ntexist.mcidentitymobs.config.InfectionData;
 import net.minecraft.core.BlockPos;
@@ -78,12 +78,12 @@ public class InfectionHandler {
             newZombie.setCustomNameVisible(target.isCustomNameVisible());
         }
 
-        if (newZombie instanceof LivingEntityAccessor newAcc && target instanceof LivingEntityAccessor targetAcc) {
-            newAcc.mcidentitymobs$setOriginalId(targetType.toString());
-            newAcc.mcidentitymobs$setGender(targetAcc.mcidentitymobs$getGender());
-            newAcc.mcidentitymobs$setMobName(targetAcc.mcidentitymobs$getMobName());
-            newAcc.mcidentitymobs$setPlayerNamed(targetAcc.mcidentitymobs$isPlayerNamed());
-            newAcc.mcidentitymobs$setLayerSettings(targetAcc.mcidentitymobs$getLayerSettings());
+        if (newZombie instanceof LivingEntity && target instanceof LivingEntity) {
+            MobIdentityAPI.setOriginalId(newZombie, targetType.toString());
+            MobIdentityAPI.setGender(newZombie, MobIdentityAPI.getGender(target));
+            MobIdentityAPI.setMobName(newZombie, MobIdentityAPI.getMobName(target));
+            MobIdentityAPI.setPlayerNamed(newZombie, MobIdentityAPI.isPlayerNamed(target));
+            MobIdentityAPI.setLayerSettings(newZombie, MobIdentityAPI.getLayerSettings(target));
         }
 
         if (target instanceof Villager villager && newZombie instanceof ZombieVillager zombieVillager) {
@@ -120,7 +120,7 @@ public class InfectionHandler {
                 } catch (Exception ignored) {}
 
                 if (!extraData.isEmpty()) {
-                    ((LivingEntityAccessor) zombie).mcidentitymobs$setZombieSavedName(extraData.toString());
+                    MobIdentityAPI.setZombieSavedName(zombie, extraData.toString());
                 }
             } catch (Exception e) {}
         }

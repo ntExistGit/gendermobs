@@ -1,6 +1,5 @@
 package com.ntexist.mcidentitymobs.event;
 
-import com.ntexist.mcidentitymobs.accessor.LivingEntityAccessor;
 import com.ntexist.mcidentitymobs.api.MobIdentityAPI;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
@@ -39,9 +38,8 @@ public class ConversionTickHandler {
         if (event.getEntity().level().isClientSide) return;
 
         LivingEntity entity = event.getEntity();
-        if (!(entity instanceof LivingEntityAccessor acc)) return;
 
-        int time = acc.mcidentitymobs$getConversionTime();
+        int time = MobIdentityAPI.getConversionTime(entity);
         if (time <= 0) return;
 
         ServerLevel level = (ServerLevel) entity.level();
@@ -60,12 +58,12 @@ public class ConversionTickHandler {
             }
         }
 
-        acc.mcidentitymobs$setConversionTime(time - decrement);
+        MobIdentityAPI.setConversionTime(entity, time - decrement);
 
-        if (acc.mcidentitymobs$isInConversion()) {
-            float shake = level.random.nextFloat() * 0.8f - 0.4f;   // 0.4 - 0.4
-            entity.yBodyRot += shake * 15;                          // 10
-            entity.setXRot(entity.getXRot() + shake * 8);           // 5
+        if (MobIdentityAPI.isInConversion(entity)) {
+            float shake = level.random.nextFloat() * 0.8f - 0.4f;
+            entity.yBodyRot += shake * 15;
+            entity.setXRot(entity.getXRot() + shake * 8);
         }
 
         if (level.random.nextInt(5) == 0) {
@@ -81,10 +79,11 @@ public class ConversionTickHandler {
                     SoundEvents.ZOMBIE_VILLAGER_AMBIENT, SoundSource.NEUTRAL, 0.8F, 1.0F);
         }
 
-        if (acc.mcidentitymobs$getConversionTime() <= 0) {
+        if (MobIdentityAPI.getConversionTime(entity) <= 0) {
+
             String origId = MobIdentityAPI.getOriginalId(entity);
             if (origId == null || origId.isEmpty()) {
-                acc.mcidentitymobs$setInConversion(false);
+                MobIdentityAPI.setInConversion(entity, false);
                 return;
             }
 
@@ -104,12 +103,8 @@ public class ConversionTickHandler {
                 original.setCustomNameVisible(entity.isCustomNameVisible());
             }
 
-            if (original instanceof LivingEntityAccessor oAcc) {
-                oAcc.mcidentitymobs$setGender(acc.mcidentitymobs$getGender());
-                oAcc.mcidentitymobs$setMobName(acc.mcidentitymobs$getMobName());
-                oAcc.mcidentitymobs$setPlayerNamed(acc.mcidentitymobs$isPlayerNamed());
-                oAcc.mcidentitymobs$setLayerSettings(acc.mcidentitymobs$getLayerSettings());
-            }
+            // Копирование идентичности через API
+            MobIdentityAPI.copyIdentity(entity, original);
 
             if (original instanceof Villager originalVillager && entity instanceof ZombieVillager zombieVillager) {
                 originalVillager.setVillagerData(zombieVillager.getVillagerData());
@@ -133,11 +128,12 @@ public class ConversionTickHandler {
                     }
                 } catch (Exception ignored) {}
 
-                UUID playerUUID = acc.mcidentitymobs$getCuringPlayerUUID();
+                UUID playerUUID = MobIdentityAPI.getCuringPlayerUUID(entity);
                 if (playerUUID != null) {
                     Player player = level.getPlayerByUUID(playerUUID);
                     if (player instanceof ServerPlayer serverPlayer) {
-                        CriteriaTriggers.CURED_ZOMBIE_VILLAGER.trigger(serverPlayer, zombieVillager, originalVillager);
+                        CriteriaTriggers.CURED_ZOMBIE_VILLAGER
+                                .trigger(serverPlayer, zombieVillager, originalVillager);
                     }
                 }
             }
@@ -155,7 +151,7 @@ public class ConversionTickHandler {
                     }
                 } catch (Exception ignored) {}
 
-                String saved = ((LivingEntityAccessor) zombie).mcidentitymobs$getZombieSavedName();
+                String saved = MobIdentityAPI.getZombieSavedName(entity);
                 if (saved != null && !saved.isEmpty()) {
                     try {
                         CompoundTag extraData = net.minecraft.nbt.TagParser.parseTag(saved);
@@ -176,12 +172,11 @@ public class ConversionTickHandler {
             level.playSound(null, original.getX(), original.getY(), original.getZ(),
                     SoundEvents.ZOMBIE_VILLAGER_CONVERTED, SoundSource.NEUTRAL, 1.0F, 1.0F);
             level.sendParticles(ParticleTypes.HAPPY_VILLAGER,
-                    original.getX(), original.getY() + 1.0, original.getZ(), 30, 0.5, 0.8, 0.5, 0.1);
+                    original.getX(), original.getY() + 1.0, original.getZ(),
+                    30, 0.5, 0.8, 0.5, 0.1);
 
-            if (original instanceof LivingEntityAccessor oAcc) {
-                oAcc.mcidentitymobs$setConversionTime(-1);
-                oAcc.mcidentitymobs$setInConversion(false);
-            }
+            MobIdentityAPI.setConversionTime(original, -1);
+            MobIdentityAPI.setInConversion(original, false);
         }
     }
 }

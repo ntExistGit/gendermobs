@@ -1,14 +1,17 @@
 package com.ntexist.mcidentitymobs.api;
 
 import com.ntexist.mcidentitymobs.accessor.LivingEntityAccessor;
+import com.ntexist.mcidentitymobs.config.TextureCounts.GenderCounts;
 import com.ntexist.mcidentitymobs.enums.Gender;
 import com.ntexist.mcidentitymobs.pipeline.SpawnPipeline;
 import com.ntexist.mcidentitymobs.config.ConfigManager;
 import com.ntexist.mcidentitymobs.service.IdentityStorage;
+import com.ntexist.mcidentitymobs.service.LayersService;
 import com.ntexist.mcidentitymobs.service.NameService;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.npc.Villager;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.UUID;
@@ -104,114 +107,140 @@ public final class MobIdentityAPI {
     // -------------------------------------------------------------------------
     @Nullable
     public static String getZombieSavedName(LivingEntity entity) {
-        String name = ((LivingEntityAccessor) entity).mcidentitymobs$getZombieSavedName();
+        String name = IdentityStorage.getZombieSavedName(entity);
         return name.isEmpty() ? null : name;
     }
     public static void setZombieSavedName(LivingEntity entity, @Nullable String name) {
-        ((LivingEntityAccessor) entity).mcidentitymobs$setZombieSavedName(name != null ? name : "");
+        IdentityStorage.setZombieSavedName(entity, name != null ? name : "");
     }
     public static boolean hasZombieSavedName(LivingEntity entity) {
-        return !((LivingEntityAccessor) entity).mcidentitymobs$getZombieSavedName().isEmpty();
+        return !IdentityStorage.getZombieSavedName(entity).isEmpty();
     }
     public static boolean isInConversion(LivingEntity entity) {
-        return ((LivingEntityAccessor) entity).mcidentitymobs$isInConversion();
+        return IdentityStorage.isInConversion(entity);
     }
     public static void setInConversion(LivingEntity entity, boolean value) {
-        ((LivingEntityAccessor) entity).mcidentitymobs$setInConversion(value);
+        IdentityStorage.setInConversion(entity, value);
     }
     public static int getConversionTime(LivingEntity entity) {
-        return ((LivingEntityAccessor) entity).mcidentitymobs$getConversionTime();
+        return IdentityStorage.getConversionTime(entity);
     }
     public static void setConversionTime(LivingEntity entity, int ticks) {
-        ((LivingEntityAccessor) entity).mcidentitymobs$setConversionTime(ticks);
+        IdentityStorage.setConversionTime(entity, ticks);
     }
     public static boolean isBeingCured(LivingEntity entity) {
-        return getConversionTime(entity) > 0;
+        return IdentityStorage.getConversionTime(entity) > 0;
     }
     public static boolean isInfected(LivingEntity entity) {
-        return hasOriginalId(entity);
+        return IdentityStorage.isInfected(entity);
+    }
+
+    public static void copyIdentity(LivingEntity from, LivingEntity to) {
+
+        Gender gender = getGender(from);
+        setGender(to, gender);
+
+        String mobName = getMobName(from);
+        setMobName(to, mobName);
+
+        boolean playerNamed = isPlayerNamed(from);
+        setPlayerNamed(to, playerNamed);
+
+        String originalId = getOriginalId(from);
+        if (originalId != null) setOriginalId(to, originalId);
+
+        LayersService.setLayerSettings(to, LayersService.getLayerSettings(from));
     }
 
     // -------------------------------------------------------------------------
     // Layers
     // -------------------------------------------------------------------------
+
+    public static void randomizeHumanoidLayers(LivingEntity entity, Gender gender) {
+        if (gender == null) return;
+        LayersService.randomizeHumanoidLayers(entity, gender);
+    }
+    public static void assignClothIndex(Villager entity, GenderCounts counts){
+        LayersService.assignClothIndex(entity, (LivingEntityAccessor) entity, counts);
+    }
+
     public static CompoundTag getLayerSettings(LivingEntity entity) {
-        return ((LivingEntityAccessor) entity).mcidentitymobs$getLayerSettings();
+        return LayersService.getLayerSettings(entity);
     }
     public static void setLayerSettings(LivingEntity entity, CompoundTag tag) {
-        ((LivingEntityAccessor) entity).mcidentitymobs$setLayerSettings(tag);
+        LayersService.setLayerSettings(entity, tag);
     }
     public static int getSkinIndex(LivingEntity entity) {
-        return ((LivingEntityAccessor) entity).mcidentitymobs$getSkinIndex();
+        return LayersService.getSkinIndex(entity);
     }
     public static void setSkinIndex(LivingEntity entity, int value) {
-        ((LivingEntityAccessor) entity).mcidentitymobs$setSkinIndex(value);
+        LayersService.setSkinIndex(entity, value);
     }
     public static int getFaceIndex(LivingEntity entity) {
-        return ((LivingEntityAccessor) entity).mcidentitymobs$getFaceIndex();
+        return LayersService.getFaceIndex(entity);
     }
     public static void setFaceIndex(LivingEntity entity, int value) {
-        ((LivingEntityAccessor) entity).mcidentitymobs$setFaceIndex(value);
+        LayersService.setFaceIndex(entity, value);
     }
     public static int getClothIndex(LivingEntity entity) {
-        return ((LivingEntityAccessor) entity).mcidentitymobs$getClothIndex();
+        return LayersService.getClothIndex(entity);
     }
     public static void setClothIndex(LivingEntity entity, int value) {
-        ((LivingEntityAccessor) entity).mcidentitymobs$setClothIndex(value);
+        LayersService.setClothIndex(entity, value);
     }
     public static int getHairIndex(LivingEntity entity) {
-        return ((LivingEntityAccessor) entity).mcidentitymobs$getHairIndex();
+        return LayersService.getHairIndex(entity);
     }
     public static void setHairIndex(LivingEntity entity, int value) {
-        ((LivingEntityAccessor) entity).mcidentitymobs$setHairIndex(value);
+        LayersService.setHairIndex(entity, value);
     }
     public static byte getSkinToneIndex(LivingEntity entity) {
-        return ((LivingEntityAccessor) entity).mcidentitymobs$getSkinToneIndex();
+        return LayersService.getSkinToneIndex(entity);
     }
     public static void setSkinToneIndex(LivingEntity entity, byte value) {
-        ((LivingEntityAccessor) entity).mcidentitymobs$setSkinToneIndex(value);
+        LayersService.setSkinToneIndex(entity, value);
     }
     public static byte getHairColorU(LivingEntity entity) {
-        return ((LivingEntityAccessor) entity).mcidentitymobs$getHairColorU();
+        return LayersService.getHairColorU(entity);
     }
     public static void setHairColorU(LivingEntity entity, byte value) {
-        ((LivingEntityAccessor) entity).mcidentitymobs$setHairColorU(value);
+        LayersService.setHairColorU(entity, value);
     }
     public static byte getHairColorV(LivingEntity entity) {
-        return ((LivingEntityAccessor) entity).mcidentitymobs$getHairColorV();
+        return LayersService.getHairColorV(entity);
     }
     public static void setHairColorV(LivingEntity entity, byte value) {
-        ((LivingEntityAccessor) entity).mcidentitymobs$setHairColorV(value);
+        LayersService.setHairColorV(entity, value);
     }
     public static float getBreastSize(LivingEntity entity) {
-        return ((LivingEntityAccessor) entity).mcidentitymobs$getBreastSize();
+        return LayersService.getBreastSize(entity);
     }
     public static void setBreastSize(LivingEntity entity, float size) {
-        ((LivingEntityAccessor) entity).mcidentitymobs$setBreastSize(size);
+        LayersService.setBreastSize(entity, size);
     }
     public static float getBreastOffsetX(LivingEntity entity) {
-        return ((LivingEntityAccessor) entity).mcidentitymobs$getBreastOffsetX();
+        return LayersService.getBreastOffsetX(entity);
     }
     public static void setBreastOffsetX(LivingEntity entity, float x) {
-        ((LivingEntityAccessor) entity).mcidentitymobs$setBreastOffsetX(x);
+        LayersService.setBreastOffsetX(entity, x);
     }
     public static float getBreastOffsetY(LivingEntity entity) {
-        return ((LivingEntityAccessor) entity).mcidentitymobs$getBreastOffsetY();
+        return LayersService.getBreastOffsetY(entity);
     }
     public static void setBreastOffsetY(LivingEntity entity, float y) {
-        ((LivingEntityAccessor) entity).mcidentitymobs$setBreastOffsetY(y);
+        LayersService.setBreastOffsetY(entity, y);
     }
     public static float getBreastOffsetZ(LivingEntity entity) {
-        return ((LivingEntityAccessor) entity).mcidentitymobs$getBreastOffsetZ();
+        return LayersService.getBreastOffsetZ(entity);
     }
     public static void setBreastOffsetZ(LivingEntity entity, float z) {
-        ((LivingEntityAccessor) entity).mcidentitymobs$setBreastOffsetZ(z);
+        LayersService.setBreastOffsetZ(entity, z);
     }
     public static float getBreastCleavage(LivingEntity entity) {
-        return ((LivingEntityAccessor) entity).mcidentitymobs$getBreastCleavage();
+        return LayersService.getBreastCleavage(entity);
     }
     public static void setBreastCleavage(LivingEntity entity, float cleavage) {
-        ((LivingEntityAccessor) entity).mcidentitymobs$setBreastCleavage(cleavage);
+        LayersService.setBreastCleavage(entity, cleavage);
     }
 
     // -------------------------------------------------------------------------
