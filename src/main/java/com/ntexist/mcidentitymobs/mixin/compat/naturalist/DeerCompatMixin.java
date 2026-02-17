@@ -1,6 +1,7 @@
 package com.ntexist.mcidentitymobs.mixin.compat.naturalist;
 
-import com.ntexist.mcidentitymobs.accessor.LivingEntityAccessor;
+import com.ntexist.mcidentitymobs.api.MobIdentityAPI;
+import com.ntexist.mcidentitymobs.enums.Gender;
 import com.starfish_studios.naturalist.client.model.DeerModel;
 import com.starfish_studios.naturalist.common.entity.Deer;
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,14 +22,12 @@ public abstract class DeerCompatMixin {
     private void onSetCustomAnimations(Deer entity, long instanceId, AnimationState<Deer> animationState, CallbackInfo ci) {
         if (animationState == null || entity.isBaby()) return;
 
-        LivingEntityAccessor accessor = (LivingEntityAccessor) entity;
-        String genderStr = accessor.mcidentitymobs$getGender();
-
-        if (genderStr.isEmpty()) return;
+        Gender gender = MobIdentityAPI.getGender(entity);
+        if (gender == null) return;
 
         CoreGeoBone antlers = ((DeerModel)(Object)this).getAnimationProcessor().getBone("antlers");
         if (antlers == null) return;
 
-        antlers.setHidden(genderStr.equalsIgnoreCase("female"));
+        antlers.setHidden(gender == Gender.FEMALE);
     }
 }

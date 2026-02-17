@@ -1,7 +1,6 @@
 package com.ntexist.mcidentitymobs.client.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.ntexist.mcidentitymobs.accessor.LivingEntityAccessor;
 import com.ntexist.mcidentitymobs.api.MobIdentityAPI;
 import com.ntexist.mcidentitymobs.data.SkinGradientLoader;
 import com.ntexist.mcidentitymobs.data.SkinGradientRule;

@@ -1,8 +1,10 @@
 package com.ntexist.mcidentitymobs.compat.jade;
 
-import com.ntexist.mcidentitymobs.accessor.LivingEntityAccessor;
+import com.ntexist.mcidentitymobs.api.MobIdentityAPI;
+import com.ntexist.mcidentitymobs.enums.Gender;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.LivingEntity;
 import snownee.jade.api.EntityAccessor;
 import snownee.jade.api.IServerDataProvider;
 
@@ -11,9 +13,10 @@ public enum GenderJadeServerProvider implements IServerDataProvider<EntityAccess
 
     @Override
     public void appendServerData(CompoundTag tag, EntityAccessor accessor) {
-        if (accessor.getEntity() instanceof LivingEntityAccessor acc) {
-            tag.putString("MI_Gender", acc.mcidentitymobs$getGender());
-            tag.putInt("MI_ConversionTime", acc.mcidentitymobs$getConversionTime());
+        if (accessor.getEntity() instanceof LivingEntity living) {
+            Gender gender = MobIdentityAPI.getGender(living);
+            tag.putString("MI_Gender", gender != null ? gender.name().toLowerCase() : "");
+            tag.putInt("MI_ConversionTime", MobIdentityAPI.getConversionTime(living));
         }
     }
 

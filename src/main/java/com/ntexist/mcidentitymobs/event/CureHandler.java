@@ -114,11 +114,9 @@ public class CureHandler {
 
         int conversionTime = (int) (baseTime * (minMultiplier + level.random.nextFloat() * (maxMultiplier - minMultiplier)));
 
-        if (target instanceof LivingEntityAccessor acc) {
-            acc.mcidentitymobs$setConversionTime(conversionTime);
-            acc.mcidentitymobs$setInConversion(true);
-            acc.mcidentitymobs$setCuringPlayerUUID(event.getEntity().getUUID());
-        }
+        MobIdentityAPI.setConversionTime(target, conversionTime);
+        MobIdentityAPI.setInConversion(target, true);
+        MobIdentityAPI.setCuringPlayerUUID(target, event.getEntity().getUUID());
 
         level.playSound(null, target.getX(), target.getY(), target.getZ(),
                 SoundEvents.ZOMBIE_VILLAGER_CONVERTED, SoundSource.NEUTRAL, 1.0F, 1.0F);

@@ -1,7 +1,7 @@
 package com.ntexist.mcidentitymobs.mixin.compat.alexsmobs;
 
 import com.github.alexthe666.alexsmobs.entity.EntityElephant;
-import com.ntexist.mcidentitymobs.accessor.LivingEntityAccessor;
+import com.ntexist.mcidentitymobs.api.MobIdentityAPI;
 import com.ntexist.mcidentitymobs.enums.Gender;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -19,13 +19,11 @@ public abstract class ElephantCompatMixin {
     private void onSetTusked(boolean tusked, CallbackInfo ci) {
         if (tusked) {
             EntityElephant elephant = (EntityElephant) (Object) this;
-            LivingEntityAccessor accessor = (LivingEntityAccessor) elephant;
 
-            String genderStr = accessor.mcidentitymobs$getGender();
+            Gender currentGender = MobIdentityAPI.getGender(elephant);
 
-            if (genderStr == null || genderStr.isEmpty() ||
-                    !Gender.fromString(genderStr).equals(Gender.MALE)) {
-                accessor.mcidentitymobs$setGender(Gender.MALE.name().toLowerCase());
+            if (currentGender != Gender.MALE) {
+                MobIdentityAPI.setGender(elephant, Gender.MALE);
             }
         }
     }

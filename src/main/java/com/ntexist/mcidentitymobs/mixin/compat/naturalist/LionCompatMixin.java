@@ -1,6 +1,6 @@
 package com.ntexist.mcidentitymobs.mixin.compat.naturalist;
 
-import com.ntexist.mcidentitymobs.accessor.LivingEntityAccessor;
+import com.ntexist.mcidentitymobs.api.MobIdentityAPI;
 import com.ntexist.mcidentitymobs.enums.Gender;
 import com.starfish_studios.naturalist.common.entity.Lion;
 import net.minecraft.nbt.CompoundTag;
@@ -27,32 +27,20 @@ public abstract class LionCompatMixin {
             CallbackInfoReturnable<SpawnGroupData> cir
     ) {
         Lion lion = (Lion) (Object) this;
-        LivingEntityAccessor accessor = (LivingEntityAccessor) lion;
+        Gender gender = MobIdentityAPI.getGender(lion);
+        if (gender == null) return;
 
-        String genderStr = accessor.mcidentitymobs$getGender();
-        if (genderStr.isEmpty()) {
-            return;
-        }
-
-        Gender gender = Gender.fromString(genderStr);
         boolean hasMane = (gender == Gender.MALE);
-
         lion.setHasMane(hasMane);
     }
 
     @Inject(method = "ageBoundaryReached", at = @At("HEAD"), cancellable = true)
     private void onAgeBoundaryReached(CallbackInfo ci) {
         Lion lion = (Lion) (Object) this;
-        LivingEntityAccessor accessor = (LivingEntityAccessor) lion;
-
-        String genderStr = accessor.mcidentitymobs$getGender();
-
-        if (!genderStr.isEmpty()) {
-            Gender gender = Gender.fromString(genderStr);
+        Gender gender = MobIdentityAPI.getGender(lion);
+        if (gender != null) {
             boolean hasMane = (gender == Gender.MALE);
-
             lion.setHasMane(hasMane);
-
             ci.cancel();
         }
     }
