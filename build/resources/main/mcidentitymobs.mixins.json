@@ -5,15 +5,22 @@
   "compatibilityLevel": "JAVA_17",
   "minVersion": "0.8",
   "client": [
-    "compat.alexsmobs.GazelleCompatMixin",
+    "compat.alexsmobs.client.model.ModelGazelleCompatMixin",
+    "compat.alexsmobs.client.render.RenderMooseCompatMixin",
     "compat.naturalist.DeerCompatMixin",
     "compat.naturalist.ElephantCompatMixin"
   ],
   "mixins": [
+    "AnimalBreedMixin",
     "LivingEntityDataMixin",
     "LivingEntitySpawnMixin",
     "NameTagMixin",
+    "VillagerMakeLoveGenderMixin",
+    "VillagerProfessionMixin",
+    "compat.alexsmobs.AnacondaPartCompatMixin",
+    "compat.alexsmobs.CentipedePartCompatMixin",
     "compat.alexsmobs.ElephantCompatMixin",
+    "compat.alexsmobs.MooseCompatMixin",
     "compat.naturalist.LionCompatMixin"
   ],
   "injectors": {

@@ -3,6 +3,7 @@ package com.ntexist.mcidentitymobs.event;
 import com.ntexist.mcidentitymobs.accessor.LivingEntityAccessor;
 import com.ntexist.mcidentitymobs.config.ConfigManager;
 import com.ntexist.mcidentitymobs.config.InfectionData;
+import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.NbtOps;
 import net.minecraft.nbt.Tag;
@@ -14,10 +15,15 @@ import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.monster.ZombieVillager;
+import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.npc.Villager;
+import net.minecraft.world.entity.npc.WanderingTrader;
+import net.minecraft.world.item.trading.MerchantOffers;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.lang.reflect.Field;
 
 @Mod.EventBusSubscriber(modid = "mcidentitymobs", bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class InfectionHandler {
@@ -26,40 +32,36 @@ public class InfectionHandler {
     public static void onLivingHurt(LivingHurtEvent event) {
         if (event.isCanceled() || event.getAmount() <= 0) return;
 
-        // Only run on server
         if (!(event.getEntity().level() instanceof ServerLevel serverLevel)) return;
 
         LivingEntity target = event.getEntity();
 
-        // Attacker must be a living entity
         Entity source = event.getSource().getEntity();
         if (!(source instanceof LivingEntity attacker)) return;
 
-        // Check if attacker is in zombies list
         ResourceLocation attackerType = EntityType.getKey(attacker.getType());
         if (!ConfigManager.CONFIG.zombies.contains(attackerType.toString())) {
             return;
         }
 
-        // Check if target can be infected
         ResourceLocation targetType = EntityType.getKey(target.getType());
         InfectionData data = ConfigManager.CONFIG.canBeInfected.get(targetType.toString());
         if (data == null) return;
 
-        // Only infect on lethal damage
         float remainingHealth = target.getHealth() - event.getAmount();
         if (remainingHealth > 0) return;
 
-        // Chance based on difficulty (vanilla-like)
         float chance = switch (serverLevel.getDifficulty()) {
-            case PEACEFUL, EASY -> 0.0f;
-            case NORMAL -> 0.5f;
-            case HARD -> 1.0f;
+            case PEACEFUL   -> 0.0f;
+            case EASY       -> ConfigManager.CONFIG.general.chanceInf * 0.5f;
+            case NORMAL     -> ConfigManager.CONFIG.general.chanceInf;
+            case HARD       -> ConfigManager.CONFIG.general.chanceInf * 2.0f;
         };
+
+        chance = Math.max(0.0f, Math.min(1.0f, chance));
 
         if (serverLevel.random.nextFloat() >= chance) return;
 
-        // Parse zombie type from config
         ResourceLocation zombieLoc = ResourceLocation.tryParse(data.zombie);
         if (zombieLoc == null) return;
 
@@ -69,7 +71,6 @@ public class InfectionHandler {
         LivingEntity newZombie = (LivingEntity) zombieType.create(serverLevel);
         if (newZombie == null) return;
 
-        // Copy position, rotation, custom name
         newZombie.moveTo(target.getX(), target.getY(), target.getZ(), target.getYRot(), target.getXRot());
 
         if (target.hasCustomName()) {
@@ -77,15 +78,14 @@ public class InfectionHandler {
             newZombie.setCustomNameVisible(target.isCustomNameVisible());
         }
 
-        // Copy mod-specific data (gender, name, etc.)
         if (newZombie instanceof LivingEntityAccessor newAcc && target instanceof LivingEntityAccessor targetAcc) {
             newAcc.mcidentitymobs$setOriginalId(targetType.toString());
             newAcc.mcidentitymobs$setGender(targetAcc.mcidentitymobs$getGender());
             newAcc.mcidentitymobs$setMobName(targetAcc.mcidentitymobs$getMobName());
             newAcc.mcidentitymobs$setPlayerNamed(targetAcc.mcidentitymobs$isPlayerNamed());
+            newAcc.mcidentitymobs$setLayerSettings(targetAcc.mcidentitymobs$getLayerSettings());
         }
 
-        // Special handling for villager -> zombie villager
         if (target instanceof Villager villager && newZombie instanceof ZombieVillager zombieVillager) {
             zombieVillager.setVillagerData(villager.getVillagerData());
             CompoundTag offersTag = villager.getOffers().createTag();
@@ -95,16 +95,43 @@ public class InfectionHandler {
             zombieVillager.setGossips(gossipsNbt);
         }
 
-        // Play infection sound
+        if (target instanceof WanderingTrader trader && newZombie instanceof ZombieVillager zombie) {
+            try {
+                Field offersField = AbstractVillager.class.getDeclaredField("offers");
+                offersField.setAccessible(true);
+                MerchantOffers offers = (MerchantOffers) offersField.get(trader);
+                if (offers != null && !offers.isEmpty()) {
+                    CompoundTag offersTag = offers.createTag();
+                    Field tradeField = ZombieVillager.class.getDeclaredField("tradeOffers");
+                    tradeField.setAccessible(true);
+                    tradeField.set(zombie, offersTag);
+                }
+
+                CompoundTag extraData = new CompoundTag();
+                extraData.putInt("DespawnDelay", trader.getDespawnDelay());
+
+                try {
+                    Field wanderField = WanderingTrader.class.getDeclaredField("wanderTarget");
+                    wanderField.setAccessible(true);
+                    BlockPos wanderPos = (BlockPos) wanderField.get(trader);
+                    if (wanderPos != null) {
+                        extraData.putLong("WanderTarget", wanderPos.asLong());
+                    }
+                } catch (Exception ignored) {}
+
+                if (!extraData.isEmpty()) {
+                    ((LivingEntityAccessor) zombie).mcidentitymobs$setZombieSavedName(extraData.toString());
+                }
+            } catch (Exception e) {}
+        }
+
         serverLevel.playSound(null, newZombie.getX(), newZombie.getY(), newZombie.getZ(),
                 SoundEvents.ZOMBIE_INFECT,
                 SoundSource.HOSTILE, 1.0F, 1.0F);
 
-        // Spawn new entity and remove old one
         serverLevel.addFreshEntity(newZombie);
         target.remove(Entity.RemovalReason.DISCARDED);
 
-        // Cancel damage
         event.setCanceled(true);
     }
 }

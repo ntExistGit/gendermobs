@@ -13,6 +13,7 @@ import java.util.*;
 public class MapOption extends OptionEntry<Map<String, EntryData>> {
 
     private boolean expanded = true;
+    private IconButton sort;
     private StringWidget labelWidget;
     private Button toggle;
     private IconButton reset;
@@ -54,15 +55,23 @@ public class MapOption extends OptionEntry<Map<String, EntryData>> {
                 expanded ? "mcidentitymobs.tooltip.expanded.minimize" : "mcidentitymobs.tooltip.expanded.unwrap"
         )));
 
+        sort = new IconButton(
+                x + toggle.getWidth(), y, 20, 20,
+                ResourceLocation.tryBuild("mcidentitymobs", "textures/gui/sprites/icon/sort.png"),
+                false,
+                btn -> onSort()
+        );
+        sort.setTooltip(Tooltip.create(Component.translatable("mcidentitymobs.config.tooltip.sort")));
+
         labelWidget = new StringWidget(
-                x + 20, y, width - 40, 20,
+                x + 40, y, width - 60, 20,
                 Component.translatable(label),
                 Minecraft.getInstance().font
         );
         labelWidget.alignCenter();
 
         reset = new IconButton(
-                x + toggle.getWidth() + labelWidget.getWidth(), y, 20, 20,
+                x + toggle.getWidth() + sort.getWidth() + labelWidget.getWidth(), y, 20, 20,
                 ResourceLocation.tryBuild("mcidentitymobs", "textures/gui/sprites/icon/reset.png"),
                 false,
                 btn -> onReset()
@@ -70,6 +79,7 @@ public class MapOption extends OptionEntry<Map<String, EntryData>> {
         reset.setTooltip(Tooltip.create(Component.translatable("mcidentitymobs.config.tooltip.reset")));
 
         widgets.add(toggle);
+        widgets.add(sort);
         widgets.add(labelWidget);
         widgets.add(reset);
 
@@ -90,6 +100,23 @@ public class MapOption extends OptionEntry<Map<String, EntryData>> {
 
         widgets.addAll(MapRow.buildAddRow(x + 20, rowY, width - 20, map, rebuild));
         return widgets;
+    }
+
+    private void onSort() {
+        Map<String, EntryData> currentMap = getter.get();
+
+        Map<String, EntryData> sortedMap = new LinkedHashMap<>();
+
+        currentMap.keySet()
+                .stream()
+                .sorted(String.CASE_INSENSITIVE_ORDER)
+                .forEach(key -> sortedMap.put(key, currentMap.get(key)));
+
+        setter.accept(sortedMap);
+
+        if (this.rebuild != null) {
+            this.rebuild.run();
+        }
     }
 
     @Override

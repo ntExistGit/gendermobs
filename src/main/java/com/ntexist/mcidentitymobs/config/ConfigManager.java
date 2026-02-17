@@ -20,6 +20,9 @@ public class ConfigManager {
     public static Path NAMES_DIR;
     public static Path DEFAULT_NAMES_FILE;
     public static Path CUSTOM_NAMES_FILE;
+    public static Path TEXTURE_COUNTS;
+
+    public static TextureCounts TEXTURE_COUNTS_DATA;
 
     public static ModConfig CONFIG;
     public static ModConfig WORKING_COPY;
@@ -32,6 +35,8 @@ public class ConfigManager {
         DEFAULT_NAMES_FILE = NAMES_DIR.resolve("default_names.json");
         CUSTOM_NAMES_FILE = NAMES_DIR.resolve("custom_names.json");
 
+        TEXTURE_COUNTS = NAMES_DIR.resolve("texture_counts.json");
+
         load();
     }
 
@@ -42,6 +47,9 @@ public class ConfigManager {
             }
 
             initNameFiles();
+            initNameFiles();
+            initTextureCount();
+            loadTextureCounts();
 
             if (!Files.exists(FILE)) {
                 CONFIG = ModConfig.defaultConfig();
@@ -61,6 +69,75 @@ public class ConfigManager {
         }
     }
 
+    private static void initTextureCount() {
+        try {
+            if (!Files.exists(TEXTURE_COUNTS)) {
+                String emptyJson = """
+                {
+                    "male": {
+                        "skin": 5,
+                        "face": 22,
+                        "hair": 40,
+                        "clothing": {
+                            "none": 10,
+                            "child": 12
+                        }
+                    },
+                    "female": {
+                        "skin": 5,
+                        "face": 22,
+                        "hair": 40,
+                        "clothing": {
+                            "baby": 10,
+                            "child": 12,
+                            "none": 10,
+                            "toddler": 20,
+                            "byProfession": {
+                                "archer": 5,
+                                "armorer": 5,
+                                "baker": 5,
+                                "butcher": 6,
+                                "cartographer": 5,
+                                "cleric": 5,
+                                "cultist": 1,
+                                "farmer": 5,
+                                "fisherman": 5,
+                                "fletcher": 5,
+                                "guard": 5,
+                                "leatherworker": 5,
+                                "librarian": 5,
+                                "mason": 5,
+                                "miner": 5,
+                                "nitwit": 1,
+                                "shepherd": 5,
+                                "toolsmith": 5,
+                                "weaponsmith": 5
+                            }
+                        }
+                    }
+                }
+                """;
+                Files.writeString(TEXTURE_COUNTS, emptyJson);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    private static void loadTextureCounts() {
+        try {
+            if (Files.exists(TEXTURE_COUNTS)) {
+                String json = Files.readString(TEXTURE_COUNTS);
+                TEXTURE_COUNTS_DATA = GSON.fromJson(json, TextureCounts.class);
+            } else {
+                TEXTURE_COUNTS_DATA = new TextureCounts();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+            TEXTURE_COUNTS_DATA = new TextureCounts();
+        }
+    }
+
     private static void initNameFiles() {
         try {
             if (!Files.exists(DEFAULT_NAMES_FILE)) {
@@ -75,8 +152,8 @@ public class ConfigManager {
             if (!Files.exists(CUSTOM_NAMES_FILE)) {
                 String emptyJson = """
                 {
-                  "female_names": [],
-                  "male_names": []
+                    "female_names": [],
+                    "male_names": []
                 }
                 """;
                 Files.writeString(CUSTOM_NAMES_FILE, emptyJson);
@@ -125,12 +202,15 @@ public class ConfigManager {
     public static void resetAllConfig() {
         ModConfig defaultConfig = ModConfig.defaultConfig();
 
+        ConfigManager.WORKING_COPY.general.femaleScale      = defaultConfig.general.femaleScale;
         ConfigManager.WORKING_COPY.general.showNames        = defaultConfig.general.showNames;
         ConfigManager.WORKING_COPY.general.showColors       = defaultConfig.general.showColors;
+        ConfigManager.WORKING_COPY.general.usePlayerModel   = defaultConfig.general.usePlayerModel;
 
-        ConfigManager.WORKING_COPY.jade.jadeIcons        = defaultConfig.jade.jadeIcons;
-        ConfigManager.WORKING_COPY.jade.offsetY          = defaultConfig.jade.offsetY;
-        ConfigManager.WORKING_COPY.jade.conversionTime   = defaultConfig.jade.conversionTime;
+        ConfigManager.WORKING_COPY.jade.jadeIcons           = defaultConfig.jade.jadeIcons;
+        ConfigManager.WORKING_COPY.jade.jadeIconUnknown     = defaultConfig.jade.jadeIconUnknown;
+        ConfigManager.WORKING_COPY.jade.offsetY             = defaultConfig.jade.offsetY;
+        ConfigManager.WORKING_COPY.jade.conversionTime      = defaultConfig.jade.conversionTime;
 
         ConfigManager.WORKING_COPY.colors.male              = defaultConfig.colors.male;
         ConfigManager.WORKING_COPY.colors.female            = defaultConfig.colors.female;
@@ -143,6 +223,10 @@ public class ConfigManager {
         ConfigManager.WORKING_COPY.customNonHumanoid        = new HashMap<>(defaultConfig.customNonHumanoid);
 
         ConfigManager.WORKING_COPY.zombies                  = new HashSet<>(defaultConfig.zombies);
+
+        ConfigManager.WORKING_COPY.general.chanceInf        = defaultConfig.general.chanceInf;
+        ConfigManager.WORKING_COPY.general.timeMinMult      = defaultConfig.general.timeMinMult;
+        ConfigManager.WORKING_COPY.general.timeMaxMult      = defaultConfig.general.timeMaxMult;
 
         ConfigManager.WORKING_COPY.canBeInfected            = new HashMap<>(defaultConfig.canBeInfected);
     }

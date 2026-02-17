@@ -56,8 +56,14 @@ public enum GenderJadeProvider implements IEntityComponentProvider {
         MutableComponent nameText = living.getDisplayName().copy();
 
         if (ConfigManager.CONFIG.jade.jadeIcons) {
-            tooltip.add(0, new GenderIconElement(bgIcon, fgIcon, colorInt));
-            tooltip.append(0, helper.text(Component.literal("  ")));
+            boolean showIcon = true;
+            if (gender.isEmpty() || "unknown".equals(genderLower)) {
+                showIcon = ConfigManager.CONFIG.jade.jadeIconUnknown;
+            }
+            if (showIcon) {
+                tooltip.add(0, new GenderIconElement(bgIcon, fgIcon, colorInt));
+                tooltip.append(0, helper.text(Component.literal("  ")));
+            }
         }
 
         if (ConfigManager.CONFIG.general.showColors) {

@@ -13,6 +13,7 @@ import java.util.*;
 public class ListOption extends OptionEntry<Set<String>> {
 
     private boolean expanded = true;
+    private IconButton sort;
     private StringWidget labelWidget;
     private Button toggle;
     private IconButton reset;
@@ -54,15 +55,23 @@ public class ListOption extends OptionEntry<Set<String>> {
                 expanded ? "mcidentitymobs.tooltip.expanded.minimize" : "mcidentitymobs.tooltip.expanded.unwrap"
         )));
 
+        sort = new IconButton(
+                x + toggle.getWidth(), y, 20, 20,
+                ResourceLocation.tryBuild("mcidentitymobs", "textures/gui/sprites/icon/sort.png"),
+                false,
+                btn -> onSort()
+        );
+        sort.setTooltip(Tooltip.create(Component.translatable("mcidentitymobs.config.tooltip.sort")));
+
         labelWidget = new StringWidget(
-                x + 20, y, width - 40, 20,
+                x + 40, y, width - 60, 20,
                 Component.translatable(label),
                 Minecraft.getInstance().font
         );
         labelWidget.alignCenter();
 
         reset = new IconButton(
-                x + toggle.getWidth() + labelWidget.getWidth(), y, 20, 20,
+                x + toggle.getWidth() + sort.getWidth() + labelWidget.getWidth(), y, 20, 20,
                 ResourceLocation.tryBuild("mcidentitymobs", "textures/gui/sprites/icon/reset.png"),
                 false,
                 btn -> onReset()
@@ -70,6 +79,7 @@ public class ListOption extends OptionEntry<Set<String>> {
         reset.setTooltip(Tooltip.create(Component.translatable("mcidentitymobs.config.tooltip.reset")));
 
         widgets.add(toggle);
+        widgets.add(sort);
         widgets.add(labelWidget);
         widgets.add(reset);
 
@@ -90,6 +100,22 @@ public class ListOption extends OptionEntry<Set<String>> {
 
         widgets.addAll(ListRow.buildAddRow(x + 20, rowY, width - 20, set, rebuild));
         return widgets;
+    }
+
+    private void onSort() {
+        Set<String> currentSet = getter.get();
+
+        Set<String> sortedSet = new LinkedHashSet<>();
+
+        currentSet.stream()
+                .sorted(String.CASE_INSENSITIVE_ORDER)
+                .forEach(sortedSet::add);
+
+        setter.accept(sortedSet);
+
+        if (this.rebuild != null) {
+            this.rebuild.run();
+        }
     }
 
     @Override

@@ -68,6 +68,13 @@ public class ConfigScreen extends Screen {
             options.add(new SpacerOption(12));
 
             options.add(new BoolOption(
+                    "mcidentitymobs.config.female_scale",
+                    "mcidentitymobs.config.tooltip.female_scale",
+                    () -> ConfigManager.WORKING_COPY.general.femaleScale,
+                    v -> ConfigManager.WORKING_COPY.general.femaleScale = v,
+                    true));
+
+            options.add(new BoolOption(
                     "mcidentitymobs.config.show_names",
                     "mcidentitymobs.config.tooltip.show_names",
                     () -> ConfigManager.WORKING_COPY.general.showNames,
@@ -81,6 +88,13 @@ public class ConfigScreen extends Screen {
                     v -> ConfigManager.WORKING_COPY.general.showColors = v,
                     false));
 
+            options.add(new BoolOption(
+                    "mcidentitymobs.config.usePlayerModel",
+                    "mcidentitymobs.config.tooltip.usePlayerModel",
+                    () -> ConfigManager.WORKING_COPY.general.usePlayerModel,
+                    v -> ConfigManager.WORKING_COPY.general.usePlayerModel = v,
+                    true));
+
             if (ModList.get().isLoaded("jade")) {
                 options.add(new SpacerOption(12));
 
@@ -89,6 +103,13 @@ public class ConfigScreen extends Screen {
                         "mcidentitymobs.config.tooltip.jade_icons",
                         () -> ConfigManager.WORKING_COPY.jade.jadeIcons,
                         v -> ConfigManager.WORKING_COPY.jade.jadeIcons = v,
+                        false));
+
+                options.add(new BoolOption(
+                        "mcidentitymobs.config.jade_unknown_icon",
+                        "mcidentitymobs.config.tooltip.jade_unknown_icon",
+                        () -> ConfigManager.WORKING_COPY.jade.jadeIconUnknown,
+                        v -> ConfigManager.WORKING_COPY.jade.jadeIconUnknown = v,
                         false));
 
                 options.add(new SliderOption(
@@ -253,6 +274,31 @@ public class ConfigScreen extends Screen {
         tabs.add(new Tab("mcidentitymobs.config.tab.can_be_infected", () -> {
             options.clear();
             options.add(new SpacerOption(12));
+
+            options.add(new SliderOption(
+                    "mcidentitymobs.config.chanceInf",
+                    "mcidentitymobs.config.tooltip.chanceInf",
+                    0.0f, 1.0f, 0.01f,
+                    () -> ConfigManager.WORKING_COPY.general.chanceInf,
+                    v -> ConfigManager.WORKING_COPY.general.chanceInf = v,
+                    0.5f
+            ));
+            options.add(new SliderOption(
+                    "mcidentitymobs.config.timeMinMult",
+                    "mcidentitymobs.config.tooltip.timeMinMult",
+                    0.0f, 5.0f, 0.01f,
+                    () -> ConfigManager.WORKING_COPY.general.timeMinMult,
+                    v -> ConfigManager.WORKING_COPY.general.timeMinMult = v,
+                    0.75f
+            ));
+            options.add(new SliderOption(
+                    "mcidentitymobs.config.timeMaxMult",
+                    "mcidentitymobs.config.tooltip.timeMaxMult",
+                    0.0f, 5.0f, 0.01f,
+                    () -> ConfigManager.WORKING_COPY.general.timeMaxMult,
+                    v -> ConfigManager.WORKING_COPY.general.timeMaxMult = v,
+                    1.25f
+            ));
 
             EntityMappingOption canBeInfectedOption = new EntityMappingOption(
                     "mcidentitymobs.config.can_be_infected",

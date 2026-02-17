@@ -25,15 +25,22 @@ public class ModConfig {
     public static ModConfig defaultConfig() {
         ModConfig cfg = new ModConfig();
 
+        cfg.general.femaleScale     = true;
         cfg.general.showNames       = true;
         cfg.general.showColors      = false;
+        cfg.general.usePlayerModel  = true;
 
         cfg.jade.jadeIcons          = true;
+        cfg.jade.jadeIconUnknown    = false;
         cfg.jade.offsetY            = -3.5f;
         cfg.jade.conversionTime     = true;
 
         cfg.colors.male             = "#5555FF";
         cfg.colors.female           = "#FF55FF";
+
+        cfg.general.chanceInf       = 0.5f;
+        cfg.general.timeMinMult     = 0.75f;
+        cfg.general.timeMaxMult     = 1.25f;
 
         cfg.general.useDefaultNames = true;
 
@@ -124,7 +131,7 @@ public class ModConfig {
                         "minecraft:zombie_villager",
                         true,
                         "minecraft:weakness",
-                        "minecraft:golden_apple",
+                        "minecraft:emerald",
                         3600
                 )
         );
@@ -147,107 +154,99 @@ public class ModConfig {
                             "minecraft:zombie_villager",
                             true,
                             "minecraft:weakness",
-                            "minecraft:golden_apple",
+                            "minecraft:iron_sword",
                             3600
                     )
             );
         }
 
+        // VanillaBackport
+        if (ModList.get().isLoaded("vanillabackport")) {
+            cfg.customNonHumanoid.put("minecraft:armadillo", new EntryData(0.50f, false));
+        }
+
         // Alex's Mobs
         if (ModList.get().isLoaded("alexsmobs")) {
 
-            // Mammals
-            cfg.customNonHumanoid.put("alexsmobs:grizzly_bear", new EntryData(0.45f, false));
-            cfg.customNonHumanoid.put("alexsmobs:gorilla", new EntryData(0.65f, false));
-            cfg.customNonHumanoid.put("alexsmobs:capuchin_monkey", new EntryData(0.60f, false));
-            cfg.customNonHumanoid.put("alexsmobs:gelada_monkey", new EntryData(0.70f, false));
-            cfg.customNonHumanoid.put("alexsmobs:snow_leopard", new EntryData(0.50f, false));
-            cfg.customNonHumanoid.put("alexsmobs:tiger", new EntryData(0.50f, false));
-            cfg.customNonHumanoid.put("alexsmobs:elephant", new EntryData(0.65f, false));
-            cfg.customNonHumanoid.put("alexsmobs:gazelle", new EntryData(0.70f, false));
-            cfg.customNonHumanoid.put("alexsmobs:moose", new EntryData(0.55f, false));
-            cfg.customNonHumanoid.put("alexsmobs:bison", new EntryData(0.60f, false));
-            cfg.customNonHumanoid.put("alexsmobs:rhinoceros", new EntryData(0.50f, false));
-            cfg.customNonHumanoid.put("alexsmobs:kangaroo", new EntryData(0.50f, false));
-            cfg.customNonHumanoid.put("alexsmobs:tasmanian_devil", new EntryData(0.55f, false));
-            cfg.customNonHumanoid.put("alexsmobs:raccoon", new EntryData(0.60f, false));
-            cfg.customNonHumanoid.put("alexsmobs:jerboa", new EntryData(0.65f, false));
-            cfg.customNonHumanoid.put("alexsmobs:skunk", new EntryData(0.55f, false));
-            cfg.customNonHumanoid.put("alexsmobs:platypus", new EntryData(0.50f, false));
-            cfg.customNonHumanoid.put("alexsmobs:orca", new EntryData(0.50f, false));
-            cfg.customNonHumanoid.put("alexsmobs:seal", new EntryData(0.55f, false));
-            cfg.customNonHumanoid.put("alexsmobs:cachalot_whale", new EntryData(0.70f, false));
-            cfg.customNonHumanoid.put("alexsmobs:sea_bear", new EntryData(0.50f, false));
-            cfg.customNonHumanoid.put("alexsmobs:dropbear", new EntryData(0.45f, false)); // Mythical Australian predator
-            cfg.customNonHumanoid.put("alexsmobs:anteater", new EntryData(0.50f, false));
-            cfg.customNonHumanoid.put("alexsmobs:maned_wolf", new EntryData(0.55f, false));
-
-            // Birds
-            cfg.customNonHumanoid.put("alexsmobs:hummingbird", new EntryData(0.60f, false));
-            cfg.customNonHumanoid.put("alexsmobs:emu", new EntryData(0.60f, false));
-            cfg.customNonHumanoid.put("alexsmobs:bald_eagle", new EntryData(0.50f, false));
-            cfg.customNonHumanoid.put("alexsmobs:soul_vulture", new EntryData(0.55f, false));
-            cfg.customNonHumanoid.put("alexsmobs:shoebill", new EntryData(0.50f, false));
-            cfg.customNonHumanoid.put("alexsmobs:seagull", new EntryData(0.55f, false));
-            cfg.customNonHumanoid.put("alexsmobs:toucan", new EntryData(0.55f, false));
-            cfg.customNonHumanoid.put("alexsmobs:blue_jay", new EntryData(0.55f, false));
-            cfg.customNonHumanoid.put("alexsmobs:potoo", new EntryData(0.50f, false));
-            cfg.customNonHumanoid.put("alexsmobs:roadrunner", new EntryData(0.55f, false));
-            cfg.customNonHumanoid.put("alexsmobs:crow", new EntryData(0.50f, false));
-            cfg.customNonHumanoid.put("alexsmobs:sunbird", new EntryData(0.60f, false));
-
-            // Reptiles
+            cfg.customNonHumanoid.put("alexsmobs:grizzly_bear", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:roadrunner", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:gazelle", new EntryData(0.55f, false));
             cfg.customNonHumanoid.put("alexsmobs:crocodile", new EntryData(0.50f, false));
-            cfg.customNonHumanoid.put("alexsmobs:caiman", new EntryData(0.50f, false));
-            cfg.customNonHumanoid.put("alexsmobs:komodo_dragon", new EntryData(0.45f, false));
-            cfg.customNonHumanoid.put("alexsmobs:alligator_snapping_turtle", new EntryData(0.55f, false));
-            cfg.customNonHumanoid.put("alexsmobs:rattlesnake", new EntryData(0.55f, false));
-            cfg.customNonHumanoid.put("alexsmobs:anaconda", new EntryData(0.60f, false));
-            cfg.customNonHumanoid.put("alexsmobs:terrapin", new EntryData(0.55f, false));
-
-            // Fish
+            cfg.customNonHumanoid.put("alexsmobs:fly", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:hummingbird", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:orca", new EntryData(0.55f, false));
+            cfg.customNonHumanoid.put("alexsmobs:gorilla", new EntryData(0.70f, false));
+            cfg.customNonHumanoid.put("alexsmobs:rattlesnake", new EntryData(0.50f, false));
             cfg.customNonHumanoid.put("alexsmobs:hammerhead_shark", new EntryData(0.60f, false));
-            cfg.customNonHumanoid.put("alexsmobs:catfish", new EntryData(0.50f, false));
-            cfg.customNonHumanoid.put("alexsmobs:blobfish", new EntryData(0.50f, false));
-            cfg.customNonHumanoid.put("alexsmobs:flying_fish", new EntryData(0.55f, false));
-            cfg.customNonHumanoid.put("alexsmobs:devils_hole_pupfish", new EntryData(0.50f, false));
             cfg.customNonHumanoid.put("alexsmobs:lobster", new EntryData(0.50f, false));
-            cfg.customNonHumanoid.put("alexsmobs:giant_squid", new EntryData(0.45f, false));
-            cfg.customNonHumanoid.put("alexsmobs:frilled_shark", new EntryData(0.55f, false)); // Prehistoric shark
+            cfg.customNonHumanoid.put("alexsmobs:komodo_dragon", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:capuchin_monkey", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:moose", new EntryData(0.65f, false));
+            cfg.customNonHumanoid.put("alexsmobs:raccoon", new EntryData(0.55f, false));
+            cfg.customNonHumanoid.put("alexsmobs:blobfish", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:seal", new EntryData(0.60f, false));
+            cfg.customNonHumanoid.put("alexsmobs:cockroach", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:shoebill", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:elephant", new EntryData(0.55f, false));
+            cfg.customNonHumanoid.put("alexsmobs:centipede_head", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:snow_leopard", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:crow", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:alligator_snapping_turtle", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:mantis_shrimp", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:emu", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:platypus", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:tasmanian_devil", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:kangaroo", new EntryData(0.55f, false));
+            cfg.customNonHumanoid.put("alexsmobs:cachalot_whale", new EntryData(0.65f, false));
+            cfg.customNonHumanoid.put("alexsmobs:leafcutter_ant", new EntryData(0.90f, false));
+            cfg.customNonHumanoid.put("alexsmobs:bald_eagle", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:tiger", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:tarantula_hawk", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:frilled_shark", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:mimic_octopus", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:seagull", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:toucan", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:maned_wolf", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:anaconda", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:anteater", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:gelada_monkey", new EntryData(0.70f, false));
+            cfg.customNonHumanoid.put("alexsmobs:jerboa", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:terrapin", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:bison", new EntryData(0.60f, false));
+            cfg.customNonHumanoid.put("alexsmobs:giant_squid", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:devils_hole_pupfish", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:catfish", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:flying_fish", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:rain_frog", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:potoo", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:mudskipper", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:rhinoceros", new EntryData(0.60f, false));
+            cfg.customNonHumanoid.put("alexsmobs:sugar_glider", new EntryData(0.65f, false));
+            cfg.customNonHumanoid.put("alexsmobs:skunk", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:blue_jay", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:caiman", new EntryData(0.50f, false));
 
-            // Amphibians
-            cfg.customNonHumanoid.put("alexsmobs:rain_frog", new EntryData(0.55f, false));
+            cfg.customNonHumanoid.put("alexsmobs:sunbird", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:crimson_mosquito", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:endergrade", new EntryData(0.50f, false));
             cfg.customNonHumanoid.put("alexsmobs:warped_toad", new EntryData(0.50f, false));
-
-            // Arthropods & Insects
-            cfg.customNonHumanoid.put("alexsmobs:cockroach", new EntryData(0.65f, false)); // Females produce egg cases
-            cfg.customNonHumanoid.put("alexsmobs:fly", new EntryData(0.60f, false)); // Females lay eggs in organic matter
-            cfg.customNonHumanoid.put("alexsmobs:leafcutter_ant", new EntryData(0.95f, false)); // Colony: queen + sterile female workers
-            cfg.customNonHumanoid.put("alexsmobs:mantis_shrimp", new EntryData(0.50f, false)); // Marine crustaceans, equal ratio
-            cfg.customNonHumanoid.put("alexsmobs:tarantula_hawk", new EntryData(0.75f, false));
-            cfg.customNonHumanoid.put("alexsmobs:crimson_mosquito", new EntryData(1.00f, false)); // Only females drink blood for eggs
-
-            // Mollusks & Cephalopods
-            cfg.customNonHumanoid.put("alexsmobs:mimic_octopus", new EntryData(0.50f, false)); // Males die after mating
-
-            // Other Aquatic
-            cfg.customNonHumanoid.put("alexsmobs:mudskipper", new EntryData(0.55f, false)); // Amphibious fish
-
-            // Fantasy With Real-world Analogues
-            cfg.customNonHumanoid.put("alexsmobs:laviathan", new EntryData(0.45f, false)); // Lava whale, similar to cetaceans
-            cfg.customNonHumanoid.put("alexsmobs:straddler", new EntryData(0.50f, false)); // Lava creature
-            cfg.customNonHumanoid.put("alexsmobs:stradpole", new EntryData(0.50f, false)); // Lava tadpole
-            cfg.customNonHumanoid.put("alexsmobs:cosmaw", new EntryData(0.50f, false)); // Cosmic creature with terrestrial traits
-            cfg.customNonHumanoid.put("alexsmobs:tusklin", new EntryData(0.60f, false)); // Mammoth-like creature
-            cfg.customNonHumanoid.put("alexsmobs:froststalker", new EntryData(0.50f, false)); // Cold biome predator
+            cfg.customNonHumanoid.put("alexsmobs:soul_vulture", new EntryData(0.50f, false));
             cfg.customNonHumanoid.put("alexsmobs:mungus", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:warped_mosco", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:dropbear", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:enderiophage", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:froststalker", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:tusklin", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:laviathan", new EntryData(0.65f, false));
+            cfg.customNonHumanoid.put("alexsmobs:cosmaw", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:flutter", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:cosmic_cod", new EntryData(0.50f, false));
             cfg.customNonHumanoid.put("alexsmobs:bunfungus", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:sea_bear", new EntryData(0.50f, false));
+            cfg.customNonHumanoid.put("alexsmobs:rocky_roller", new EntryData(0.50f, false));
 
-            // Additional Creatures
-            cfg.customNonHumanoid.put("alexsmobs:sugar_glider", new EntryData(0.55f, false));
-
-            cfg.customHumanoid.put("alexsmobs:underminer", new EntryData(0.50f, false));
-            cfg.customHumanoid.put("alexsmobs:murmur", new EntryData(0.50f, false));
+            cfg.customHumanoid.put("alexsmobs:murmur", new EntryData(0.80f, false));
+            cfg.customHumanoid.put("alexsmobs:underminer", new EntryData(0.20f, true));
         }
 
         // Naturalist
@@ -308,13 +307,19 @@ public class ModConfig {
     }
 
     public static class General {
+        public boolean  femaleScale     = true;
         public boolean  showNames       = true;
         public boolean  showColors      = false;
+        public boolean  usePlayerModel  = true;
         public boolean  useDefaultNames = true;
+        public float    chanceInf       = 0.5f;
+        public float    timeMinMult     = 0.75f;
+        public float    timeMaxMult     = 1.25f;
     }
 
     public static class Jade {
         public boolean  jadeIcons       = true;
+        public boolean  jadeIconUnknown = false;
         public float    offsetY         = -3.5f;
         public boolean  conversionTime  = true;
     }

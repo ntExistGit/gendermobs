@@ -11,9 +11,25 @@
       "defineSynchedData": "Lnet/minecraft/world/entity/LivingEntity;m_8097_()V",
       "readAdditionalSaveData": "Lnet/minecraft/world/entity/LivingEntity;m_7378_(Lnet/minecraft/nbt/CompoundTag;)V"
     },
+    "com/ntexist/mcidentitymobs/mixin/VillagerProfessionMixin": {
+      "setVillagerData": "Lnet/minecraft/world/entity/npc/Villager;m_34375_(Lnet/minecraft/world/entity/npc/VillagerData;)V"
+    },
+    "com/ntexist/mcidentitymobs/mixin/AnimalBreedMixin": {
+      "spawnChildFromBreeding(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/animal/Animal;)V": "Lnet/minecraft/world/entity/animal/Animal;m_27563_(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/animal/Animal;)V",
+      "canMate(Lnet/minecraft/world/entity/animal/Animal;)Z": "Lnet/minecraft/world/entity/animal/Animal;m_7848_(Lnet/minecraft/world/entity/animal/Animal;)Z"
+    },
+    "com/ntexist/mcidentitymobs/mixin/VillagerMakeLoveGenderMixin": {
+      "isBreedingPossible(Lnet/minecraft/world/entity/npc/Villager;)Z": "Lnet/minecraft/world/entity/ai/behavior/VillagerMakeLove;m_24639_(Lnet/minecraft/world/entity/npc/Villager;)Z"
+    },
+    "com/ntexist/mcidentitymobs/mixin/compat/alexsmobs/CentipedePartCompatMixin": {
+      "tick": "Lcom/github/alexthe666/alexsmobs/entity/EntityCentipedeBody;m_8119_()V"
+    },
     "com/ntexist/mcidentitymobs/mixin/compat/naturalist/LionCompatMixin": {
       "finalizeSpawn": "Lcom/starfish_studios/naturalist/common/entity/Lion;m_6518_(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/world/entity/SpawnGroupData;Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/world/entity/SpawnGroupData;",
       "ageBoundaryReached": "Lcom/starfish_studios/naturalist/common/entity/Lion;m_30232_()V"
+    },
+    "com/ntexist/mcidentitymobs/mixin/compat/alexsmobs/AnacondaPartCompatMixin": {
+      "tick": "Lcom/github/alexthe666/alexsmobs/entity/EntityAnacondaPart;m_8119_()V"
     }
   },
   "data": {
@@ -29,9 +45,25 @@
         "defineSynchedData": "Lnet/minecraft/world/entity/LivingEntity;m_8097_()V",
         "readAdditionalSaveData": "Lnet/minecraft/world/entity/LivingEntity;m_7378_(Lnet/minecraft/nbt/CompoundTag;)V"
       },
+      "com/ntexist/mcidentitymobs/mixin/VillagerProfessionMixin": {
+        "setVillagerData": "Lnet/minecraft/world/entity/npc/Villager;m_34375_(Lnet/minecraft/world/entity/npc/VillagerData;)V"
+      },
+      "com/ntexist/mcidentitymobs/mixin/AnimalBreedMixin": {
+        "spawnChildFromBreeding(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/animal/Animal;)V": "Lnet/minecraft/world/entity/animal/Animal;m_27563_(Lnet/minecraft/server/level/ServerLevel;Lnet/minecraft/world/entity/animal/Animal;)V",
+        "canMate(Lnet/minecraft/world/entity/animal/Animal;)Z": "Lnet/minecraft/world/entity/animal/Animal;m_7848_(Lnet/minecraft/world/entity/animal/Animal;)Z"
+      },
+      "com/ntexist/mcidentitymobs/mixin/VillagerMakeLoveGenderMixin": {
+        "isBreedingPossible(Lnet/minecraft/world/entity/npc/Villager;)Z": "Lnet/minecraft/world/entity/ai/behavior/VillagerMakeLove;m_24639_(Lnet/minecraft/world/entity/npc/Villager;)Z"
+      },
+      "com/ntexist/mcidentitymobs/mixin/compat/alexsmobs/CentipedePartCompatMixin": {
+        "tick": "Lcom/github/alexthe666/alexsmobs/entity/EntityCentipedeBody;m_8119_()V"
+      },
       "com/ntexist/mcidentitymobs/mixin/compat/naturalist/LionCompatMixin": {
         "finalizeSpawn": "Lcom/starfish_studios/naturalist/common/entity/Lion;m_6518_(Lnet/minecraft/world/level/ServerLevelAccessor;Lnet/minecraft/world/DifficultyInstance;Lnet/minecraft/world/entity/MobSpawnType;Lnet/minecraft/world/entity/SpawnGroupData;Lnet/minecraft/nbt/CompoundTag;)Lnet/minecraft/world/entity/SpawnGroupData;",
         "ageBoundaryReached": "Lcom/starfish_studios/naturalist/common/entity/Lion;m_30232_()V"
+      },
+      "com/ntexist/mcidentitymobs/mixin/compat/alexsmobs/AnacondaPartCompatMixin": {
+        "tick": "Lcom/github/alexthe666/alexsmobs/entity/EntityAnacondaPart;m_8119_()V"
       }
     }
   }

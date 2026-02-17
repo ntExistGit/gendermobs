@@ -13,6 +13,7 @@ import java.util.*;
 public class EntityMappingOption extends OptionEntry<Map<String, InfectionData>> {
 
     private boolean expanded = true;
+    private IconButton sort;
     private StringWidget labelWidget;
     private Button toggle;
     private IconButton reset;
@@ -53,16 +54,23 @@ public class EntityMappingOption extends OptionEntry<Map<String, InfectionData>>
         toggle.setTooltip(Tooltip.create(Component.translatable(
                 expanded ? "mcidentitymobs.tooltip.expanded.minimize" : "mcidentitymobs.tooltip.expanded.unwrap"
         )));
+        sort = new IconButton(
+                x + toggle.getWidth(), y, 20, 20,
+                ResourceLocation.tryBuild("mcidentitymobs", "textures/gui/sprites/icon/sort.png"),
+                false,
+                btn -> onSort()
+        );
+        sort.setTooltip(Tooltip.create(Component.translatable("mcidentitymobs.config.tooltip.sort")));
 
         labelWidget = new StringWidget(
-                x + 20, y, width - 40, 20,
+                x + 40, y, width - 60, 20,
                 Component.translatable(label),
                 Minecraft.getInstance().font
         );
         labelWidget.alignCenter();
 
         reset = new IconButton(
-                x + toggle.getWidth() + labelWidget.getWidth(), y, 20, 20,
+                x + toggle.getWidth() + sort.getWidth() + labelWidget.getWidth(), y, 20, 20,
                 ResourceLocation.tryBuild("mcidentitymobs", "textures/gui/sprites/icon/reset.png"),
                 false,
                 btn -> onReset()
@@ -70,6 +78,7 @@ public class EntityMappingOption extends OptionEntry<Map<String, InfectionData>>
         reset.setTooltip(Tooltip.create(Component.translatable("mcidentitymobs.config.tooltip.reset")));
 
         widgets.add(toggle);
+        widgets.add(sort);
         widgets.add(labelWidget);
         widgets.add(reset);
 
@@ -103,6 +112,25 @@ public class EntityMappingOption extends OptionEntry<Map<String, InfectionData>>
                 map, setter, rebuild
         ));
         return widgets;
+    }
+
+    private void onSort() {
+        Map<String, InfectionData> map = getter.get();
+
+        Map<String, InfectionData> sorted = new LinkedHashMap<>();
+
+        map.entrySet().stream()
+                .sorted(Comparator.comparing(
+                        Map.Entry::getKey,
+                        String.CASE_INSENSITIVE_ORDER
+                ))
+                .forEach(e -> sorted.put(e.getKey(), e.getValue()));
+
+        setter.accept(sorted);
+
+        if (this.rebuild != null) {
+            this.rebuild.run();
+        }
     }
 
     @Override

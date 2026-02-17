@@ -1,0 +1,5 @@
+{
+  "target": "minecraft:plains",
+  "gradient": "mcidentitymobs:textures/colormap/plains.png",
+  "toneCount": 16
+}

@@ -12,13 +12,16 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.monster.ZombieVillager;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
 
 @Mod.EventBusSubscriber(modid = "mcidentitymobs", bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class CureHandler {
@@ -27,73 +30,81 @@ public class CureHandler {
     public static void onPlayerInteract(PlayerInteractEvent.EntityInteractSpecific event) {
         if (event.getLevel().isClientSide) return;
 
-        LivingEntity target = (LivingEntity) event.getTarget();
-        if (!(target instanceof ZombieVillager zombieVillager)) return; // пока только для зомби-жителей
+        if (!(event.getTarget() instanceof LivingEntity target)) return;
+        if (!(target instanceof LivingEntityAccessor)) return;
 
         ItemStack heldItem = event.getEntity().getItemInHand(InteractionHand.MAIN_HAND);
-
-        // Ищем подходящую запись в canBeInfected
         ResourceLocation currentType = EntityType.getKey(target.getType());
-        InfectionData data = null;
-        String originalId = null;
 
-        for (var entry : ConfigManager.CONFIG.canBeInfected.entrySet()) {
+        List<Map.Entry<String, InfectionData>> candidates = new ArrayList<>();
+
+        for (Map.Entry<String, InfectionData> entry : ConfigManager.CONFIG.canBeInfected.entrySet()) {
             InfectionData d = entry.getValue();
-            if (d.curable && d.zombie.equals(currentType.toString())) {
-                // Проверяем предмет (если указан)
-                if (!d.item.isEmpty()) {
-                    ResourceLocation reqItem = ResourceLocation.tryParse(d.item);
-                    if (reqItem == null) continue;
+            if (!d.curable || !d.zombie.equals(currentType.toString())) continue;
 
-                    Item requiredItem = BuiltInRegistries.ITEM.get(reqItem);
-                    if (requiredItem == null || requiredItem == Items.AIR) continue;
+            if (!d.item.isEmpty()) {
+                ResourceLocation reqItem = ResourceLocation.tryParse(d.item);
+                if (reqItem == null) continue;
 
-                    if (!heldItem.is(requiredItem)) continue;
-                }
+                Item requiredItem = BuiltInRegistries.ITEM.get(reqItem);
+                if (requiredItem == null || requiredItem == Items.AIR) continue;
 
-                // Проверяем эффект (если указан)
-                if (!d.effect.isEmpty()) {
-                    ResourceLocation effLoc = ResourceLocation.tryParse(d.effect);
-                    if (effLoc == null || !target.hasEffect(BuiltInRegistries.MOB_EFFECT.get(effLoc))) {
-                        continue;
-                    }
-                }
-
-                data = d;
-                originalId = MobIdentityAPI.getOriginalId(target);
-                break;
+                if (!heldItem.is(requiredItem)) continue;
             }
+
+            if (!d.effect.isEmpty()) {
+                ResourceLocation effLoc = ResourceLocation.tryParse(d.effect);
+                if (effLoc == null) continue;
+
+                var effect = BuiltInRegistries.MOB_EFFECT.get(effLoc);
+                if (effect == null || !target.hasEffect(effect)) continue;
+            }
+
+            candidates.add(entry);
         }
 
-        if (data == null || originalId == null || originalId.isEmpty()) return;
+        if (candidates.isEmpty()) return;
 
-        // Условия выполнены — запускаем лечение
+        String originalId = MobIdentityAPI.getOriginalId(target);
+        Map.Entry<String, InfectionData> selectedEntry;
+
+        if (originalId != null && !originalId.isEmpty()) {
+            selectedEntry = candidates.stream()
+                    .filter(e -> e.getKey().equals(originalId))
+                    .findFirst()
+                    .orElse(null);
+            if (selectedEntry == null) return;
+        } else {
+            selectedEntry = candidates.get(target.getRandom().nextInt(candidates.size()));
+            MobIdentityAPI.setOriginalId(target, selectedEntry.getKey());
+        }
+
+        InfectionData data = selectedEntry.getValue();
+
         event.setCanceled(true);
 
-        // Уменьшаем предмет (если использовался)
         if (!data.item.isEmpty()) {
             heldItem.shrink(1);
         }
 
-        // Рассчитываем реальное время лечения в зависимости от сложности
         int baseTime = data.time;
-        if (baseTime <= 0) baseTime = 3600; // fallback, если 0
+        if (baseTime <= 0) baseTime = 3600;
 
         ServerLevel level = (ServerLevel) event.getLevel();
         float minMultiplier, maxMultiplier;
 
         switch (level.getDifficulty()) {
             case PEACEFUL, EASY -> {
-                minMultiplier = 0.5f;
-                maxMultiplier = 1.0f;
+                minMultiplier = ConfigManager.CONFIG.general.timeMinMult * 0.5f;
+                maxMultiplier = ConfigManager.CONFIG.general.timeMaxMult;
             }
             case NORMAL -> {
-                minMultiplier = 0.75f;
-                maxMultiplier = 1.25f;
+                minMultiplier = ConfigManager.CONFIG.general.timeMinMult;
+                maxMultiplier = ConfigManager.CONFIG.general.timeMaxMult;
             }
             case HARD -> {
-                minMultiplier = 1.0f;
-                maxMultiplier = 1.75f;
+                minMultiplier = ConfigManager.CONFIG.general.timeMinMult;
+                maxMultiplier = ConfigManager.CONFIG.general.timeMaxMult * 2.0f;
             }
             default -> {
                 minMultiplier = 1.0f;
@@ -103,13 +114,12 @@ public class CureHandler {
 
         int conversionTime = (int) (baseTime * (minMultiplier + level.random.nextFloat() * (maxMultiplier - minMultiplier)));
 
-        // Запускаем процесс
         if (target instanceof LivingEntityAccessor acc) {
             acc.mcidentitymobs$setConversionTime(conversionTime);
             acc.mcidentitymobs$setInConversion(true);
+            acc.mcidentitymobs$setCuringPlayerUUID(event.getEntity().getUUID());
         }
 
-        // Звук начала
         level.playSound(null, target.getX(), target.getY(), target.getZ(),
                 SoundEvents.ZOMBIE_VILLAGER_CONVERTED, SoundSource.NEUTRAL, 1.0F, 1.0F);
     }

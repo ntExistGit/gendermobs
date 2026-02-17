@@ -5,45 +5,120 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b09462e5-d882-42ea-a0c2-58cd8da6e490" name="Changes" comment="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/compat/alexsmobs/ElephantCompatMixin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/compat/alexsmobs/GazelleCompatMixin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/compat/naturalist/ElephantCompatMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/client/ClientModEvents.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/client/ClientNameRenderHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/client/model/BreastBoxes.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/client/model/ModelBox.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/client/model/PositionTextureVertex.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/client/model/TexturedQuad.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/client/renderer/BreastLayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/client/renderer/TintedTextureCache.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/client/renderer/VillagerAsPlayerRenderer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/client/renderer/VillagerLayer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/compat/IScaleProvider.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/TextureCounts.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/data/SkinGradientLoader.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/data/SkinGradientRule.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/data/mcidentitymobs/villager_skin_gradients/plains.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/enums/PartType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/AnimalBreedMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/VillagerMakeLoveGenderMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/VillagerProfessionMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/compat/alexsmobs/AnacondaPartCompatMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/compat/alexsmobs/CentipedePartCompatMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/compat/alexsmobs/MooseCompatMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/compat/alexsmobs/client/render/RenderMooseCompatMixin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/network/NetworkHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/runConfigurations/Minecraft_Server.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/BoolOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/BoolOption.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ColorOption$ColorPreviewWidget.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ColorOption$ColorPreviewWidget.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ColorOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ColorOption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/MobIdentity$ClientModEvents.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/MobIdentity$ClientModEvents.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/MobIdentity.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/MobIdentity.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/accessor/LivingEntityAccessor.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/accessor/LivingEntityAccessor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/api/MobIdentityAPI.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/api/MobIdentityAPI.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/compat/jade/GenderJadeProvider$GenderIconElement.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/compat/jade/GenderJadeProvider$GenderIconElement.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/compat/jade/GenderJadeProvider.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/compat/jade/GenderJadeProvider.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ConfigManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ConfigManager.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ConfigScreen$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ConfigScreen$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ConfigScreen$2.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ConfigScreen$2.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ConfigScreen$3.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ConfigScreen$3.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ConfigScreen$4.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ConfigScreen$4.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ConfigScreen$5.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ConfigScreen$5.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ConfigScreen.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ConfigScreen.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/EntityMappingOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/EntityMappingOption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/EntityMappingRow.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/EntityMappingRow.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ListOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ListOption.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ListRow.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ListRow.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/MapOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/MapOption.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/MapRow.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/MapRow.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/SliderOption$Slider.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/SliderOption$Slider.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/SliderOption.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/SliderOption.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ModConfig$Colors.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ModConfig$Colors.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ModConfig$General.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ModConfig$General.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ModConfig$Jade.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ModConfig$Jade.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ModConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/config/ModConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/event/ConversionTickHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/event/ConversionTickHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/event/CureHandler$1.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/event/CureHandler$1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/event/CureHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/event/CureHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/event/InfectionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/event/InfectionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/LivingEntityDataMixin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/LivingEntityDataMixin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/NameTagMixin.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/NameTagMixin.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/mixin/compat/alexsmobs/GazelleCompatMixin.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/pipeline/SpawnPipeline.class" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/pipeline/SpawnPipeline.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/classes/java/main/com/ntexist/mcidentitymobs/service/ColorService.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/classes/java/main/mcidentitymobs.refmap.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/classes/java/main/mcidentitymobs.refmap.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/devlibs/mcidentitymobs-1.0.0-dev.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/devlibs/mcidentitymobs-1.0.0-dev.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/devlibs/mcidentitymobs-1.0.0-sources.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/devlibs/mcidentitymobs-1.0.0-sources.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/EntityElephant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/ModelElephant.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/libs/RenderElephant.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/mcidentitymobs-1.0.0-sources.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/mcidentitymobs-1.0.0-sources.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/libs/mcidentitymobs-1.0.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/libs/mcidentitymobs-1.0.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.curse.maven-alexs-mobs-426558-0cd3bb3a-5698791.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.curse.maven-alexs-mobs-426558-0cd3bb3a-5698791.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.curse.maven-alexsmobsinteraction-975640-0cd3bb3a-6410554.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.curse.maven-alexsmobsinteraction-975640-0cd3bb3a-6410554.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.curse.maven-citadel-331936-0cd3bb3a-7476570.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.curse.maven-citadel-331936-0cd3bb3a-7476570.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.curse.maven-geckolib-388172-0cd3bb3a-7553267.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.curse.maven-geckolib-388172-0cd3bb3a-7553267.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.curse.maven-naturalist-627986-0cd3bb3a-6322818.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.curse.maven-naturalist-627986-0cd3bb3a-6322818.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.maven.modrinth-jade-0cd3bb3a-11.13.2+forge.jar" beforeDir="false" afterPath="$PROJECT_DIR$/build/loom-cache/remapped_working/remapped.maven.modrinth-jade-0cd3bb3a-11.13.2+forge.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/reports/problems/problems-report.html" beforeDir="false" afterPath="$PROJECT_DIR$/build/reports/problems/problems-report.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/de_de.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/de_de.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/en_us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/es_es.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/es_es.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/fr_fr.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/fr_fr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/it_it.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/it_it.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/ja_jp.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/ja_jp.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/ko_kr.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/ko_kr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/pt_br.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/pt_br.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/ru_ru.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/uk_ua.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/uk_ua.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/zh_cn.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/assets/mcidentitymobs/lang/zh_cn.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/resources/main/mcidentitymobs.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/resources/main/mcidentitymobs.mixins.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" beforeDir="false" afterPath="$PROJECT_DIR$/build/tmp/compileJava/previous-compilation-data.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/BoolOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/BoolOption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ColorOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ColorOption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradlew.bat" beforeDir="false" afterPath="$PROJECT_DIR$/gradlew.bat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/MobIdentity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/MobIdentity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/accessor/LivingEntityAccessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/accessor/LivingEntityAccessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/api/MobIdentityAPI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/api/MobIdentityAPI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/compat/jade/GenderJadeProvider.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/compat/jade/GenderJadeProvider.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ConfigManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ConfigManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ConfigScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ConfigScreen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/EntityMappingOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/EntityMappingOption.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/EntityMappingRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/EntityMappingRow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/IconButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/IconButton.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ListOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ListOption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ListRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ListRow.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/MapOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/MapOption.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/MapRow.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/MapRow.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/SliderOption.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/SliderOption.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ModConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/config/ModConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/event/ConversionTickHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/event/ConversionTickHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/event/CureHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/event/CureHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/event/InfectionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/event/InfectionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/LivingEntityDataMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/LivingEntityDataMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/NameTagMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/NameTagMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/compat/alexsmobs/GazelleCompatMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/mixin/compat/alexsmobs/client/model/ModelGazelleCompatMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/pipeline/SpawnPipeline.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/pipeline/SpawnPipeline.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/ntexist/mcidentitymobs/service/ColorService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/de_de.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/de_de.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/en_us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/es_es.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/es_es.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/fr_fr.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/fr_fr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/it_it.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/it_it.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/ja_jp.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/ja_jp.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/ko_kr.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/ko_kr.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/pt_br.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/pt_br.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/ru_ru.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/uk_ua.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/uk_ua.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/zh_cn.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/mcidentitymobs/lang/zh_cn.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/mcidentitymobs.mixins.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mcidentitymobs.mixins.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -79,12 +154,6 @@
                 <item name="mcidentitymobs" type="f1a62948:ProjectNode" />
                 <item name="Tasks" type="e4a08cd1:TasksNode" />
                 <item name="build" type="c8890929:TasksNode$1" />
-              </path>
-              <path>
-                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
-                <item name="mcidentitymobs" type="f1a62948:ProjectNode" />
-                <item name="Tasks" type="e4a08cd1:TasksNode" />
-                <item name="loom" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -156,13 +225,16 @@
     &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.37643677&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;org.jetbrains.plugins.github.ui.GithubSettingsConfigurable&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Games\Minecraft\gendermobs\src\main\resources\assets\gendermobs" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.ntexist.mcidentitymobs.mixin.compat.alexsmobs" />
     </key>
   </component>
   <component name="RunManager" selected="Gradle.gendermobs [build]">
@@ -279,9 +351,9 @@
     <recent_temporary>
       <list>
         <item itemvalue="Gradle.gendermobs [build]" />
+        <item itemvalue="Gradle.gendermobs [buildDependents]" />
         <item itemvalue="Gradle.gendermobs [clean]" />
         <item itemvalue="Gradle.gendermobs [testClasses]" />
-        <item itemvalue="Gradle.gendermobs [buildDependents]" />
         <item itemvalue="Gradle.gendermobs [check]" />
       </list>
     </recent_temporary>
@@ -323,7 +395,18 @@
       <workItem from="1770630516566" duration="13124000" />
       <workItem from="1770687366273" duration="5282000" />
       <workItem from="1770705787122" duration="4023000" />
-      <workItem from="1770734519692" duration="17403000" />
+      <workItem from="1770734519692" duration="17698000" />
+      <workItem from="1770795386794" duration="5363000" />
+      <workItem from="1770810613439" duration="8816000" />
+      <workItem from="1770820690159" duration="7419000" />
+      <workItem from="1770845625889" duration="7998000" />
+      <workItem from="1770883390979" duration="19909000" />
+      <workItem from="1770962735431" duration="17593000" />
+      <workItem from="1770991456265" duration="11461000" />
+      <workItem from="1771134571696" duration="49396000" />
+      <workItem from="1771258143838" duration="5826000" />
+      <workItem from="1771269314912" duration="10866000" />
+      <workItem from="1771306811633" duration="1687000" />
     </task>
     <task id="LOCAL-00001" summary="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;">
       <option name="closed" value="true" />
@@ -445,7 +528,15 @@
       <option name="project" value="LOCAL" />
       <updated>1770676202941</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Status code 413, &quot;{&quot;error&quot;:{&quot;code&quot;:&quot;tokens_limit_reached&quot;,&quot;message&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;,&quot;details&quot;:&quot;Request body too large for gpt-4o-mini model. Max size: 8000 tokens.&quot;}}&quot;">
+      <option name="closed" value="true" />
+      <created>1770763287027</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1770763287027</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

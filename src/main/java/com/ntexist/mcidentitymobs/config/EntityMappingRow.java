@@ -44,7 +44,7 @@ public class EntityMappingRow {
         int firstFieldX = x + ICON_W + GAP;
         int secondIconX = firstFieldX + fieldW_row;
         int secondFieldX = secondIconX + ICON_W + GAP;
-        int timeFieldX = secondFieldX + fieldW_row + GAP;
+        int curableTimeFieldX = secondFieldX + fieldW_row + GAP;
 
         int row2Y = y + ROW_HEIGHT + GAP;
 
@@ -67,7 +67,7 @@ public class EntityMappingRow {
 
         CustomEditBox zombieField = new CustomEditBox(
                 Minecraft.getInstance().font,
-                secondFieldX + GAP, y, fieldW_row - GAP, ROW_HEIGHT,
+                secondFieldX, y, fieldW_row, ROW_HEIGHT,
                 Component.empty()
         );
         zombieField.setBordered(false);
@@ -88,7 +88,7 @@ public class EntityMappingRow {
                     data.curable = !data.curable;
                     b.setMessage(Component.translatable(data.curable ? "mcidentitymobs.boolean.true" : "mcidentitymobs.boolean.false"));
                 }
-        ).bounds(x + (fieldW_row * 2) + GAP * 2, y, BUTTON_W, ROW_HEIGHT).build();
+        ).bounds(curableTimeFieldX, y, BUTTON_W, ROW_HEIGHT).build();
         curableButton.setTooltip(Tooltip.create(Component.translatable("mcidentitymobs.tooltip.curable")));
 
         CustomEditBox effectField = new CustomEditBox(
@@ -127,12 +127,13 @@ public class EntityMappingRow {
 
         CustomEditBox timeField = new CustomEditBox(
                 Minecraft.getInstance().font,
-                timeFieldX, row2Y, BUTTON_W, ROW_HEIGHT,
+                curableTimeFieldX, row2Y, BUTTON_W, ROW_HEIGHT,
                 Component.empty()
         );
         timeField.setBordered(false);
         timeField.setMaxLength(10);
         timeField.setValue(String.valueOf(data.time));
+        timeField.setTooltip(Tooltip.create(Component.translatable("mcidentitymobs.tooltip.time")));
 
         Button remove = Button.builder(
                 Component.literal("-"),

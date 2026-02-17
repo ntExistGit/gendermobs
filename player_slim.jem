@@ -1,0 +1,171 @@
+{
+	"credit": "Made with Blockbench",
+	"textureSize": [64, 64],
+	"texture": "player_slim.png",
+	"models": [
+		{
+			"part": "head",
+			"id": "head",
+			"invertAxis": "xy",
+			"translate": [0, -24, 0],
+			"boxes": [
+				{"coordinates": [-4, 24, -4, 8, 8, 8], "textureOffset": [0, 0]}
+			]
+		},
+		{
+			"part": "headwear",
+			"id": "headwear",
+			"invertAxis": "xy",
+			"translate": [0, -24, 0],
+			"boxes": [
+				{"coordinates": [-4, 24, -4, 8, 8, 8], "textureOffset": [32, 0], "sizeAdd": 0.5}
+			]
+		},
+		{
+			"part": "body",
+			"id": "body",
+			"invertAxis": "xy",
+			"translate": [0, -24, 0],
+			"boxes": [
+				{"coordinates": [-4, 12, -2, 8, 12, 4], "textureOffset": [16, 16]}
+			],
+			"submodels": [
+				{
+					"id": "leftBrestPart",
+					"invertAxis": "xy",
+					"translate": [-2, 22, 0],
+					"rotate": [20, 0, 0],
+					"boxes": [
+						{
+							"coordinates": [-2, -4, -2, 4, 5, 3],
+							"uvNorth": [24, 20, 28, 25],
+							"uvEast": [22, 20, 25, 25],
+							"uvSouth": [60, 23, 64, 28],
+							"uvWest": [27, 20, 30, 25],
+							"uvUp": [64, 23, 60, 20],
+							"uvDown": [28, 25, 24, 28]
+						},
+						{
+							"coordinates": [-2, -4, -2, 4, 5, 3],
+							"uvNorth": [24, 36, 28, 41],
+							"uvEast": [22, 36, 25, 41],
+							"uvSouth": [60, 39, 64, 44],
+							"uvWest": [27, 36, 30, 41],
+							"uvUp": [64, 39, 60, 36],
+							"uvDown": [28, 41, 24, 44],
+							"sizeAdd": 0.25
+						}
+					]
+				},
+				{
+					"id": "rightBrestPart",
+					"invertAxis": "xy",
+					"translate": [2, 22, 0],
+					"rotate": [20, 0, 0],
+					"boxes": [
+						{
+							"coordinates": [-2, -4, -2, 4, 5, 3],
+							"uvNorth": [20, 20, 24, 25],
+							"uvEast": [18, 20, 21, 25],
+							"uvSouth": [60, 23, 64, 28],
+							"uvWest": [23, 20, 26, 25],
+							"uvUp": [64, 23, 60, 20],
+							"uvDown": [24, 25, 20, 28]
+						},
+						{
+							"coordinates": [-2, -4, -2, 4, 5, 3],
+							"uvNorth": [20, 36, 24, 41],
+							"uvEast": [18, 36, 21, 41],
+							"uvSouth": [60, 39, 64, 44],
+							"uvWest": [23, 36, 26, 41],
+							"uvUp": [64, 39, 60, 36],
+							"uvDown": [24, 41, 20, 44],
+							"sizeAdd": 0.25
+						}
+					]
+				}
+			]
+		},
+		{
+			"part": "jacket",
+			"id": "jacket",
+			"invertAxis": "xy",
+			"translate": [0, -24, 0],
+			"boxes": [
+				{"coordinates": [-4, 12, -2, 8, 12, 4], "textureOffset": [16, 32], "sizeAdd": 0.25}
+			]
+		},
+		{
+			"part": "left_arm",
+			"id": "left_arm",
+			"invertAxis": "xy",
+			"translate": [5, -22, 0],
+			"boxes": [
+				{"coordinates": [-7, 12, -2, 3, 12, 4], "textureOffset": [32, 48]}
+			]
+		},
+		{
+			"part": "left_sleeve",
+			"id": "left_sleeve",
+			"invertAxis": "xy",
+			"translate": [5, -22, 0],
+			"boxes": [
+				{"coordinates": [-7, 12, -2, 3, 12, 4], "textureOffset": [48, 48], "sizeAdd": 0.25}
+			]
+		},
+		{
+			"part": "right_arm",
+			"id": "right_arm",
+			"invertAxis": "xy",
+			"translate": [-5, -22, 0],
+			"boxes": [
+				{"coordinates": [4, 12, -2, 3, 12, 4], "textureOffset": [40, 16]}
+			]
+		},
+		{
+			"part": "right_sleeve",
+			"id": "right_sleeve",
+			"invertAxis": "xy",
+			"translate": [-5, -22, 0],
+			"boxes": [
+				{"coordinates": [4, 12, -2, 3, 12, 4], "textureOffset": [40, 32], "sizeAdd": 0.25}
+			]
+		},
+		{
+			"part": "left_leg",
+			"id": "left_leg",
+			"invertAxis": "xy",
+			"translate": [2, -12, 0],
+			"boxes": [
+				{"coordinates": [-4, 0, -2, 4, 12, 4], "textureOffset": [16, 48]}
+			]
+		},
+		{
+			"part": "left_pants",
+			"id": "left_pants",
+			"invertAxis": "xy",
+			"translate": [2, -12, 0],
+			"boxes": [
+				{"coordinates": [-4, 0, -2, 4, 12, 4], "textureOffset": [0, 48], "sizeAdd": 0.25}
+			]
+		},
+		{
+			"part": "right_leg",
+			"id": "right_leg",
+			"invertAxis": "xy",
+			"translate": [-2, -12, 0],
+			"boxes": [
+				{"coordinates": [0, 0, -2, 4, 12, 4], "textureOffset": [0, 16]}
+			]
+		},
+		{
+			"part": "right_pants",
+			"id": "right_pants",
+			"invertAxis": "xy",
+			"translate": [-2, -12, 0],
+			"boxes": [
+				{"coordinates": [0, 0, -2, 4, 12, 4], "textureOffset": [0, 32], "sizeAdd": 0.25}
+			]
+		}
+	]
+}

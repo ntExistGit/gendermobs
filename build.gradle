@@ -42,6 +42,9 @@ dependencies {
 
     modCompileOnly("curse.maven:citadel-331936:7476570")
     modCompileOnly("curse.maven:geckolib-388172:7553267")
+    modCompileOnly("maven.modrinth:3dskinlayers:evQiUIrz")
+    modCompileOnly("maven.modrinth:female-gender:R1d8TWqL")
+    modCompileOnly("curse.maven:vanillabackport-417430:7597658")
     modCompileOnly("curse.maven:alexs-mobs-426558:5698791")
     modCompileOnly("curse.maven:alexsmobsinteraction-975640:6410554")
     modCompileOnly("curse.maven:naturalist-627986:6322818")
